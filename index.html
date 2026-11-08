@@ -117,6 +117,10 @@ details.more .facts{color:var(--muted);font-size:.92rem}
 .meal .opt{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;border:0;background:none;padding:5px 0;text-align:left;color:var(--ink);font-size:1rem;line-height:1.4}
 .meal .opt .svg{width:16px;height:16px;color:var(--muted);flex-shrink:0}
 .meal .sub{color:var(--muted);font-size:.9rem;display:block}
+.note{display:flex;gap:10px;align-items:flex-start;padding:2px 6px}
+.note .ic{width:20px;height:20px;flex-shrink:0;margin-top:1px;color:var(--muted)}
+.note .nt{display:block;font-size:.95rem;color:var(--muted);line-height:1.45}
+.note .sub{display:block;color:var(--muted);font-size:.9rem;margin-top:1px}
 
 .panel{background:var(--card);border-radius:16px;padding:16px;margin-top:22px;box-shadow:0 0 0 1px var(--line)}
 .panel h3{font-family:var(--display);font-weight:400;font-size:1.3rem;margin:0 0 4px}
@@ -140,7 +144,9 @@ details.more .facts{color:var(--muted);font-size:.92rem}
 .tag.thrill{background:var(--warn-soft);color:var(--warn)}
 .tag.mid{background:var(--accent-soft);color:var(--accent)}
 .tag.easy{background:var(--sky-soft);color:var(--sky)}
-.row.showrow{display:flex;justify-content:space-between;gap:12px}
+.row.showrow{display:flex;justify-content:space-between;gap:12px;font:inherit;color:var(--ink);cursor:pointer}
+.showrow .sn{text-decoration:underline dotted;text-decoration-color:#B5AFA6;text-decoration-color:color-mix(in srgb,var(--muted) 55%,transparent);text-decoration-thickness:1.5px;text-underline-offset:4px}
+.row.showrow:active{background:var(--paper)}
 .showrow .t{color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
 .shows{list-style:none;padding:0;margin:0;display:grid;gap:8px}
 .shows li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:8px}
@@ -278,11 +284,19 @@ main.ov{padding-bottom:calc(var(--tb,72px) + 4px)}
 body.noscroll{overflow:hidden}
 .sheet{position:fixed;inset:0;z-index:40;background:var(--paper);display:flex;flex-direction:column;transform:translateY(100%);transition:transform .32s cubic-bezier(.2,.8,.2,1)}
 .sheet.open{transform:none}
+.sheet.noanim{transition:none}
+.snowfx{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:3}
+.snowfx i{position:absolute;top:-10px;opacity:0;animation:snowfall linear 1 forwards}
+.snowfx b{display:block;border-radius:50%;background:#D2E2E7;background:color-mix(in srgb,var(--sky) 26%,#fff);box-shadow:0 0 3px rgba(110,140,152,.25);animation:snowsway ease-in-out infinite alternate}
+@keyframes snowfall{0%{transform:translateY(0);opacity:0}6%{opacity:var(--op)}88%{opacity:var(--op)}100%{transform:translateY(105vh);opacity:0}}
+@keyframes snowsway{from{transform:translateX(calc(var(--dx) * -1))}to{transform:translateX(var(--dx))}}
+.sheet.push{transform:translateX(100%);box-shadow:-8px 0 24px rgba(0,0,0,.08)}
+.sheet.push.open{transform:none}
 .sheet-bar{flex-shrink:0;padding:calc(8px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) 8px max(12px,env(safe-area-inset-left,0px));background:var(--paper);border-bottom:1px solid var(--line)}
 .sheet-close{display:inline-flex;align-items:center;gap:4px;border:0;background:var(--card);border-radius:999px;padding:8px 16px 8px 10px;font-weight:600;box-shadow:0 0 0 1px var(--line)}
 .sheet-close .svg{width:20px;height:20px}
 .sheet-scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.sheet-bar .in{max-width:720px;margin:0 auto}
+.sheet-bar .in{max-width:720px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
 @media (min-width:760px){.sheet-scroll .sheet-ph,.sheet-scroll .gal{max-width:720px;margin:16px auto 0;border-radius:16px;overflow:hidden}.sheet-bar .in{padding:0 6px}}
 .sheet-ph{display:block;width:100%;max-width:720px;margin:0 auto;aspect-ratio:3/2;object-fit:cover;background:var(--line)}
 .sheet-body{max-width:720px;margin:0 auto;padding:18px max(18px,env(safe-area-inset-right,0px)) calc(40px + env(safe-area-inset-bottom,0px)) max(18px,env(safe-area-inset-left,0px))}
@@ -316,6 +330,55 @@ body.noscroll{overflow:hidden}
 .eat-det li::before{content:"";position:absolute;left:6px;top:.68em;width:5px;height:5px;border-radius:50%;background:var(--muted);opacity:.6}
 .eat-head .zhmini{font-size:1rem;margin-top:4px}
 .eat-link{display:inline-block;margin-top:6px;font-weight:600}
+.walkstrip{padding:12px 16px 0;cursor:pointer}
+.walkstrip .wsh{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.walkstrip .wsh b{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:1.05rem}
+.walkstrip .wsh .ic{width:20px;height:20px;color:var(--muted)}
+.walkstrip .more{display:inline-flex;align-items:center;gap:2px;color:var(--muted);font-size:.88rem}
+.walkstrip .more .svg{width:18px;height:18px}
+.walkstrip .wsl{position:relative;height:18px;margin:10px -16px 0}
+.walkstrip .wsw{position:absolute;left:0;right:0;bottom:0;width:100%;height:18px}
+.walkstrip .wsw path{fill:var(--sky-soft)}
+.walkstrip .wpin{position:absolute;top:0;transform:translateX(-50%);color:var(--muted);opacity:.7;line-height:0}
+.walkstrip .wpin .svg{width:16px;height:16px}
+.walkstrip .wsr{display:block;width:100%;height:10px;margin:0 0 4px}
+.walkstrip .wsr{-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.walkstrip .wsr path{fill:var(--sky-soft);stroke:none}
+.walkstrip .wse{display:flex;justify-content:space-between;align-items:baseline;gap:8px;color:var(--muted);font-size:.82rem}
+.walkstrip .wse em{color:var(--sky);font-size:.78rem;letter-spacing:.03em;opacity:.85;text-align:center}
+.wmap.wmini{flex-shrink:0;width:96px;height:88px;border-radius:10px;box-shadow:none;background:var(--paper)}
+.wmap.wmini .wlabel,.wmap.wmini .land,.wmap.wmini .wpt text{display:none}
+.wmap.wmini .route{stroke-width:3;stroke-dasharray:6 5}
+.wmap .wpt.dim{opacity:.28}
+.wmap{display:block;width:100%;height:auto;margin:16px 0 8px;background:var(--card);border-radius:16px;box-shadow:0 0 0 1px var(--line)}
+.wmap .water{fill:var(--sky-soft)}
+.wmap .creek{fill:none;stroke:var(--sky-soft);stroke-width:5;stroke-linecap:round}
+.wmap .wlabel{font-size:8px;fill:var(--sky);font-style:italic;letter-spacing:.04em}
+.wmap .land{font-size:9px;fill:var(--muted);letter-spacing:.06em}
+.wmap .route{fill:none;stroke:var(--red);stroke-width:1.8;stroke-dasharray:4 3;stroke-linecap:round;opacity:.85}
+.wmap .wpt circle{fill:var(--card);stroke:var(--red);stroke-width:1.5}
+.wmap .wpt text{font:600 8px var(--body);fill:var(--red)}
+.wmap .wpt.must circle{fill:var(--red)}
+.wmap .wpt.must text{fill:#fff}
+.wlegend{display:flex;gap:16px;color:var(--muted);font-size:.88rem;margin:0 0 6px!important}
+.wlegend span{display:inline-flex;align-items:center;gap:6px}
+.wlegend .lg{width:11px;height:11px;border-radius:50%;border:1.5px solid var(--red);display:inline-block}
+.wlegend .lg.must{background:var(--red)}
+.sheet-body .wstops{list-style:none;margin:8px 0 0;padding:0}
+.ws{position:relative;padding:12px 0 16px 38px}
+.ws::before{content:"";position:absolute;left:12px;top:0;bottom:0;border-left:2px dashed var(--line)}
+.ws:first-child::before{top:24px}.ws:last-child::before{bottom:auto;height:24px}
+.ws .wdot{position:absolute;left:2px;top:13px;width:22px;height:22px;border-radius:50%;background:var(--card);border:1.5px solid var(--red);color:var(--red);font-size:.75rem;font-weight:600;display:flex;align-items:center;justify-content:center;box-sizing:border-box}
+.ws.must .wdot{background:var(--red);color:#fff}
+.whead{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;border:0;background:none;padding:0;text-align:left;font:inherit;color:var(--ink)}
+.whead .wn{font-weight:600;font-size:1.05rem;line-height:1.4}
+button.whead .svg{width:18px;height:18px;color:var(--muted);flex-shrink:0}
+.wopt{display:inline-block;margin-left:8px;font-size:.75rem;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:1px 8px;vertical-align:2px}
+.wwhen{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.wwhen span{font-size:.8rem;color:var(--muted);background:var(--paper);border-radius:999px;padding:2px 9px}
+.ws .wd{margin-top:6px!important}
+.ws .wtip{margin-top:4px!important;color:var(--muted);font-size:.92rem}
+.ws .zhmini{font-size:.95rem;margin-top:4px}
 @media (prefers-reduced-motion: reduce){.sheet,.sheet-bg{transition:none}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 html:lang(th) body{line-height:1.7}
@@ -341,7 +404,7 @@ html:lang(th) :is(.top h1,.dayhead h2,.panel h3,h2.section,.ovhead h2,.ovcard h3
 <script>
 const T=(en,th)=>({en,th});
 const I={
- pin:'<path d="M12 21s-6.5-5.7-6.5-11a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',plan:'<path d="M4 6.5h16v13H4z"/><path d="M4 10.5h16M8.5 4v4M15.5 4v4"/>',
+ pin:'<path d="M12 21s-6.5-5.7-6.5-11a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',bag:'<rect x="5" y="6.5" width="14" height="13" rx="2"/><path d="M9 6.5v-2a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2M9 10.5v5M15 10.5v5"/>',clock:'<circle cx="12" cy="12" r="8"/><path d="M12 8v4l2.5 2"/>',route:'<circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="6" r="2.2"/><path d="M8.2 18H15a3 3 0 0 0 0-6H9a3 3 0 0 1 0-6h6.8" stroke-dasharray="2.2 2.2"/>',plan:'<path d="M4 6.5h16v13H4z"/><path d="M4 10.5h16M8.5 4v4M15.5 4v4"/>',
  food:'<path d="M7 3.5v7.5M4.5 3.5v4a2.5 2.5 0 0 0 5 0v-4M7 11v9.5"/><path d="M17 3.5c-2 1-3 3.5-3 6.5h3v10.5"/>',
  words:'<rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 9h8v4H8zM12 6.5v11"/>',
  tips:'<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r=".6" fill="currentColor"/>',
@@ -437,6 +500,22 @@ const P = {
   westlake:{nm:"West Lake",zh:"西湖",py:"Xīhú",
     sum:T("Hangzhou's famous lake of temples, pagodas and gardens.","ทะเลสาบชื่อดังของหางโจว มีวัด เจดีย์ และสวน"),
     about:T("A UNESCO World Heritage site praised by Chinese poets for over a thousand years. An old saying goes: \"Above there is heaven; below there are Suzhou and Hangzhou.\"","มรดกโลกของยูเนสโก กวีจีนยกย่องมากว่าพันปี มีคำกล่าวว่า \"บนฟ้ามีสวรรค์ บนดินมีซูโจวและหางโจว\"")},
+  rockbund:{nm:"Rock Bund",zh:"外滩源",py:"Wàitān Yuán",
+    sum:T("Red-brick lanes at the north end of the Bund, with cafés and small shops.","ย่านตึกอิฐแดงสุดทางเหนือของ The Bund มีคาเฟ่และร้านเล็ก ๆ")},
+  union:{nm:"Union Church",zh:"新天安堂",py:"Xīn Tiān'ān Táng",
+    sum:T("A red-brick church from the 1880s beside Suzhou Creek.","โบสถ์อิฐแดงจากยุค 1880 ริมคลองซูโจว")},
+  rowing:{nm:"Former Rowing Club",zh:"划船俱乐部旧址",py:"Huáchuán Jùlèbù Jiùzhǐ",
+    sum:T("A 1905 clubhouse with an old, empty pool you can step into.","อาคารสโมสรจากปี 1905 มีสระว่ายน้ำเก่าที่ไม่มีน้ำให้ลงไปเดินได้")},
+  waibaidu:{nm:"Waibaidu Bridge",zh:"外白渡桥",py:"Wàibáidù Qiáo",
+    sum:T("Shanghai's famous steel bridge from 1908.","สะพานเหล็กชื่อดังของเซี่ยงไฮ้ จากปี 1908")},
+  zhapu:{nm:"Zhapu Road Bridge",zh:"乍浦路桥",py:"Zhàpǔ Lù Qiáo",
+    sum:T("The classic view of Waibaidu Bridge with the skyline behind.","จุดชมวิวคลาสสิก สะพาน Waibaidu กับตึกสูงด้านหลัง")},
+  showtree:{nm:"Mickey's Magical Tree Lighting",
+    sum:T("Mickey and friends light up the park's tallest Christmas tree.","มิกกี้และเพื่อน ๆ เปิดไฟต้นคริสต์มาสที่สูงที่สุดในสวน")},
+  showsnow:{nm:"Mickey's Snow Magic",
+    sum:T("Snow falls on Mickey Avenue, like stepping into a snow globe.","หิมะโปรยลงบน Mickey Avenue เหมือนเดินเข้าไปในลูกแก้วหิมะ")},
+  shownight:{nm:"Night shows at the castle",
+    sum:T("Lights, music, projections and fireworks on the castle after dark.","แสงสี ดนตรี ภาพฉาย และพลุที่ปราสาทยามค่ำคืน")},
   hongkou:{nm:"Hongkou Creek",zh:"虹口港",py:"Hóngkǒu Gǎng",
     sum:T("A small canal with old houses and little bridges.","คลองเล็ก ๆ มีบ้านเก่าและสะพานน้อย ๆ")},
   northbund:{nm:"North Bund Greenland",zh:"北外滩滨江绿地",py:"Běi Wàitān Bīnjiāng Lǜdì",
@@ -491,7 +570,8 @@ const DAYS=[
    {t:"go",ic:"🚕",txt:T("To the hotel by DiDi (45–60 min) or Metro Line 2 (60–75 min)","ไปโรงแรมด้วย DiDi (45–60 นาที) หรือรถไฟใต้ดินสาย 2 (60–75 นาที)")},
    {t:"s",p:"nanjing",time:"17:00"},
    {t:"m",ic:"🦀",h:T("Dinner","มื้อเย็น"),o:["supremecrab","xiesanbao"]},
-   {t:"s",p:"bund",time:"19:00"}
+   {t:"s",p:"bund",time:"19:00"},
+   {t:"w",part:"tue",h:T("8 stops along the river","8 จุดแวะริมแม่น้ำ")}
   ]},
  {dow:T("Wed","พ."),d:16,date:T("Wednesday 16 December","วันพุธที่ 16 ธันวาคม"),
   title:T("Old Shanghai on foot","เดินเที่ยวเซี่ยงไฮ้เก่า"),
@@ -531,7 +611,7 @@ const DAYS=[
    {t:"m",ic:"🍜",h:T("Lunch","มื้อกลางวัน"),o:["yinyang"]},
    {t:"go",ic:"🚕",txt:T("DiDi","DiDi")},
    {t:"s",p:"trees"},
-   {t:"x",h:T("If there's time: 1933 Old Millfun","ถ้ามีเวลา: 1933 Old Millfun"),sub:T("Otherwise we go on Sunday.","ถ้าไม่ทัน ไปวันอาทิตย์แทน")},
+   {t:"x",ic:"clock",h:T("If there's time: 1933 Old Millfun","ถ้ามีเวลา: 1933 Old Millfun")},
    {t:"go",ic:"🚇",ln:["l13","l1","l2"],txt:T("Metro to Lujiazui, about 40 min (Jiangning Rd → Line 13 → Line 1 → Line 2)","รถไฟใต้ดินไป Lujiazui ประมาณ 40 นาที (Jiangning Rd → สาย 13 → สาย 1 → สาย 2)")},
    {t:"s",p:"ljz"},
    {t:"m",ic:"♨️",h:T("Dinner in Shanghai Tower","มื้อเย็นที่ Shanghai Tower"),o:["sukiyaki"]}
@@ -550,39 +630,40 @@ const DAYS=[
   lede:T("A relaxed last morning by the river before the flight.","เช้าวันสุดท้ายเดินเล่นริมแม่น้ำ ก่อนบินกลับ"),
   items:[
    {t:"x",h:T("Check out, leave bags at the hotel","เช็คเอาท์ ฝากกระเป๋าไว้ที่โรงแรม")},
-   {t:"go",ic:"🚕",txt:T("DiDi 15 min","DiDi 15 นาที")},
+   {t:"go",ic:"🚕",txt:T("DiDi about 10 min to Rock Bund","DiDi ประมาณ 10 นาที ไป Rock Bund")},
+   {t:"w",part:"sun",h:T("Rock Bund to North Bund Greenland","Rock Bund ถึง North Bund Greenland")},
    {t:"s",p:"hongkou"},
    {t:"go",ic:"🚶",txt:T("Scenic walk, 1 km · 10–15 min. Head towards the Huangpu River and follow the riverside paths to North Bund Greenland","เดินชมวิว 1 กม. · 10–15 นาที มุ่งหน้าไปแม่น้ำหวงผู่ แล้วเดินตามทางเลียบริมน้ำไปถึง North Bund Greenland")},
    {t:"s",p:"northbund"},
    {t:"m",ic:"☕",h:T("Coffee","กาแฟ"),o:["manner"]},
-   {t:"go",ic:"🚕",txt:T("DiDi 8 min","DiDi 8 นาที")},
-   {t:"s",p:"millfun"},
+   {t:"go",ic:"🚕",txt:T("DiDi about 15 min back to People's Square","DiDi ประมาณ 15 นาที กลับ People's Square")},
    {t:"m",ic:"🍢",h:T("Lunch near People's Square","มื้อกลางวันแถว People's Square"),o:["longtime","rourou"]},
-   {t:"x",h:T("Pick up bags, go to the airport","รับกระเป๋า แล้วไปสนามบิน"),sub:T("Metro Line 2 or DiDi · arrive by 16:00","รถไฟใต้ดินสาย 2 หรือ DiDi · ถึงสนามบินภายใน 16:00 น.")},
+   {t:"x",h:T("Pick up bags at the hotel","รับกระเป๋าที่โรงแรม")},
+   {t:"go",ic:"🚇",ln:["l2"],txt:T("Line 2 or DiDi to Pudong Airport · arrive by 16:00","สาย 2 หรือ DiDi ไปสนามบินผู่ตง · ถึงภายใน 16:00 น.")},
    {t:"f",a:["PVG",T("Shanghai","เซี่ยงไฮ้"),"19:00"],b:["BKK",T("Bangkok","กรุงเทพฯ"),"22:25"]}
   ]}
 ];
 
 /* ---------- Disneyland ---------- */
 const RIDES=[
- {k:"tron",nm:"TRON Lightcycle Power Run",lv:"thrill",d:T("Fastest coaster in the park. You sit like on a motorbike.","รถไฟเหาะที่เร็วที่สุดในสวน นั่งเหมือนขี่มอเตอร์ไซค์")},
- {k:"zootopia",nm:"Zootopia: Hot Pursuit",lv:"easy",d:T("A ride through Zootopia city with Judy and Nick.","นั่งรถตะลุยเมือง Zootopia กับจูดี้และนิค")},
- {k:"pirates",nm:"Pirates of the Caribbean",lv:"easy",d:T("Boat ride through a big pirate battle. Amazing effects.","นั่งเรือผ่านสงครามโจรสลัด เอฟเฟกต์อลังการ")},
- {k:"soaring",nm:"Soaring Over the Horizon",lv:"easy",d:T("Feels like flying over famous places around the world.","รู้สึกเหมือนบินชมสถานที่ดังทั่วโลก")},
- {k:"mine",nm:"Seven Dwarfs Mine Train",lv:"mid",d:T("A family roller coaster through the dwarfs' mine.","รถไฟเหาะสำหรับครอบครัว ผ่านเหมืองของคนแคระ")},
- {k:"rapids",nm:"Roaring Rapids",lv:"mid",d:T("River raft. You will get wet — maybe too cold in December.","ล่องแก่งด้วยเรือยาง เปียกแน่นอน — เดือนธันวาคมอาจหนาวเกินไป")},
- {k:"buzz",nm:"Buzz Lightyear Planet Rescue",lv:"easy",d:T("Shoot targets with a laser gun and collect points.","ยิงเป้าด้วยปืนเลเซอร์ แข่งเก็บคะแนน")},
- {k:"peterpan",nm:"Peter Pan's Flight",lv:"easy",d:T("A flying pirate ship over London at night.","นั่งเรือโจรสลัดบินเหนือกรุงลอนดอนยามค่ำคืน")},
- {k:"canoe",nm:"Explorer Canoes",lv:"easy",d:T("Paddle a canoe yourselves around the lake.","พายเรือแคนูเองรอบทะเลสาบ")},
- {k:"rex",nm:"Rex's Racer",lv:"thrill",d:T("Swings up and down a giant U-shaped track.","พุ่งขึ้นลงบนรางรูปตัว U ขนาดยักษ์")},
- {k:"grotto",nm:"Voyage to the Crystal Grotto",lv:"easy",d:T("A calm boat ride under the castle.","นั่งเรือสบาย ๆ ลอดใต้ปราสาท")},
- {k:"pooh",nm:"The Many Adventures of Winnie the Pooh",lv:"easy",d:T("Ride in a honey pot through Pooh's story. Low priority.","นั่งโถน้ำผึ้งผ่านเรื่องราวของพูห์ ไม่รีบ")}
+ {k:"tron",nm:"TRON Lightcycle Power Run",lv:"thrill",d:T("Race through a glowing neon world on a lightcycle.","ขี่ไลท์ไซเคิลซิ่งฝ่าโลกแสงนีออน")},
+ {k:"zootopia",nm:"Zootopia: Hot Pursuit",lv:"mid",d:T("Join Judy and Nick on a chase across the city.","ร่วมไล่ล่าไปทั่วเมืองกับจูดี้และนิค")},
+ {k:"pirates",nm:"Pirates of the Caribbean",lv:"easy",d:T("Sail into Captain Jack's hunt for sunken treasure.","ล่องเรือร่วมล่าสมบัติใต้ทะเลกับกัปตันแจ็ค")},
+ {k:"soaring",nm:"Soaring Over the Horizon",lv:"easy",d:T("Glide over wonders of the world.","ร่อนชมสิ่งมหัศจรรย์รอบโลก")},
+ {k:"mine",nm:"Seven Dwarfs Mine Train",lv:"mid",d:T("Hop on a mine cart with the Seven Dwarfs.","นั่งรถเหมืองไปกับคนแคระทั้งเจ็ด")},
+ {k:"rapids",nm:"Roaring Rapids",lv:"mid",d:T("Raft down a wild jungle river. You will get wet!","ล่องแก่งแม่น้ำในป่า เปียกแน่นอน!")},
+ {k:"buzz",nm:"Buzz Lightyear Planet Rescue",lv:"easy",d:T("Blast aliens and score points with Buzz.","ยิงเอเลี่ยนสะสมแต้มกับบัซ")},
+ {k:"peterpan",nm:"Peter Pan's Flight",lv:"easy",d:T("Fly off to Never Land with Peter Pan.","บินไปเนเวอร์แลนด์กับปีเตอร์แพน")},
+ {k:"canoe",nm:"Explorer Canoes",lv:"easy",d:T("Paddle your own canoe around the lake.","พายเรือแคนูเองรอบทะเลสาบ")},
+ {k:"rex",nm:"Rex's Racer",lv:"thrill",d:T("Race with Rex on a giant half-pipe.","ซิ่งไปกับเร็กซ์บนรางยักษ์รูปตัว U")},
+ {k:"grotto",nm:"Voyage to the Crystal Grotto",lv:"easy",d:T("Drift past Disney stories beneath the castle.","ล่องเรือชมเรื่องราวดิสนีย์ใต้ปราสาท")},
+ {k:"pooh",nm:"The Many Adventures of Winnie the Pooh",lv:"easy",d:T("Bounce through the Hundred Acre Wood in a honey pot.","นั่งโถน้ำผึ้งท่องป่าร้อยเอเคอร์")}
 ];
 const LV={thrill:T("Big thrills","หวาดเสียวมาก"),mid:T("Some thrills","ตื่นเต้นนิดหน่อย"),easy:T("Calm ride","นั่งสบาย ๆ")};
 const SHOWS=[
- [T("🎄 Christmas Tree Lighting","🎄 พิธีเปิดไฟต้นคริสต์มาส"),"17:20"],
- [T("❄️ Mickey's Magical Snowfall","❄️ Mickey's Magical Snowfall"),"17:45 · 19:15"],
- [T("🎆 Night show at the castle","🎆 โชว์กลางคืนที่ปราสาท"),T("see app","ดูในแอป")]
+ ["showtree",T("🎄 Christmas tree lighting","🎄 พิธีเปิดไฟต้นคริสต์มาส"),"17:20"],
+ ["showsnow",T("❄️ Snowfall on Mickey Avenue","❄️ หิมะตกที่ Mickey Avenue"),"17:45 · 19:15"],
+ ["shownight",T("🎆 Night show at the castle","🎆 โชว์กลางคืนที่ปราสาท"),T("see app","ดูในแอป")]
 ];
 
 /* ---------- Chinese words ---------- */
@@ -667,8 +748,9 @@ function readHash(){
   const h=location.hash.slice(1),m=h.match(/^day-([1-6])$/);
   const me=h.match(/^eat-([a-z0-9]+)$/);
   if(me&&F[me[1]]){pendingSheet="eat-"+me[1];if(!loaded){const di=DAYS.findIndex(d=>d.items.some(it=>(it.o||[]).includes(me[1])));view="plan";dayIdx=di<0?0:di}return}
+  if(h==="bund-walk"){pendingSheet="walk";if(!loaded){view="plan";dayIdx=0}return}
   const mp=h.match(/^place-([a-z]+)$/);
-  if(mp&&P[mp[1]]){pendingSheet=mp[1];if(!view||view==="story"||!loaded){const di=DAYS.findIndex(d=>d.items.some(it=>it.p===mp[1]));view="plan";dayIdx=di<0?0:di}return}
+  if(mp&&P[mp[1]]){pendingSheet=mp[1];if(!view||view==="story"||!loaded){const di=DAYS.findIndex(d=>d.items.some(it=>it.p===mp[1]));view="plan";dayIdx=di<0?(mp[1].startsWith("show")?2:0):di}return}
   if(m){view="plan";dayIdx=+m[1]-1}
   else if(["overview","story","food","words","prep","tips","checklist"].includes(h)){view=(h==="tips"||h==="checklist")?"prep":(h==="overview")?"story":h}
   else{const n=new Date(),during=n.getFullYear()===2026&&n.getMonth()===11&&n.getDate()>=15&&n.getDate()<=20;view=during?"plan":"story";dayIdx=during?n.getDate()-15:0}
@@ -677,7 +759,7 @@ function go(h){if(location.hash!=="#"+h)location.hash=h;else render()}
 let pendingSheet=null,loaded=false;
 addEventListener("hashchange",()=>{
   const pv=view,pd=dayIdx;readHash();
-  if(pendingSheet){const k=pendingSheet;pendingSheet=null;if(sheetKey!==k)openSheet(k,false);return}
+  if(pendingSheet){const k=pendingSheet;pendingSheet=null;if(sheetKey!==k){const cur=document.getElementById("sheet");if(cur&&k==="walk"&&!cur.classList.contains("mini")){cur.classList.remove("open");cur.id="sheet-old";sheetKey=null;setTimeout(()=>cur.remove(),340)}openSheet(k,false,!!document.getElementById("sheet-old"))}return}
   if(sheetKey){const el=document.getElementById("sheet");const bg=document.getElementById("sheet-bg");if(bg)bg.classList.remove("open");if(el){el.classList.remove("open");setTimeout(closeSheetNow,320)}sheetPushed=false}
   if(pv===view&&pd===dayIdx)return;
   render();scrollTo({top:0})});
@@ -702,7 +784,8 @@ function renderPlan(){
     else if(it.t==="a")h+=`<article class="card plain alert"><div class="body">${ico("alert")}<h3>${esc(L(it.h))}</h3></div></article>`;
     else if(it.t==="f"){const end=(x,al)=>`<div class="fend" style="text-align:${al}"><div class="ftime">${x[2]}</div><div class="fcity">${esc(L(x[1]))} <span>${x[0]}</span></div></div>`;
       h+=`<article class="card plain flight"><div class="body"><div class="frow2">${end(it.a,"left")}<div class="fline"><svg class="svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>${end(it.b,"right")}</div>${it.sub?`<p class="fnote">${esc(L(it.sub))}</p>`:""}</div></article>`}
-    else if(it.t==="x")h+=`<article class="card plain"><div class="body"><h3>${esc(L(it.h))}${it.time?`<span class="tm"> · ${esc(it.time)}</span>`:""}</h3>${it.sub?`<p class="sum" style="color:var(--muted)">${esc(L(it.sub))}</p>`:""}</div></article>`;
+    else if(it.t==="w")h+=`<article class="card tap walkstrip" data-walk="1" role="button" tabindex="0" aria-label="${esc(L(T("Bund Walk","เดินเล่นริม The Bund")))}"><div class="wsh"><b>${esc(L(T("Bund Walk","เดินเล่นริม The Bund")))}</b><span class="more">${esc(L(T("8 stops","8 จุดแวะ")))}${ico("next")}</span></div><div class="wsl"><svg class="wsw" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true"><path d="M0,5 Q12,1 24,5 Q36,9 48,5 Q60,1 72,5 Q84,9 96,5 Q108,1 120,5 Q132,9 144,5 Q156,1 168,5 Q180,9 192,5 Q204,1 216,5 Q228,9 240,5 Q252,1 264,5 Q276,9 288,5 Q300,1 312,5 Q324,9 336,5 Q348,1 360,5 Q372,9 384,5 Q396,1 408,5 L400,14 L0,14 Z"/></svg></div></article>`;
+    else if(it.t==="x")h+=`<div class="note">${ico(it.ic||"bag","ic")}<div><span class="nt">${esc(L(it.h))}${it.time?` · ${esc(it.time)}`:""}</span>${it.sub?`<span class="sub">${esc(L(it.sub))}</span>`:""}</div></div>`;
     if(it.t==="s"||it.t==="x"){} // spacing handled by steps/meals
   }
   h+=`</div>`;
@@ -711,8 +794,8 @@ function renderPlan(){
   return h;
 }
 function renderDisney(){
-  return `<div class="group"><h3>${esc(L(S.rides))}</h3><ol class="rides">${RIDES.map((r,i)=>`<li class="ride">${IMG("ride-"+r.k)?img("ride-"+r.k,"th"):`<span class="th">${esc(r.nm)}</span>`}<div class="nm"><span class="rk">${i+1}</span>${esc(r.nm)}</div><div class="ds">${esc(L(LV[r.lv]))} · ${esc(L(r.d))}</div></li>`).join("")}</ol></div>
-  <div class="group"><h3>${esc(L(S.shows))}</h3><div class="list">${SHOWS.map(s=>`<div class="row showrow"><span>${esc(L(s[0]))}</span><span class="t">${esc(L(s[1]))}</span></div>`).join("")}</div></div>
+  return `<div class="group"><h3>${esc(L(S.rides))}</h3><ol class="rides">${RIDES.map((r,i)=>`<li class="ride">${IMG("ride-"+r.k)?img("ride-"+r.k,"th"):`<span class="th">${esc(r.nm)}</span>`}<div class="nm"><span class="rk">${i+1}</span>${esc(r.nm)}</div><div class="ds">${esc(L(r.d))}</div></li>`).join("")}</ol></div>
+  <div class="group"><h3>${esc(L(S.shows))}</h3><div class="list">${SHOWS.map(s=>`<button class="row showrow" data-place="${s[0]}"><span>${esc(L(s[1]).split(" ")[0])} <span class="sn">${esc(L(s[1]).split(" ").slice(1).join(" "))}</span></span><span class="t">${esc(L(s[2]))}</span></button>`).join("")}</div></div>
   <div class="group"><h3>${esc(L(S.parkFood))}</h3><div class="list">${Object.values(F).filter(f=>f.a==="dl").map(f=>`<div class="row">${f.e} ${esc(f.nm)}</div>`).join("")}</div></div>`;
 }
 function renderFood(){
@@ -838,6 +921,45 @@ const DEEP={
   see:T(["Shanghai Tower — 632 m, China's tallest","The \"bottle opener\" World Financial Center","The circular pedestrian skywalk"],["Shanghai Tower — สูง 632 ม. สูงที่สุดในจีน","ตึก World Financial Center ทรงที่เปิดขวด","สะพานลอยคนเดินวงกลม"]),
   tip:T(["Dinner is inside Shanghai Tower (B2). Super Brand Mall next door is good for souvenirs."],["มื้อเย็นอยู่ใน Shanghai Tower ชั้น B2 ห้าง Super Brand Mall ข้าง ๆ เหมาะซื้อของฝาก"]),
   fact:T("Shanghai Tower twists 120° from bottom to top, which reduces wind loads by about a quarter.","Shanghai Tower บิดตัว 120° จากล่างถึงบน ช่วยลดแรงลมที่ปะทะตึกได้ราวหนึ่งในสี่")},
+ rockbund:{
+  hist:T("Its Chinese name, Wàitān Yuán, means \"the source of the Bund\". This is where the Bund began in the 1800s, next to the old British Consulate. The old buildings were carefully restored in the 2000s and now hold cafés, shops and galleries.",
+         "ชื่อภาษาจีน ไว่ทานหยวน แปลว่า \"ต้นกำเนิดของ The Bund\" เพราะ The Bund เริ่มต้นที่นี่ในช่วงทศวรรษ 1800 ข้างสถานกงสุลอังกฤษเก่า ตึกเก่าได้รับการบูรณะอย่างดีในช่วงปี 2000 ปัจจุบันเป็นคาเฟ่ ร้านค้า และแกลเลอรี"),
+  see:T(["Red-brick and stone buildings along quiet lanes","The gardens of the old British Consulate"],["ตึกอิฐแดงและตึกหินริมตรอกเงียบ ๆ","สวนของสถานกงสุลอังกฤษเก่า"]),
+  tip:T(["Café stop: Luneurs, a French bakery.","Quieter than the main Bund, nice for a slow start."],["แวะคาเฟ่: Luneurs ร้านเบเกอรี่ฝรั่งเศส","เงียบกว่า The Bund ช่วงหลัก เหมาะเดินช้า ๆ ตอนเช้า"])},
+ union:{
+  hist:T("Built in the mid-1880s by a British architect for a Protestant congregation, in red and grey brick. A fire in 2007 badly damaged it, and it was restored by 2010 as part of the Rock Bund project.",
+         "สร้างขึ้นราวกลางทศวรรษ 1880 โดยสถาปนิกชาวอังกฤษ สำหรับชุมชนคริสต์นิกายโปรเตสแตนต์ ก่อด้วยอิฐสีแดงและสีเทา ถูกไฟไหม้หนักในปี 2007 และบูรณะเสร็จในปี 2010 เป็นส่วนหนึ่งของโครงการฟื้นฟู Rock Bund"),
+  see:T(["The tall bell tower","Red-and-grey brick walls with pointed windows"],["หอระฆังสูง","กำแพงอิฐสีแดงสลับเทากับหน้าต่างทรงโค้งแหลม"]),
+  tip:T(["Usually seen from outside. It now hosts exhibitions and events."],["ส่วนใหญ่ชมจากด้านนอก ปัจจุบันใช้จัดนิทรรศการและงานต่าง ๆ"]),
+  fact:T("It is the last waterside church left in downtown Shanghai.","เป็นโบสถ์ริมน้ำแห่งสุดท้ายที่เหลืออยู่ในใจกลางเซี่ยงไฮ้")},
+ rowing:{
+  hist:T("The Shanghai Rowing Club was founded in 1863, and this clubhouse opened in 1905. Members rowed on Suzhou Creek and the Huangpu. The building has been restored, and its old swimming pool is now an open, empty space.",
+         "สโมสรพายเรือเซี่ยงไฮ้ก่อตั้งในปี 1863 และอาคารสโมสรหลังนี้เปิดในปี 1905 สมาชิกพายเรือในคลองซูโจวและแม่น้ำหวงผู่ อาคารได้รับการบูรณะแล้ว สระว่ายน้ำเก่ากลายเป็นลานโล่งที่ไม่มีน้ำ"),
+  see:T(["The empty pool, great for photos","The red-brick front facing the creek"],["สระว่ายน้ำเก่าที่ไม่มีน้ำ ถ่ายรูปสวย","ด้านหน้าอิฐแดงที่หันไปทางคลอง"]),
+  tip:T(["It's right across the road from Union Church."],["อยู่ตรงข้ามถนนกับ Union Church"])},
+ waibaidu:{
+  hist:T("Opened in 1908, it was China's first all-steel bridge. Earlier wooden bridges here charged a toll, which locals hated. The name is often explained as \"the free crossing\". In English it was called the Garden Bridge.",
+         "เปิดใช้ในปี 1908 เป็นสะพานเหล็กล้วนแห่งแรกของจีน ก่อนหน้านี้สะพานไม้ตรงนี้เก็บค่าผ่านทาง ซึ่งคนท้องถิ่นไม่ชอบเลย ชื่อนี้มักถูกอธิบายว่าหมายถึง \"ทางข้ามฟรี\" ภาษาอังกฤษเคยเรียกว่า Garden Bridge"),
+  see:T(["The steel arches up close","The meeting point of Suzhou Creek and the Huangpu"],["โครงเหล็กโค้งแบบใกล้ ๆ","จุดที่คลองซูโจวไหลมาบรรจบแม่น้ำหวงผู่"]),
+  tip:T(["Lovely lit up at night.","Walk across it, then look back from Zhapu Road Bridge."],["สวยมากตอนเปิดไฟยามค่ำ","เดินข้ามสะพาน แล้วไปมองย้อนกลับจาก Zhapu Road Bridge"]),
+  fact:T("In 2008 the whole bridge was floated away by boat for repairs, and it came back a year later.","ปี 2008 ทั้งสะพานถูกยกลงเรือไปซ่อม แล้วนำกลับมาติดตั้งที่เดิมหนึ่งปีต่อมา")},
+ zhapu:{
+  hist:T("One of several small bridges over Suzhou Creek, a short walk west of Waibaidu. Suzhou Creek was once a busy route for boats carrying goods into the city.",
+         "หนึ่งในสะพานเล็ก ๆ หลายแห่งที่ข้ามคลองซูโจว เดินจาก Waibaidu ไปทางตะวันตกไม่ไกล คลองซูโจวเคยเป็นเส้นทางเรือขนสินค้าเข้าเมืองที่คึกคัก"),
+  see:T(["Waibaidu Bridge framed by the Lujiazui towers","The old buildings along the creek"],["สะพาน Waibaidu ที่มีตึกลู่เจียจุ่ยเป็นฉากหลัง","ตึกเก่าเรียงรายริมคลอง"]),
+  tip:T(["Popular for photos, so you may need to wait a moment.","Best from late afternoon into the evening."],["คนนิยมมาถ่ายรูป อาจต้องรอสักครู่","สวยที่สุดช่วงบ่ายแก่ ๆ จนถึงค่ำ"])},
+ showtree:{
+  hist:T("Part of the park's winter festival. Mickey, Minnie, Duffy and LinaBell come out with a live band, and together they light up the resort's tallest Christmas tree in the Gardens of Imagination, in front of the castle.",
+         "เป็นส่วนหนึ่งของเทศกาลฤดูหนาวของสวนสนุก มิกกี้ มินนี่ ดัฟฟี่ และลีน่าเบลล์ออกมาพร้อมวงดนตรีสด แล้วร่วมกันเปิดไฟต้นคริสต์มาสที่สูงที่สุดของรีสอร์ต ที่ Gardens of Imagination หน้าปราสาท"),
+  tip:T(["Arrive a little early for a good view.","Right after, walk to Mickey Avenue for the snowfall."],["ไปถึงก่อนเวลาสักหน่อยเพื่อจองที่ดูดี ๆ","ดูจบแล้วเดินไป Mickey Avenue ต่อเพื่อดูหิมะตก"])},
+ showsnow:{
+  hist:T("Mickey Avenue, the main street near the entrance, turns into a living snow globe. Flurries swirl overhead, with holiday music and projections of classic Disney stories.",
+         "Mickey Avenue ถนนหลักใกล้ทางเข้า กลายเป็นลูกแก้วหิมะ มีหิมะปลิวว่อน พร้อมเพลงคริสต์มาสและภาพฉายเรื่องราวดิสนีย์คลาสสิก"),
+  tip:T(["Two chances: 17:45 and 19:15.","Stand in the middle of the avenue to be under the most snow."],["มีสองรอบ: 17:45 และ 19:15","ยืนกลางถนนจะได้หิมะเยอะที่สุด"])},
+ shownight:{
+  hist:T("In winter there's a seasonal castle show, \"A Celebration of Disney Winter Frostival\", with light, music and projections on the castle and the Gardens of Imagination. The park's big fireworks show, ILLUMINATE!, is now paired with \"Magic Together\", a new show made for the park's 10th birthday in 2026.",
+         "ช่วงฤดูหนาวจะมีโชว์พิเศษที่ปราสาทชื่อ \"A Celebration of Disney Winter Frostival\" มีแสงสี ดนตรี และภาพฉายบนปราสาทและ Gardens of Imagination ส่วนโชว์พลุใหญ่ของสวน ILLUMINATE! ตอนนี้เล่นต่อกับ \"Magic Together\" โชว์ใหม่ฉลองครบรอบ 10 ปีของสวนในปี 2026"),
+  tip:T(["Which shows run, and when, can change by night, so check the Shanghai Disney app that day.","Watch from the Gardens of Imagination, facing the castle."],["โชว์ไหนเล่นและเวลาอาจเปลี่ยนในแต่ละคืน เช็กในแอป Shanghai Disney ในวันนั้น","ดูจาก Gardens of Imagination หันหน้าเข้าหาปราสาท"])},
  hongkou:{
   hist:T("Hongkou is one of Shanghai's oldest neighbourhoods north of Suzhou Creek. During the Second World War, around 20,000 Jewish refugees from Europe found safety here, and the area still has many old lane houses and small bridges over its creek.",
          "หงโข่วเป็นย่านเก่าแก่ทางเหนือของคลองซูโจว ช่วงสงครามโลกครั้งที่สอง ผู้ลี้ภัยชาวยิวจากยุโรปราว 20,000 คนได้มาพักพิงอย่างปลอดภัยที่นี่ ย่านนี้ยังมีบ้านแถวเก่าและสะพานเล็ก ๆ ข้ามคลองอยู่มาก"),
@@ -866,7 +988,7 @@ const DEEP={
 const MP={hotel:[165,140,"People's Square","middle",0,-11],nanjing:[190,139,"","start",0,0],bund:[214,147,"The Bund","start",8,4],ljz:[252,126,"Lujiazui","start",8,4],
  ffc:[124,206,"French Concession","middle",0,17],wukang:[104,186,"Wukang Mansion","end",-8,4],anfu:[124,166,"Anfu Road","end",-8,-2],xtd:[165,178,"Xintiandi","middle",0,17],yuyuan:[208,178,"Yuyuan","start",8,4],
  jingan:[122,148,"Jing'an Temple","end",-8,12],tzf:[168,212,"Tianzifang","start",8,4],trees:[136,104,"Tian An 1000 Trees","start",8,-6],millfun:[212,78,"1933 Millfun","end",-8,4],
- hongkou:[228,90,"Hongkou Creek","start",8,0],northbund:[244,108,"North Bund","start",8,6],disney:[332,214,"Disneyland","end",-8,4],pvg:[340,254,"Airport","end",-8,4],westlake:[22,262,"Hangzhou","start",8,4]};
+ rockbund:[217,131,"","start",0,0],hongkou:[228,90,"Hongkou Creek","start",8,0],northbund:[244,108,"North Bund","start",8,6],disney:[332,214,"Disneyland","end",-8,4],pvg:[340,254,"Airport","end",-8,4],westlake:[22,262,"Hangzhou","start",8,4]};
 const STORY=[
  {k:"bund",col:"#C0632B",route:["pvg","hotel","nanjing","bund"],
   t:T("Hello, Shanghai","สวัสดี เซี่ยงไฮ้"),
@@ -883,9 +1005,9 @@ const STORY=[
  {k:"westlake",col:"#2F7F86",route:["hotel","westlake"],
   t:T("Heaven on earth","สวรรค์บนดิน"),
   s:T("One hour by bullet train to Hangzhou's West Lake, loved by poets for a thousand years. Full plan coming soon.","นั่งรถไฟความเร็วสูงหนึ่งชั่วโมงไปทะเลสาบซีหูที่หางโจว ที่กวีหลงรักมากว่าพันปี แผนฉบับเต็มกำลังตามมา")},
- {k:"northbund",col:"#8A5A9E",route:["hotel","hongkou","northbund","millfun","hotel","pvg"],
+ {k:"northbund",col:"#8A5A9E",route:["hotel","rockbund","hongkou","northbund","hotel","pvg"],
   t:T("One last walk by the river","เดินริมแม่น้ำครั้งสุดท้าย"),
-  s:T("A quiet canal, coffee facing the skyline, the spiral ramps of 1933 Millfun, then home by 22:25.","คลองเงียบ ๆ กาแฟริมน้ำหน้าวิวตึกสูง ทางลาดวนที่ 1933 Millfun แล้วกลับถึงบ้าน 22:25 น.")}
+  s:T("Red-brick lanes and old bridges, a quiet canal, coffee facing the skyline, then home by 22:25.","ตรอกตึกอิฐแดงและสะพานเก่า คลองเงียบ ๆ กาแฟริมน้ำหน้าวิวตึกสูง แล้วกลับถึงบ้าน 22:25 น.")}
 ];
 function storyMap(){
   const dots=Object.entries(MP).map(([k,[x,y,n,a,dx,dy]])=>`<g class="mdot" data-k="${k}"><circle cx="${x}" cy="${y}" r="3.5"/>${n?`<text x="${x+dx}" y="${y+dy}" text-anchor="${a}">${esc(n)}</text>`:""}</g>`).join("");
@@ -937,24 +1059,80 @@ function wireStory(){
   fitMap();requestAnimationFrame(()=>{fitMap();ovGo(ovIdx,false)});
 }
 
+const sheetBar=()=>`<div class="sheet-bar"><div class="in"><button class="sheet-close" data-close="1">${ico("back")}<span>${esc(L(T("Back","กลับ")))}</span></button><div class="lang" role="group" aria-label="Language"><button data-lang="en" aria-pressed="${lang==="en"}">EN</button><button data-lang="th" aria-pressed="${lang==="th"}">ไทย</button></div></div></div>`;
+/* ---------- Bund Walk ---------- */
+const WALK=[
+ {k:"bund",nm:"The Bund",zh:"外滩",must:1,x:120,y:200,when:["tue"],
+  d:T("The famous riverside promenade. Walk north along the river.","ทางเดินริมแม่น้ำชื่อดัง เดินขึ้นไปทางเหนือเลียบแม่น้ำ"),
+  tip:T("Best after dark, when the old buildings light up.","สวยที่สุดตอนค่ำ ตอนตึกเก่าเปิดไฟ")},
+ {k:"rockbund",nm:"Rock Bund",zh:"外滩源",opt:1,x:120,y:148,when:["sun"],
+  d:T("Red-brick buildings with cafés and small shops, around the old British Consulate.","ย่านตึกอิฐแดง มีคาเฟ่และร้านเล็ก ๆ รอบสถานกงสุลอังกฤษเก่า"),
+  tip:T("Café stop: Luneurs, a French bakery.","แวะคาเฟ่: Luneurs ร้านเบเกอรี่ฝรั่งเศส")},
+ {k:"union",nm:"Union Church",zh:"新天安堂",opt:1,x:102,y:137,when:["sun"],
+  d:T("A Gothic church from 1886 with a tall bell tower.","โบสถ์สไตล์โกธิกจากปี 1886 มีหอระฆังสูง")},
+ {k:"rowing",nm:"Former Rowing Club",zh:"划船俱乐部旧址",opt:1,x:126,y:127,when:["sun"],
+  d:T("A red-brick club from 1905. Step into its old, empty pool for a photo.","สโมสรพายเรืออิฐแดงจากปี 1905 ลงไปถ่ายรูปในสระว่ายน้ำเก่าที่ไม่มีน้ำได้")},
+ {k:"waibaidu",nm:"Waibaidu Bridge",zh:"外白渡桥",x:141,y:116,when:["tue","sun"],
+  d:T("Shanghai's famous steel bridge from 1908, over Suzhou Creek.","สะพานเหล็กชื่อดังจากปี 1908 ข้ามคลองซูโจว")},
+ {k:"zhapu",nm:"Zhapu Road Bridge",zh:"乍浦路桥",x:100,y:106,when:["tue","sun"],
+  d:T("Look back for the classic view: Waibaidu Bridge with the skyline behind.","หันกลับไปดูวิวคลาสสิก สะพาน Waibaidu กับตึกสูงด้านหลัง"),
+  tip:T("Popular for photos, so you may need to wait a moment.","คนนิยมมาถ่ายรูป อาจต้องรอสักครู่")},
+ {k:"hongkou",nm:"Hongkou Creek",zh:"九龙路长治路",must:1,x:211,y:60,when:["sun"],
+  d:T("Pastel houses along a small canal, with the skyline behind.","บ้านสีพาสเทลริมคลองเล็ก ๆ มีตึกสูงเป็นฉากหลัง"),
+  tip:T("For DiDi or Amap, copy the street corner below.","เรียก DiDi หรือค้นใน Amap ให้คัดลอกชื่อแยกด้านล่าง")},
+ {k:"northbund",nm:"North Bund Greenland",zh:"北外滩滨江绿地",must:1,x:252,y:66,when:["sun"],
+  d:T("A big riverside park with a silver egg sculpture and wide skyline views. A good place to rest.","สวนริมน้ำขนาดใหญ่ มีประติมากรรมรูปไข่สีเงินและวิวตึกสูงกว้าง ๆ เหมาะนั่งพัก")}
+];
+const WHEN={tue:T("🌙 Tue night","🌙 คืนวันอังคาร"),sun:T("☀️ Sun morning","☀️ เช้าวันอาทิตย์")};
+function walkMap(part,cls="wmap"){
+  const pts=WALK.map(w=>[w.x,w.y]);
+  const route="M120,200 L120,148 L102,137 L126,127 L141,116 C128,110 112,107 100,106 C120,96 160,78 196,68 C202,64 206,61 211,60 C226,56 240,60 252,66";
+  return `<svg class="${cls}" viewBox="${cls.includes("wmini")?"80 42 198 178":"34 34 262 186"}" role="img" aria-label="${esc(L(T("Map of the Bund Walk","แผนที่เส้นทางเดิน")))}">
+   <path class="water" d="M126,260 L134,150 C138,118 160,98 196,90 L320,62 L320,104 L208,124 C186,130 176,140 174,160 L168,260 Z"/>
+   <path class="creek" d="M40,98 C66,102 86,104 104,107 C120,110 134,114 150,121"/>
+   <path class="creek" d="M206,20 C214,40 214,62 212,90"/>
+   <text class="wlabel" x="164" y="214" transform="rotate(-84 164 214)">Huangpu River</text>
+   <text class="wlabel" x="44" y="93">Suzhou Creek</text>
+   <text class="land" x="236" y="170">Pudong</text>
+   <path class="route" d="${route}"/>
+   ${WALK.map((w,i)=>`<g class="wpt must${part&&!w.when.includes(part)?" dim":""}"><circle cx="${w.x}" cy="${w.y}" r="7"/><text x="${w.x}" y="${w.y+3}" text-anchor="middle">${i+1}</text></g>`).join("")}
+  </svg>`;
+}
+function walkHTML(){
+  return `${sheetBar()}
+  <div class="sheet-scroll"><div class="sheet-body">
+   <h2>${esc(L(T("Bund Walk","เดินเล่นริม The Bund")))}</h2>
+   <p class="lead">${esc(L(T("From the Bund to North Bund along the river. About 3 km, go as far as you like.","เดินริมแม่น้ำจาก The Bund ไปถึง North Bund ราว 3 กม. เดินได้ไกลเท่าที่ไหว")))}</p>
+   ${walkMap()}
+   <ol class="wstops">${WALK.map((w,i)=>{const guide=!!P[w.k];
+     const head=`<span class="wn">${esc(w.nm)}</span>`;
+     return `<li class="ws must"><span class="wdot">${i+1}</span>
+      ${guide?`<button class="whead" data-wplace="${w.k}">${head}${ico("next")}</button>`:`<div class="whead">${head}</div>`}
+      <p class="wd">${esc(L(w.d))}</p>${w.tip?`<p class="wtip">${esc(L(w.tip))}</p>`:""}
+      ${zhCopy(w.zh)}</li>`}).join("")}</ol>
+  </div></div>`;
+}
+
 /* ---------- Place sheet ---------- */
 let sheetKey=null,sheetPushed=false;
 function sheetHTML(k){
   const p=P[k],d=DEEP[k]||{};
   const list=(arr)=>`<ul>${arr.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`;
-  return `<div class="sheet-bar"><div class="in"><button class="sheet-close" data-close="1">${ico("back")}<span>${esc(L(T("Back","กลับ")))}</span></button></div></div>
+  return `${sheetBar()}
   <div class="sheet-scroll">
    ${img(k,"sheet-ph")}
    <div class="sheet-body">
-    <h2>${esc(p.nm)}</h2>${zhCopy(p.zh)}
+    <h2>${esc(p.nm)}</h2>${p.zh?zhCopy(p.zh):""}
     ${p.sum?`<p class="lead">${esc(L(p.sum))}</p>`:""}
     ${p.warn?`<p class="warn">⏰ ${esc(L(p.warn))}</p>`:""}
-    ${d.hist?`<section><h3>${esc(L(T("The story","เรื่องราว")))}</h3><p>${esc(L(d.hist))}</p></section>`:p.about?`<section><h3>${esc(L(T("The story","เรื่องราว")))}</h3><p>${esc(L(p.about))}</p></section>`:""}
+    ${d.hist?`<section><h3>${esc(L(k.startsWith("show")?T("What happens","มีอะไรบ้าง"):T("The story","เรื่องราว")))}</h3><p>${esc(L(d.hist))}</p></section>`:p.about?`<section><h3>${esc(L(T("The story","เรื่องราว")))}</h3><p>${esc(L(p.about))}</p></section>`:""}
     ${d.see?`<section><h3>${esc(L(T("Don't miss","ไม่ควรพลาด")))}</h3>${list(L(d.see))}</section>`:""}
     ${d.tip?`<section><h3>${esc(L(T("Good to know","ควรรู้")))}</h3>${list(L(d.tip))}</section>`:""}
     ${d.fact?`<section class="fact"><h3>✦ ${esc(L(T("Did you know?","รู้หรือไม่?")))}</h3><p>${esc(L(d.fact))}</p></section>`:""}
-   </div></div>`;
+   </div></div>${k==="showsnow"?snowFx():""}`;
 }
+function snowFx(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return "";let h="";for(let i=0;i<60;i++){const z=Math.random(),sz=(2.2+z*3.6).toFixed(1),l=(Math.random()*100).toFixed(1),d=(26-z*9+Math.random()*3).toFixed(1),dl=(Math.random()*20-10).toFixed(1),sw=(4+Math.random()*4).toFixed(1),dx=(6+Math.random()*14).toFixed(0),op=(.45+z*.5).toFixed(2);
+  h+=`<i style="left:${l}%;animation-duration:${d}s;animation-delay:${dl}s;--op:${op}"><b style="width:${sz}px;height:${sz}px;animation-duration:${sw}s;--dx:${dx}px;${z<.25?"filter:blur(.6px);":""}"></b></i>`}return `<div class="snowfx" aria-hidden="true">${h}</div>`}
 const zhCopy=zh=>`<button class="zhmini" data-copy="${esc(zh)}" aria-label="${esc(L(S.copy))} ${esc(zh)}"><span class="big">${esc(zh)}</span><span class="cp">${ico("copy")}</span></button>`;
 function eatHTML(k){
   const f=F[k],ar=AREAS.find(a=>a[0]===f.a);
@@ -968,29 +1146,40 @@ function eatHTML(k){
    </div>
   </div></div>`;
 }
-function openSheet(k,push=true){
-  const isEat=k.startsWith("eat-");
-  if(isEat?!F[k.slice(4)]:!P[k])return;
-  closeSheetNow();
+function sheetInner(k){return k.startsWith("eat-")?eatHTML(k.slice(4)):k==="walk"?walkHTML():sheetHTML(k)}
+function refreshSheet(){const el=document.getElementById("sheet");if(!el||!sheetKey||el.classList.contains("mini"))return;
+  const sc=el.querySelector(".sheet-scroll"),top=sc?sc.scrollTop:0;el.innerHTML=sheetInner(sheetKey);const sc2=el.querySelector(".sheet-scroll");if(sc2)sc2.scrollTop=top}
+function retireSheet(el){if(!el)return;el.id="sheet-old";setTimeout(()=>el.remove(),380)}
+let walkScroll=0;
+function openSheet(k,push=true,instant=false,nested=false){
+  const isEat=k.startsWith("eat-"),isWalk=k==="walk";
+  if(isEat?!F[k.slice(4)]:!isWalk&&!P[k])return;
+  const prev=document.getElementById("sheet");
+  if(prev&&!isEat&&!prev.classList.contains("mini")){retireSheet(prev);sheetKey=null}else closeSheetNow();
   sheetKey=k;
   if(isEat){const bg=document.createElement("div");bg.className="sheet-bg";bg.id="sheet-bg";bg.dataset.close="1";document.body.appendChild(bg);requestAnimationFrame(()=>requestAnimationFrame(()=>bg.classList.add("open")))}
-  const el=document.createElement("div");el.className="sheet"+(isEat?" mini":"");el.id="sheet";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");el.setAttribute("aria-label",isEat?F[k.slice(4)].nm:P[k].nm);
-  el.innerHTML=isEat?eatHTML(k.slice(4)):sheetHTML(k);document.body.appendChild(el);document.body.classList.add("noscroll");
-  requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add("open")));
+  const el=document.createElement("div");el.className="sheet"+(isEat?" mini":"")+(nested?" push":"");el.id="sheet";el.setAttribute("role","dialog");el.setAttribute("aria-modal","true");el.setAttribute("aria-label",isEat?F[k.slice(4)].nm:isWalk?L(T("Bund Walk","เดินเล่นริม The Bund")):P[k].nm);
+  el.innerHTML=sheetInner(k);
+  const old=document.getElementById("sheet-old");
+  if(instant&&old){el.classList.add("open","noanim");document.body.insertBefore(el,old);setTimeout(()=>el.classList.remove("noanim"),60)}
+  else{document.body.appendChild(el);requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add("open")))}
+  document.body.classList.add("noscroll");
+  if(isWalk&&instant){const sc=el.querySelector(".sheet-scroll");if(sc)sc.scrollTop=walkScroll}
   el.querySelector("[data-close]").focus({preventScroll:true});
-  if(push){sheetPushed=true;history.pushState(null,"","#"+(isEat?k:"place-"+k))}
+  if(push){sheetPushed=true;history.pushState(null,"","#"+(isEat?k:isWalk?"bund-walk":"place-"+k))}
 }
 function closeSheetNow(){const el=document.getElementById("sheet");if(el)el.remove();const bg=document.getElementById("sheet-bg");if(bg)bg.remove();document.body.classList.remove("noscroll");sheetKey=null}
 function closeSheet(){
   const el=document.getElementById("sheet");if(!el)return;
   el.classList.remove("open");const bg=document.getElementById("sheet-bg");if(bg)bg.classList.remove("open");
-  const done=()=>{closeSheetNow()};
-  if(matchMedia("(prefers-reduced-motion: reduce)").matches)done();else setTimeout(done,320);
+  el.id="sheet-old";sheetKey=null;
+  const done=()=>{el.remove();if(bg&&bg.isConnected)bg.remove();if(!document.getElementById("sheet"))document.body.classList.remove("noscroll")};
+  setTimeout(done,matchMedia("(prefers-reduced-motion: reduce)").matches?0:340);
   if(sheetPushed){sheetPushed=false;history.back()}else{history.replaceState(null,"","#"+(view==="plan"?"day-"+(dayIdx+1):view==="story"?"overview":view))}
 }
-addEventListener("popstate",()=>{if(sheetKey&&!/^#(place|eat)-/.test(location.hash)){const el=document.getElementById("sheet");const bg=document.getElementById("sheet-bg");if(bg)bg.classList.remove("open");if(el){el.classList.remove("open");setTimeout(closeSheetNow,320)}sheetPushed=false}});
+addEventListener("popstate",()=>{if(sheetKey&&!/^#((place|eat)-|bund-walk$)/.test(location.hash)){const el=document.getElementById("sheet");const bg=document.getElementById("sheet-bg");if(bg)bg.classList.remove("open");if(el){el.classList.remove("open");setTimeout(closeSheetNow,320)}sheetPushed=false}});
 document.addEventListener("scroll",e=>{const t=e.target;if(!t.classList||!t.classList.contains("galtrack"))return;const i=Math.round(t.scrollLeft/t.clientWidth);t.parentNode.querySelectorAll(".galdots i").forEach((d,j)=>d.classList.toggle("on",j===i))},true);
-addEventListener("keydown",e=>{if(e.key==="Escape"&&sheetKey)closeSheet();if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches(".card.tap")){e.preventDefault();openSheet(e.target.dataset.place)}});
+addEventListener("keydown",e=>{if(e.key==="Escape"&&sheetKey)closeSheet();if((e.key==="Enter"||e.key===" ")&&e.target.matches&&e.target.matches(".card.tap")){e.preventDefault();openSheet(e.target.dataset.walk?"walk":e.target.dataset.place)}});
 
 let checkState={},syncMode="local",canWrite=true,db=null;
 try{checkState=JSON.parse(localStorage.getItem("sh-check")||"{}")||{}}catch(_){}
@@ -1043,11 +1232,13 @@ function toast(m){const t=document.createElement("div");t.className="toast";t.te
 document.addEventListener("click",e=>{
   const pl=e.target.closest("[data-place]");if(pl&&!e.target.closest(".sheet")){openSheet(pl.dataset.place);return}
   if(e.target.closest("[data-close]")){closeSheet();return}
+  const wk=e.target.closest("[data-walk]");if(wk){openSheet("walk");return}
+  const wp=e.target.closest("[data-wplace]");if(wp){const sc=wp.closest(".sheet-scroll");walkScroll=sc?sc.scrollTop:0;openSheet(wp.dataset.wplace,true,false,true);return}
   const eb=e.target.closest("[data-eat]");if(eb){openSheet("eat-"+eb.dataset.eat);return}
   const b=e.target.closest("button");if(!b)return;
   if(b.dataset.ov){ovGo(ovIdx+(+b.dataset.ov));return}
   if(b.dataset.ovto!=null){ovGo(+b.dataset.ovto);return}
-  if(b.dataset.lang){lang=b.dataset.lang;try{localStorage.setItem("sh-lang",lang)}catch(_){}render();return}
+  if(b.dataset.lang){lang=b.dataset.lang;try{localStorage.setItem("sh-lang",lang)}catch(_){}render();refreshSheet();return}
   if(b.dataset.go){go(b.dataset.go);return}
   if(b.dataset.jump){const g=document.getElementById(b.dataset.jump);if(g){const sn=main.querySelector(".subnav");const off=(document.querySelector("header").offsetHeight)+(sn?sn.offsetHeight:0)+8;
     markSub(b.dataset.jump);jumping=Date.now();
