@@ -91,6 +91,8 @@ main{padding-block:8px calc(96px + env(safe-area-inset-bottom,0px))}
 .card h3{font-size:1.25rem;line-height:1.3;margin:0}
 .card .zh{font-family:var(--zh);color:var(--muted);font-size:1rem;margin-top:2px}
 .card .sum{margin:8px 0 0}
+.card .cnote{display:flex;gap:6px;align-items:flex-start;margin:8px 0 0;color:var(--muted);font-size:.93rem;line-height:1.4}
+.card .cnote .svg{width:16px;height:16px;flex-shrink:0;margin-top:2px}
 .card .warn{margin:8px 0 0;color:var(--warn);font-weight:500;font-size:.95rem}
 .card.plain .body{padding:14px 16px}
 .card.alert .body{display:flex;gap:12px;align-items:flex-start}
@@ -106,6 +108,7 @@ details.more .facts{color:var(--muted);font-size:.92rem}
 .credit{font-size:.72rem;color:var(--muted);padding:4px 16px 0;text-align:right}
 
 .step{display:flex;align-items:flex-start;gap:10px;padding:2px 6px;color:var(--muted);font-size:.95rem;line-height:1.45}
+.step .sub{display:block;font-size:.88rem;margin-top:3px;opacity:.9}
 .step .ic{width:20px;height:20px;flex-shrink:0;margin-top:1px}
 .step .lines{display:inline-flex;gap:4px;margin-right:4px;vertical-align:1px}
 .ml{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:20px;padding:0 5px;border-radius:5px;font-size:.75rem;font-weight:700;color:#fff}
@@ -116,6 +119,8 @@ details.more .facts{color:var(--muted);font-size:.92rem}
 .meal > div{flex:1;min-width:0}
 .meal .opt{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;border:0;background:none;padding:5px 0;text-align:left;color:var(--ink);font-size:1rem;line-height:1.4}
 .meal .opt .svg{width:16px;height:16px;color:var(--muted);flex-shrink:0}
+.meal .optwarn{display:flex;align-items:center;gap:5px;margin-top:2px;font-size:.86rem;font-weight:500;color:var(--warn)}
+.meal .optwarn .svg{width:15px;height:15px;color:var(--warn)!important;flex-shrink:0}
 .meal .sub{color:var(--muted);font-size:.9rem;display:block}
 .note{display:flex;gap:10px;align-items:flex-start;padding:2px 6px}
 .note .ic{width:20px;height:20px;flex-shrink:0;margin-top:1px;color:var(--muted)}
@@ -188,6 +193,10 @@ h2.section{font-family:var(--display);font-weight:400;font-size:1.75rem;margin:2
 .fcname{display:block;font-weight:600;font-size:1rem;line-height:1.3;margin-top:8px}
 .fcdish{display:block;font-size:.88rem;color:var(--muted);line-height:1.35;margin-top:2px}
 .fcard:active .fcimg{opacity:.85}
+.fcwrap{position:relative;display:block}
+.mtag{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;font-weight:700;letter-spacing:.02em;color:var(--red);background:var(--red-soft);border-radius:999px;padding:2px 9px;margin-bottom:6px}
+.mtag::before{content:"✦";font-size:.7rem}
+.mtag.on-ph{position:absolute;top:8px;left:8px;margin:0;background:rgba(255,255,255,.92);color:#9B3A2C;box-shadow:0 1px 3px rgba(0,0,0,.18)}
 .fcchev{display:inline-flex;vertical-align:-3px;margin-left:3px;color:var(--muted);opacity:.75}
 .fcchev .svg{width:16px;height:16px}
 @media (min-width:600px){.fgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
@@ -582,15 +591,15 @@ const F = {
   rourou:{a:"ps",nm:"Rou Rou Da Mi",zh:"肉肉大米",e:"🥩",d:T("Hamburg steak","แฮมเบิร์กสเต๊ก"),
     ab:T("A popular Japanese-style spot with one star dish: hamburg steak. Staff sear the patties, then you finish them on your own little griddle. Rice and soup refills are free.","ร้านสไตล์ญี่ปุ่นยอดฮิตที่มีเมนูเด่นเมนูเดียวคือแฮมเบิร์กสเต๊ก พนักงานย่างให้ก่อน แล้วเราย่างต่อเองบนกระทะเล็กตรงหน้า เติมข้าวและซุปได้ฟรี"),
     loc:T("Raffles City · People's Square exit 15","Raffles City · People's Square ทางออก 15")},
-  lailai:{a:"ps",nm:"Lai Lai Xiao Long",zh:"莱莱小笼",e:"🥟",d:T("Soup dumplings","เสี่ยวหลงเปา"),
+  lailai:{mich:1,a:"ps",nm:"Lai Lai Xiao Long",zh:"莱莱小笼",e:"🥟",d:T("Soup dumplings","เสี่ยวหลงเปา"),
     ab:T("A Shanghai favorite for xiaolongbao, especially the crab and crab roe ones, wrapped to order. It's listed in the Michelin Guide, and the shop is small.","ร้านเสี่ยวหลงเปาที่คนเซี่ยงไฮ้ชอบ โดยเฉพาะไส้ปูและมันปูที่ห่อสดตามออเดอร์ ติดอยู่ในมิชลินไกด์ ร้านเล็ก"),
     hrs:T("8:00–21:30","8:00–21:30 น."),tip:T(["Long queues"],["คิวยาว"])},
   jiajia:{a:"ps",nm:"Jia Jia Tang Bao",zh:"佳家汤包",e:"🥟",d:T("Soup dumplings","เสี่ยวหลงเปา"),
     ab:T("A no-frills shop that serves only xiaolongbao (pork, crab, or both), made to order in an open kitchen. Order and pay at the counter, then grab a table.","ร้านเรียบง่ายที่ขายแต่เสี่ยวหลงเปา ไส้หมู ไส้ปู หรือผสม ห่อสดในครัวเปิด สั่งและจ่ายที่เคาน์เตอร์แล้วหาที่นั่ง"),
     tip:T(["Closes once it sells out, so go earlier"],["ของหมดร้านปิด ไปเร็วหน่อย"])},
-  weixiang:{a:"ps",nm:"Wei Xiang Zhai",zh:"味香斋",e:"🍜",d:T("Sesame noodles, pork liver noodles","บะหมี่งา บะหมี่ตับหมู"),
+  weixiang:{mich:1,a:"ps",nm:"Wei Xiang Zhai",zh:"味香斋",e:"🍜",d:T("Sesame noodles, pork liver noodles","บะหมี่งา บะหมี่ตับหมู"),
     ab:T("A simple noodle shop that has been feeding locals for over 80 years. The classic is noodles in sesame sauce. It's listed in the Michelin Guide.","ร้านบะหมี่เรียบง่ายที่ขายให้คนท้องถิ่นมากว่า 80 ปี เมนูคลาสสิกคือบะหมี่ซอสงา ติดอยู่ในมิชลินไกด์")},
-  longtime:{a:"ps",nm:"Long Time Ago",zh:"很久以前",e:"🍢",d:T("Grilled skewers","ปิ้งย่าง"),
+  longtime:{a:"ps",nm:"Long Time Ago",zh:"很久以前",e:"🍢",d:T("Grilled skewers","ปิ้งย่าง"),link:"https://www.instagram.com/reel/DOV23f1iUPf/?stkn=NTc4MTIwNjQ2YQ==",linkLabel:T("How to join the queue (Instagram video)","วิธีกดคิว (คลิปใน Instagram)"),optWarn:T("Join the queue in Alipay before going","กดคิวใน Alipay ก่อนไป"),
     ab:T("A barbecue chain that started in Beijing in 2008, known for lamb skewers from the Inner Mongolian grasslands. The skewers turn by themselves on an electric grill at your table.","ร้านปิ้งย่างเชนที่เริ่มจากปักกิ่งในปี 2008 ขึ้นชื่อเรื่องเนื้อแกะเสียบไม้จากทุ่งหญ้ามองโกเลียใน ไม้เสียบหมุนเองบนเตาไฟฟ้าที่โต๊ะ"),
     loc:T("No. 1 Shopping Center, 6F","ห้าง No. 1 Shopping Center ชั้น 6"),
     tip:T(["Join the queue in Alipay before going"],["กดคิวใน Alipay ก่อนไป"])},
@@ -612,7 +621,7 @@ const F = {
   rac:{a:"anfu",nm:"RAC Bar & Coffee",e:"☕",d:T("Coffee and brunch","กาแฟและบรันช์"),
     ab:T("A French-run café on Anfu Road known for Breton galettes (savory buckwheat crêpes) and sweet crêpes, plus good coffee.","คาเฟ่ของคนฝรั่งเศสบนถนนอันฝู ขึ้นชื่อเรื่องกาแลตต์ (เครปแป้งบัควีทไส้คาว) เครปหวาน และกาแฟดี"),
     tip:T(["Busy at brunch, calmer after 2 pm"],["ช่วงบรันช์คนเยอะ หลังบ่ายสองเงียบลง"])},
-  renhe:{a:"ja",nm:"Ren He Guan",zh:"人和馆",e:"🍚",d:T("Crab roe rice, red-braised pork","ข้าวมันปู หมูตุ๋นซีอิ๊ว"),
+  renhe:{mich:1,a:"ja",nm:"Ren He Guan",zh:"人和馆",e:"🍚",d:T("Crab roe rice, red-braised pork","ข้าวมันปู หมูตุ๋นซีอิ๊ว"),
     ab:T("A Shanghainese restaurant with an old 1930s Shanghai feel, loved by local families. The star dish is crab meat and roe on rice; one of its branches holds a Michelin star.","ร้านอาหารเซี่ยงไฮ้บรรยากาศเซี่ยงไฮ้ยุค 1930 ครอบครัวคนท้องถิ่นชอบมา เมนูเด่นคือข้าวหน้าเนื้อปูและมันปู มีสาขาหนึ่งได้ดาวมิชลิน")},
   sukiyaki:{a:"ljz",nm:"New Sukiyaki",zh:"牛New寿喜烧",e:"♨️",d:T("Sukiyaki","สุกี้ยากี้"),
     ab:T("Japanese sukiyaki: thin slices of beef simmered in a sweet soy broth, then dipped in raw egg. It's in the basement of Shanghai Tower, China's tallest building.","สุกี้ยากี้ญี่ปุ่น เนื้อสไลซ์บางต้มในน้ำซุปซีอิ๊วหวาน แล้วจุ่มไข่ดิบ อยู่ชั้นใต้ดินของ Shanghai Tower ตึกที่สูงที่สุดในจีน"),
@@ -628,14 +637,14 @@ const F = {
   chipmunk:{a:"dl",nm:"Nutella croissant biscuit & jasmine latte — Chipmunk Snacks",e:"🥐"},
   stargazer:{a:"dl",nm:"Burgers — Stargazer Grill",e:"🍔"},
   ahma:{a:"dl",nm:"Ah Ma Handmade — Disney Town",e:"🧋"},
-  wangshi:{a:"hz",nm:"Wang Shi Shao Bing",zh:"王氏烧饼",e:"🥯",d:T("Sesame flatbread, Chinese crullers","ขนมปังงา ปาท่องโก๋"),
+  wangshi:{mich:1,a:"hz",nm:"Wang Shi Shao Bing",zh:"王氏烧饼",e:"🥯",d:T("Sesame flatbread, Chinese crullers","ขนมปังงา ปาท่องโก๋"),
     ab:T("A Michelin-listed breakfast stall that has been going for over 20 years. Known for sesame flatbreads (sweet or savory) and freshly fried crullers, with soy milk made that day.","ร้านอาหารเช้าติดมิชลินที่เปิดมากว่า 20 ปี ขึ้นชื่อเรื่องขนมปังงา (มีทั้งหวานและเค็ม) และปาท่องโก๋ทอดใหม่ ๆ กินกับน้ำเต้าหู้ทำสดวันต่อวัน"),
     loc:T("60 Xixi Road · the sign is partly hidden behind a big tree","ถนนซีซี 60 · ป้ายร้านถูกต้นไม้ใหญ่บังไปครึ่งหนึ่ง"),
     tip:T(["Look for the queue outside"],["มองหาคิวหน้าร้าน"])},
-  punfang:{a:"hz",nm:"Pan Fang Chun",zh:"泮芳春",e:"🥟",d:T("Pan-fried dumplings, noodles","เกี๊ยวทอด บะหมี่"),
+  punfang:{mich:1,a:"hz",nm:"Pan Fang Chun",zh:"泮芳春",e:"🥟",d:T("Pan-fried dumplings, noodles","เกี๊ยวทอด บะหมี่"),
     loc:T("479 Zhongshan South Road","ถนนจงซานใต้ 479"),
     ab:T("A local favorite for Hangzhou-style snacks, listed in the Michelin Guide. Go for the pan-fried dumplings, crispy on the bottom and juicy inside, with noodles or a bowl of soy milk.","ร้านขนมสไตล์หางโจวที่คนท้องถิ่นชอบ ติดอยู่ในมิชลินไกด์ ต้องลองเกี๊ยวทอด ก้นกรอบ ข้างในฉ่ำ กินกับบะหมี่หรือน้ำเต้าหู้")},
-  wumingshi:{a:"hz",nm:"Wu Ming Shi Mian Guan",zh:"无名氏面馆",e:"🍜",d:T("Noodles","บะหมี่"),
+  wumingshi:{mich:1,a:"hz",nm:"Wu Ming Shi Mian Guan",zh:"无名氏面馆",e:"🍜",d:T("Noodles","บะหมี่"),
     ab:T("A tiny family noodle shop, now in its third generation; its name means \"the nameless noodle shop.\" It's listed in the Michelin Guide, and the star is pork chop noodles; the pork chops are limited each day.","ร้านบะหมี่เล็ก ๆ ของครอบครัว ส่งต่อมาถึงรุ่นที่สามแล้ว ชื่อร้านแปลว่า \"ร้านบะหมี่ไร้ชื่อ\" ติดอยู่ในมิชลินไกด์ เมนูเด่นคือบะหมี่หมูทอด (ต้าไผ่) ซึ่งมีจำนวนจำกัดต่อวัน"),
     tip:T(["Only six tables; share a table and grab your own chopsticks"],["มีแค่ 6 โต๊ะ นั่งรวมกับคนอื่น หยิบตะเกียบเอง"])}
 };
@@ -694,8 +703,9 @@ const DAYS=[
    {t:"m",ic:"🍜",h:T("Lunch","มื้อกลางวัน"),sub:T("Lunch can be at Tianzifang, anywhere that looks good","กินมื้อกลางวันที่ Tianzifang ร้านไหนน่ากินก็ได้")},
    {t:"go",ic:"🚕",txt:T("DiDi","DiDi")},
    {t:"s",p:"trees"},
-   {t:"x",ic:"clock",h:T("If there's time: 1933 Old Millfun","ถ้ามีเวลา: 1933 Old Millfun")},
-   {t:"go",ic:"🚇",ln:["l13","l1","l2"],txt:T("Metro to Lujiazui, about 40 min (Jiangning Rd → Line 13 → Line 1 → Line 2)","รถไฟใต้ดินไป Lujiazui ประมาณ 40 นาที (Jiangning Rd → สาย 13 → สาย 1 → สาย 2)")},
+   {t:"go",ic:"🚕",txt:T("DiDi to 1933 Old Millfun, about 15–20 min","DiDi ไป 1933 Old Millfun ประมาณ 15–20 นาที")},
+   {t:"s",p:"millfun",note:T("If time allows. Otherwise, go on the last day.","ถ้ามีเวลา ถ้าไม่ทันไปวันสุดท้ายแทน")},
+   {t:"go",ic:"🚇",ln:["l10","l2"],txt:T("Metro to Lujiazui, about 30 min (Hailun Rd → Line 10 to Nanjing East Rd → Line 2)","รถไฟใต้ดินไป Lujiazui ประมาณ 30 นาที (Hailun Rd → สาย 10 ถึง Nanjing East Rd → สาย 2)"),sub:T("Skipping Millfun? From 1000 Trees take the metro from Jiangning Rd, about 40 min (Line 13 → Line 1 → Line 2).","ถ้าไม่ไป Millfun: จาก 1000 Trees นั่งรถไฟใต้ดินจาก Jiangning Rd ประมาณ 40 นาที (สาย 13 → สาย 1 → สาย 2)")},
    {t:"s",p:"ljz"},
    {t:"m",ic:"♨️",h:T("Dinner in Shanghai Tower","มื้อเย็นที่ Shanghai Tower"),o:["sukiyaki"]}
   ]},
@@ -854,6 +864,7 @@ function placeCard(it){
   h+=`<div class="ttl"><div><h3>${esc(p.nm)}${it.time?`<span class="tm"> · ${esc(it.time)}</span>`:""}</h3></div><span class="chev" aria-hidden="true">${ico("next")}</span></div>`;
   if(p.sum)h+=`<p class="sum">${esc(L(p.sum))}</p>`;
   if(p.warn)h+=`<p class="warn">⏰ ${esc(L(p.warn))}</p>`;
+  if(it.note)h+=`<p class="cnote">${ico("clock")}<span>${esc(L(it.note))}</span></p>`;
   h+=`</div></article>`;
   return h;
 }
@@ -862,8 +873,8 @@ function renderPlan(){
   let h=`<section class="dayhead"><div class="date">${esc(L(D.date))}</div><h2>${esc(L(D.title))}</h2><p>${esc(L(D.lede))}</p>${D.warn?`<p class="daywarn">${ico("alert")}<span>${L(D.warn).map((w,i)=>i?`<span class="dw2">· ${esc(w)}</span>`:`<b>${esc(w)}</b>`).join(" ")}</span></p>`:""}</section><div class="flow">`;
   for(const it of D.items){
     if(it.t==="s")h+=placeCard(it);
-    else if(it.t==="go")h+=`<div class="step">${ico(EMO2ICO[it.ic]||"car","ic")}<span>${it.ln?`<span class="lines">${it.ln.map(l=>`<span class="ml ${l}">${l.slice(1)}</span>`).join("")}</span>`:""}${esc(L(it.txt))}</span></div>`;
-    else if(it.t==="m")h+=`<div class="meal">${ico("meal","ic")}<div><b>${it.time?esc(it.time)+" · ":""}${esc(L(it.h))}</b>${it.o?it.o.map(k=>`<button class="opt" data-eat="${k}"><span>${F[k].e} ${esc(F[k].nm)}</span>${ico("next")}</button>`).join(""):""}${it.sub?`<span class="sub">${esc(L(it.sub))}</span>`:""}</div></div>`;
+    else if(it.t==="go")h+=`<div class="step">${ico(EMO2ICO[it.ic]||"car","ic")}<span>${it.ln?`<span class="lines">${it.ln.map(l=>`<span class="ml ${l}">${l.slice(1)}</span>`).join("")}</span>`:""}${esc(L(it.txt))}${it.sub?`<span class="sub">${esc(L(it.sub))}</span>`:""}</span></div>`;
+    else if(it.t==="m")h+=`<div class="meal">${ico("meal","ic")}<div><b>${it.time?esc(it.time)+" · ":""}${esc(L(it.h))}</b>${it.o?it.o.map(k=>`<button class="opt" data-eat="${k}"><span>${F[k].e} ${esc(F[k].nm)}${F[k].optWarn?`<span class="optwarn">${ico("alert")}${esc(L(F[k].optWarn))}</span>`:""}</span>${ico("next")}</button>`).join(""):""}${it.sub?`<span class="sub">${esc(L(it.sub))}</span>`:""}</div></div>`;
     else if(it.t==="a")h+=`<article class="card plain alert"><div class="body">${ico("alert")}<h3>${esc(L(it.h))}</h3></div></article>`;
     else if(it.t==="f"){const end=(x,al)=>`<div class="fend" style="text-align:${al}"><div class="ftime">${x[2]}</div><div class="fcity">${esc(L(x[1]))} <span>${x[0]}</span></div></div>`;
       h+=`<article class="card plain flight"><div class="body"><div class="frow2">${end(it.a,"left")}<div class="fline"><svg class="svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>${end(it.b,"right")}</div>${it.sub?`<p class="fnote">${esc(L(it.sub))}</p>`:""}</div></article>`}
@@ -886,7 +897,7 @@ function renderFood(){
   let h=`<h2 class="section">${esc(L(TAB("food")))}</h2>${subnavHTML}`;
   for(const [a,nm,dd] of AREAS.filter(x=>x[0]!=="dl")){
     const it=Object.entries(F).filter(([k,f])=>f.a===a);if(!it.length)continue;
-    h+=`<div class="group" id="g-${a}"><h3>${esc(nm)}</h3><div class="fgrid">${it.map(([k,f])=>`<button class="fcard" data-eat="${k}">${IMG("food-"+k)?`<img class="fcimg" src="${IMG("food-"+k)}" alt="" loading="lazy">`:`<span class="fcimg fcemo">${f.e}</span>`}<span class="fcname">${esc(f.nm)}<span class="fcchev" aria-hidden="true">${ico("next")}</span></span>${f.d?`<span class="fcdish">${esc(L(f.d))}</span>`:""}</button>`).join("")}</div></div>`;
+    h+=`<div class="group" id="g-${a}"><h3>${esc(nm)}</h3><div class="fgrid">${it.map(([k,f])=>`<button class="fcard" data-eat="${k}"><span class="fcwrap">${f.mich?`<span class="mtag on-ph">${esc(L(T("Michelin Guide","มิชลินไกด์")))}</span>`:""}${IMG("food-"+k)?`<img class="fcimg" src="${IMG("food-"+k)}" alt="" loading="lazy">`:`<span class="fcimg fcemo">${f.e}</span>`}</span><span class="fcname">${esc(f.nm)}<span class="fcchev" aria-hidden="true">${ico("next")}</span></span>${f.d?`<span class="fcdish">${esc(L(f.d))}</span>`:""}</button>`).join("")}</div></div>`;
   }
   return h;
 }
@@ -1230,14 +1241,14 @@ function eatHTML(k){
   const f=F[k],ar=AREAS.find(a=>a[0]===f.a);
   return `<div class="mini-top"><span class="grab" aria-hidden="true"></span><button class="mini-x" data-close="1" aria-label="${esc(L(T("Close","ปิด")))}">${ico("close")}</button></div>
   <div class="sheet-scroll">${PICS("food-"+k).length?`<div class="eat-ph">${img("food-"+k,"eat-img")}</div>`:""}<div class="sheet-body">
-   <div class="eat-head">${PICS("food-"+k).length?"":`<span class="eat-emo">${f.e}</span>`}<div><h2>${esc(f.nm)}</h2>${f.d?`<div class="eat-dish">${esc(L(f.d))}</div>`:""}${f.zh?zhCopy(f.zh):""}</div></div>
+   <div class="eat-head">${PICS("food-"+k).length?"":`<span class="eat-emo">${f.e}</span>`}<div>${f.mich?`<span class="mtag">${esc(L(T("Michelin Guide","มิชลินไกด์")))}</span>`:""}<h2>${esc(f.nm)}</h2>${f.d?`<div class="eat-dish">${esc(L(f.d))}</div>`:""}${f.zh?zhCopy(f.zh):""}</div></div>
    ${f.ab?`<p class="eat-about">${esc(L(f.ab))}</p>`:""}
    <div class="eat-rows">
     ${ar?`<div class="erow">${ico("pin","eic")}<div><span class="emain">${esc(ar[1])}</span>${f.loc?`<span class="esub">${esc(L(f.loc))}</span>`:""}</div></div>`:""}
     ${f.hrs?`<div class="erow">${ico("clock","eic")}<div><span class="emain">${esc(L(f.hrs))}</span></div></div>`:""}
     ${f.tip?`<div class="erow">${ico("tips","eic")}<div>${L(f.tip).map(x=>`<span class="emain">${esc(x)}</span>`).join("")}</div></div>`:""}
    </div>
-   ${f.link?`<a class="eat-link" href="${esc(f.link)}" target="_blank" rel="noopener">${f.link.includes("instagram")?esc(L(T("See it on Instagram","ดูใน Instagram"))):esc(L(T("See it on Trip.com","ดูใน Trip.com")))} ↗</a>`:""}
+   ${f.link?`<a class="eat-link" href="${esc(f.link)}" target="_blank" rel="noopener">${f.linkLabel?esc(L(f.linkLabel)):f.link.includes("instagram")?esc(L(T("See it on Instagram","ดูใน Instagram"))):esc(L(T("See it on Trip.com","ดูใน Trip.com")))} ↗</a>`:""}
   </div></div>`;
 }
 function sheetInner(k){return k.startsWith("eat-")?eatHTML(k.slice(4)):k==="walk"?walkHTML():sheetHTML(k)}
