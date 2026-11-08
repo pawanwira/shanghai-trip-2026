@@ -1,4 +1,5 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Shanghai Family Trip 2026</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>
+<title>Shanghai Family Trip 2026</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -120,7 +121,10 @@ details.more .facts{color:var(--muted);font-size:.92rem}
 .panel{background:var(--card);border-radius:16px;padding:16px;margin-top:22px;box-shadow:0 0 0 1px var(--line)}
 .panel h3{font-family:var(--display);font-weight:400;font-size:1.3rem;margin:0 0 4px}
 .panel .lede{color:var(--muted);margin:0 0 10px;font-size:.95rem}
-.panel.soon{background:var(--accent-soft);box-shadow:0 0 0 1.5px var(--accent) inset}
+.soon{display:flex;gap:12px;align-items:flex-start;margin-top:18px;padding:16px;border:1.5px dashed var(--accent);border-radius:16px;color:var(--muted)}
+.soon .svg{width:22px;height:22px;flex-shrink:0;margin-top:1px}
+.soon b{display:block;color:var(--ink);font-weight:600}
+.soon span{display:block;font-size:.95rem;line-height:1.45;margin-top:2px}
 
 .rides{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}
 .ride{min-width:0}
@@ -144,7 +148,7 @@ details.more .facts{color:var(--muted);font-size:.92rem}
 .shows .t{font-weight:600;color:var(--accent);white-space:nowrap;font-variant-numeric:tabular-nums}
 
 /* Sections */
-h2.section{font-family:var(--display);font-weight:400;font-size:1.75rem;margin:20px 0 4px}
+h2.section{font-family:var(--display);font-weight:400;font-size:1.75rem;margin:20px 0 10px}
 .sectionlede{color:var(--muted);margin:0 0 6px}
 .group{margin-top:22px}
 .group h3 .gday{color:var(--muted);font-weight:500;white-space:nowrap}
@@ -154,7 +158,7 @@ h2.section{font-family:var(--display);font-weight:400;font-size:1.75rem;margin:2
 .row:first-child{border-top:0}
 .row .nm{font-weight:600}
 .frow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:4px 10px}
-.zhchip{flex-shrink:1;min-width:0;text-align:right;margin-left:auto!important;display:inline-flex;align-items:center;gap:3px;border:0;background:none;padding:10px 6px 10px 12px;margin:-8px -6px -8px 0;font-family:var(--zh);font-size:.9rem;color:var(--muted)}
+.zhchip{display:inline-flex;align-items:center;gap:5px;border:0;background:none;padding:6px 8px 6px 0;margin:-2px 0 -6px;font-family:var(--zh);font-size:.95rem;color:var(--muted)}
 .zhchip .cp{display:flex}
 .zhchip .svg{width:15px;height:15px}
 .zhchip.done{color:var(--ok)}
@@ -168,6 +172,14 @@ h2.section{font-family:var(--display);font-weight:400;font-size:1.75rem;margin:2
 .zhcopy.done{border-color:var(--ok)}
 .zhcopy.done .cp{color:var(--ok)}
 .row .zh{font-family:var(--zh);color:var(--muted);margin-left:6px}
+.frow .nm{display:grid;grid-template-columns:1.75rem minmax(0,1fr)}
+.row .fe{display:inline-block;width:1.75rem}
+.fbtn{display:grid;grid-template-columns:1.75rem minmax(0,1fr) auto;align-items:center;gap:0 6px;color:var(--ink);font:inherit;cursor:pointer}
+.fbtn .fe{align-self:start}
+.fbtn .fmain{display:flex;flex-direction:column;min-width:0}
+.fbtn .fdish{color:var(--muted);font-size:.95rem;margin-top:1px}
+.fchev{display:flex;color:var(--muted);opacity:.7}
+.fchev .svg{width:18px;height:18px}
 .row ul{margin:2px 0 0;padding-left:20px;font-size:.95rem;color:var(--muted)}
 .row > a{display:block;margin:-12px -16px;padding:12px 16px;text-decoration:none}
 .row a{font-size:.9rem}
@@ -292,11 +304,18 @@ body.noscroll{overflow:hidden}
 .mini-top .grab{width:40px;height:5px;border-radius:3px;background:var(--line);margin:0 auto}
 .mini-x{border:0;background:var(--paper);width:36px;height:36px;border-radius:50%;font-size:1.3rem;line-height:1;color:var(--muted)}
 .sheet.mini .sheet-body{padding-top:6px}
-.eat-head{display:flex;gap:14px;align-items:center}
-.eat-emo{font-size:2.2rem;line-height:1;width:56px;height:56px;border-radius:16px;background:var(--paper);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.eat-head{display:flex;gap:14px;align-items:flex-start}
+.eat-emo{font-size:1.9rem;line-height:1;width:52px;height:52px;border-radius:14px;background:var(--paper);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .eat-head h2{font-family:var(--body)!important;font-weight:600!important;font-size:1.35rem!important}
-.eat-where{margin-top:14px;color:var(--muted);font-size:.95rem}
-.eat-link{display:inline-block;margin-top:14px;font-weight:600}
+.eat-dish{font-size:1rem;color:var(--muted);margin-top:2px}
+.eat-info{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:4px;font-size:1rem}
+.eat-info .eat-where{display:flex;align-items:center;gap:6px;color:var(--ink);font-weight:500}
+.eat-where .svg{width:17px;height:17px;color:var(--red);flex-shrink:0}
+.sheet-body .eat-det{list-style:none;margin:0;padding:0}
+.eat-det li{position:relative;padding-left:23px;margin:2px 0}
+.eat-det li::before{content:"";position:absolute;left:6px;top:.68em;width:5px;height:5px;border-radius:50%;background:var(--muted);opacity:.6}
+.eat-head .zhmini{font-size:1rem;margin-top:4px}
+.eat-link{display:inline-block;margin-top:6px;font-weight:600}
 @media (prefers-reduced-motion: reduce){.sheet,.sheet-bg{transition:none}}
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
 html:lang(th) body{line-height:1.7}
@@ -322,7 +341,7 @@ html:lang(th) :is(.top h1,.dayhead h2,.panel h3,h2.section,.ovhead h2,.ovcard h3
 <script>
 const T=(en,th)=>({en,th});
 const I={
- plan:'<path d="M4 6.5h16v13H4z"/><path d="M4 10.5h16M8.5 4v4M15.5 4v4"/>',
+ pin:'<path d="M12 21s-6.5-5.7-6.5-11a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>',plan:'<path d="M4 6.5h16v13H4z"/><path d="M4 10.5h16M8.5 4v4M15.5 4v4"/>',
  food:'<path d="M7 3.5v7.5M4.5 3.5v4a2.5 2.5 0 0 0 5 0v-4M7 11v9.5"/><path d="M17 3.5c-2 1-3 3.5-3 6.5h3v10.5"/>',
  words:'<rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 9h8v4H8zM12 6.5v11"/>',
  tips:'<circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><circle cx="12" cy="7.8" r=".6" fill="currentColor"/>',
@@ -426,26 +445,26 @@ const P = {
 
 /* ---------- Food ---------- */
 const F = {
-  xiesanbao:{a:"ps",nm:"Xie San Bao",zh:"蟹叁寳",e:"🦀",n:T(["Crab roe noodles","Line 2, People's Square exit 7 · orange sign"],["บะหมี่มันปู","สาย 2 People's Square ทางออก 7 · ป้ายสีส้ม \"ร้านก๋วยเตี๋ยวปูยอดนิยมของคนไทย\""])},
-  supremecrab:{a:"ps",nm:"Supreme Crab (since 1930)",zh:"庄氏隆兴·蟹樽面道",e:"🦀",n:T(["B2, New World Department Store · East Nanjing Rd exit 2","Pricier"],["ชั้น B2 ห้าง New World · สถานี East Nanjing Rd ทางออก 2","ราคาสูงกว่า"])},
-  fanzheng:{a:"ps",nm:"Fan Zheng Xiang",zh:"饭蒸香大食堂",e:"🍚",n:T(["ร้านข้าวแกง · Tianjin Rd 479/481","Line 2, People's Square exit 7 · good prices, popular with Thai students"],["ร้านข้าวแกง · ถนนเทียนจิน 479/481","สาย 2 People's Square ทางออก 7 · ราคาดี นักเรียนไทยฮิต"])},
-  xiaoqiu:{a:"ps",nm:"XiaoQiu Home Cooking",zh:"小秋家常菜",e:"🍛",n:T(["Opens 9:30 · People's Square exit 7"],["เปิด 9:30 น. · People's Square ทางออก 7"])},
-  rourou:{a:"ps",nm:"Rou Rou Da Mi",zh:"肉肉大米",e:"🥩",n:T(["Hamburg steak · Raffles City, People's Square exit 15"],["แฮมเบิร์กสเต๊ก · Raffles City, People's Square ทางออก 15"])},
-  lailai:{a:"ps",nm:"Lai Lai Xiao Long",zh:"莱莱小笼",e:"🥟",n:T(["Soup dumplings · 8:00–21:30 · long queues"],["เสี่ยวหลงเปา · 8:00–21:30 น. · คิวยาว"])},
-  jiajia:{a:"ps",nm:"Jia Jia Tang Bao",zh:"佳家汤包",e:"🥟",n:T(["Soup dumplings"],["เสี่ยวหลงเปา"])},
-  weixiang:{a:"ps",nm:"Wei Xiang Zhai",zh:"味香斋",e:"🍜",n:T(["Sesame noodles, pork liver noodles"],["บะหมี่งา บะหมี่ตับหมู"])},
-  longtime:{a:"ps",nm:"Long Time Ago",zh:"很久以前",e:"🍢",n:T(["Grilled skewers · No. 1 Shopping Center, 6F","Join the queue in Alipay before going"],["ปิ้งย่าง · ห้าง No. 1 Shopping Center ชั้น 6","กดคิวใน Alipay ก่อนไป"])},
-  gaolaojiu:{a:"ps",nm:"Gaolaojiu Hotpot",zh:"重庆高老九火锅",e:"♨️",n:T(["East Nanjing Road"],["ถนน East Nanjing"])},
-  nanxiang:{a:"yy",nm:"Nanxiang Steamed Bun",zh:"南翔馒头店",e:"🥟",n:T(["Famous soup dumplings inside the bazaar"],["เสี่ยวหลงเปาชื่อดังในตลาด Yuyuan"])},
-  taotaoju:{a:"xtd",nm:"Tao Tao Ju",zh:"陶陶居",e:"🥢",n:T(["Dim sum, crispy pork"],["ติ่มซำ หมูกรอบ"])},
-  bagel:{a:"xtd",nm:"New York Bagelous Museum",e:"🥯",n:T(["Bagels"],["เบเกิล"])},
-  butterful:{a:"xtd",nm:"Butterful & Creamorous",e:"🥐",n:T(["Pastries and doughnuts"],["ขนมอบและโดนัท"])},
-  matcha:{a:"xtd",nm:"Matcha Wang",e:"🍵",n:T(["Matcha desserts and drinks"],["ขนมและเครื่องดื่มมัทฉะ"])},
-  rac:{a:"anfu",nm:"RAC Bar & Coffee",e:"☕",n:T(["Café on Anfu Road"],["คาเฟ่บนถนน Anfu"])},
-  renhe:{a:"ja",nm:"Ren He Guan",zh:"人和馆",e:"🍚",n:T(["Crab roe rice, red-braised pork"],["ข้าวมันปู หมูตุ๋นซีอิ๊ว"])},
-  yinyang:{a:"tzf",nm:"Yinyang Noodle House",e:"🍜",n:T(["Or anything that looks good in Tianzifang"],["หรือร้านไหนใน Tianzifang ที่น่ากินก็ได้"])},
-  sukiyaki:{a:"ljz",nm:"New Sukiyaki",zh:"牛New寿喜烧",e:"♨️",n:T(["Shanghai Tower B2 · Lujiazui station exit to Shanghai Tower","Next to Super Brand Mall for souvenirs"],["Shanghai Tower ชั้น B2 · สถานี Lujiazui ทางออกไป Shanghai Tower","ใกล้ห้าง Super Brand Mall ซื้อของฝากได้"])},
-  manner:{a:"nb",nm:"Manner Coffee",e:"☕",n:T(["Shanghai's own coffee chain"],["ร้านกาแฟเชนของเซี่ยงไฮ้"])},
+  xiesanbao:{a:"ps",nm:"Xie San Bao",zh:"蟹叁寳",e:"🦀",d:T("Crab roe noodles","บะหมี่มันปู"),n:T(["People's Square exit 7 · orange sign"],["People's Square ทางออก 7 · ป้ายสีส้ม \"ร้านก๋วยเตี๋ยวปูยอดนิยมของคนไทย\""])},
+  supremecrab:{a:"ps",nm:"Supreme Crab (since 1930)",zh:"庄氏隆兴·蟹樽面道",e:"🦀",d:T("Crab roe noodles and rice","บะหมี่และข้าวมันปู"),n:T(["B2, New World Department Store · East Nanjing Rd exit 2 · pricier"],["ชั้น B2 ห้าง New World · สถานี East Nanjing Rd ทางออก 2 · ราคาสูงกว่า"])},
+  fanzheng:{a:"ps",nm:"Fan Zheng Xiang",zh:"饭蒸香大食堂",e:"🍚",d:T("ร้านข้าวแกง","ร้านข้าวแกง"),n:T(["Tianjin Rd 479/481 · People's Square exit 7 · good prices, popular with Thai students"],["ถนนเทียนจิน 479/481 · People's Square ทางออก 7 · ราคาดี นักเรียนไทยฮิต"])},
+  xiaoqiu:{a:"ps",nm:"XiaoQiu Home Cooking",zh:"小秋家常菜",e:"🍛",d:T("Home-style Chinese dishes","อาหารจีนแบบบ้าน ๆ"),n:T(["Opens 9:30 · People's Square exit 7"],["เปิด 9:30 น. · People's Square ทางออก 7"])},
+  rourou:{a:"ps",nm:"Rou Rou Da Mi",zh:"肉肉大米",e:"🥩",d:T("Hamburg steak","แฮมเบิร์กสเต๊ก"),n:T(["Raffles City · People's Square exit 15"],["Raffles City · People's Square ทางออก 15"])},
+  lailai:{a:"ps",nm:"Lai Lai Xiao Long",zh:"莱莱小笼",e:"🥟",d:T("Soup dumplings","เสี่ยวหลงเปา"),n:T(["8:00–21:30 · long queues"],["8:00–21:30 น. · คิวยาว"])},
+  jiajia:{a:"ps",nm:"Jia Jia Tang Bao",zh:"佳家汤包",e:"🥟",d:T("Soup dumplings","เสี่ยวหลงเปา")},
+  weixiang:{a:"ps",nm:"Wei Xiang Zhai",zh:"味香斋",e:"🍜",d:T("Sesame noodles, pork liver noodles","บะหมี่งา บะหมี่ตับหมู")},
+  longtime:{a:"ps",nm:"Long Time Ago",zh:"很久以前",e:"🍢",d:T("Grilled skewers","ปิ้งย่าง"),n:T(["No. 1 Shopping Center, 6F · join the queue in Alipay before going"],["ห้าง No. 1 Shopping Center ชั้น 6 · กดคิวใน Alipay ก่อนไป"])},
+  gaolaojiu:{a:"ps",nm:"Gaolaojiu Hotpot",zh:"重庆高老九火锅",e:"♨️",d:T("Chongqing hotpot","หม่าล่าฉงชิ่ง"),n:T(["East Nanjing Road"],["ถนน East Nanjing"])},
+  nanxiang:{a:"yy",nm:"Nanxiang Steamed Bun",zh:"南翔馒头店",e:"🥟",d:T("Soup dumplings","เสี่ยวหลงเปา"),n:T(["Famous spot inside the bazaar"],["ร้านดังในตลาด Yuyuan"])},
+  taotaoju:{a:"xtd",nm:"Tao Tao Ju",zh:"陶陶居",e:"🥢",d:T("Dim sum, crispy pork","ติ่มซำ หมูกรอบ")},
+  bagel:{a:"xtd",nm:"New York Bagelous Museum",e:"🥯",d:T("Bagels","เบเกิล")},
+  butterful:{a:"xtd",nm:"Butterful & Creamorous",e:"🥐",d:T("Pastries and doughnuts","ขนมอบและโดนัท")},
+  matcha:{a:"xtd",nm:"Matcha Wang",e:"🍵",d:T("Matcha desserts and drinks","ขนมและเครื่องดื่มมัทฉะ")},
+  rac:{a:"anfu",nm:"RAC Bar & Coffee",e:"☕",d:T("Coffee and brunch","กาแฟและบรันช์")},
+  renhe:{a:"ja",nm:"Ren He Guan",zh:"人和馆",e:"🍚",d:T("Crab roe rice, red-braised pork","ข้าวมันปู หมูตุ๋นซีอิ๊ว")},
+  yinyang:{a:"tzf",nm:"Yinyang Noodle House",e:"🍜",d:T("Noodles","บะหมี่"),n:T(["Or anything that looks good in Tianzifang"],["หรือร้านไหนใน Tianzifang ที่น่ากินก็ได้"])},
+  sukiyaki:{a:"ljz",nm:"New Sukiyaki",zh:"牛New寿喜烧",e:"♨️",d:T("Sukiyaki","สุกี้ยากี้"),n:T(["Shanghai Tower B2 · next to Super Brand Mall for souvenirs"],["Shanghai Tower ชั้น B2 · ใกล้ห้าง Super Brand Mall ซื้อของฝากได้"])},
+  manner:{a:"nb",nm:"Manner Coffee",e:"☕",d:T("Coffee","กาแฟ"),n:T(["Shanghai's own coffee chain"],["ร้านกาแฟเชนของเซี่ยงไฮ้"])},
   turkey:{a:"dl",nm:"Turkey leg — Treasure Cove",e:"🍗"},
   pooh:{a:"dl",nm:"Beef & mushroom sandwich — Pooh and Friends Treats",e:"🍞"},
   beefnoodle:{a:"dl",nm:"Beef noodles",e:"🍜"},
@@ -454,9 +473,9 @@ const F = {
   chipmunk:{a:"dl",nm:"Nutella croissant biscuit & jasmine latte — Chipmunk Snacks",e:"🥐"},
   stargazer:{a:"dl",nm:"Burgers — Stargazer Grill",e:"🍔"},
   ahma:{a:"dl",nm:"Ah Ma Handmade — Disney Town",e:"🧋"},
-  wangshi:{a:"hz",nm:"Wang Shi Shao Bing",zh:"王氏烧饼",e:"🥯",n:T(["Michelin-listed breakfast · Chinese crullers"],["อาหารเช้าติดมิชลิน · ปาท่องโก๋"])},
-  punfang:{a:"hz",nm:"Pan Fang Chun",zh:"泮芳春",e:"🥟",n:T(["Dumplings and noodles"],["เกี๊ยวและบะหมี่"])},
-  wumingshi:{a:"hz",nm:"Wu Ming Shi Mian Guan",zh:"无名氏面馆",e:"🍜",n:T(["Noodles · Michelin guide"],["บะหมี่ · มิชลินไกด์"])}
+  wangshi:{a:"hz",nm:"Wang Shi Shao Bing",zh:"王氏烧饼",e:"🥯",d:T("Sesame flatbread, Chinese crullers","ขนมปังงา ปาท่องโก๋"),n:T(["Michelin-listed breakfast"],["อาหารเช้าติดมิชลิน"])},
+  punfang:{a:"hz",nm:"Pan Fang Chun",zh:"泮芳春",e:"🥟",d:T("Pan-fried dumplings, noodles","เกี๊ยวทอด บะหมี่")},
+  wumingshi:{a:"hz",nm:"Wu Ming Shi Mian Guan",zh:"无名氏面馆",e:"🍜",d:T("Noodles","บะหมี่"),n:T(["Michelin guide"],["มิชลินไกด์"])}
 };
 // In visiting order; third item = which days we eat there
 const AREAS=[["ps","People's Square & Nanjing Road",[1,2,4,6]],["anfu","Anfu Road",[2]],["xtd","Xintiandi",[2]],["yy","Yuyuan Garden",[2]],["dl","Shanghai Disneyland",[3]],["ja","Jing'an Temple",[4]],["tzf","Tianzifang",[4]],["ljz","Lujiazui",[4]],["hz","Hangzhou",[5]],["nb","North Bund",[6]]];
@@ -572,17 +591,12 @@ const PHRASES=[
  ["谢谢","xièxie",T("Thank you","ขอบคุณ")],
  ["多少钱？","duōshao qián?",T("How much?","ราคาเท่าไหร่")],
  ["厕所在哪里？","cèsuǒ zài nǎlǐ?",T("Where is the toilet?","ห้องน้ำอยู่ที่ไหน")],
- ["不要辣","bú yào là",T("Not spicy, please","ไม่เผ็ด")],
- ["不要香菜","bú yào xiāngcài",T("No coriander, please","ไม่ใส่ผักชี")],
- ["热水","rè shuǐ",T("Hot water","น้ำร้อน")],
  ["有冰水吗？","yǒu bīng shuǐ ma?",T("Do you have cold (iced) water?","มีน้ำเย็นไหม")],
  ["常温水","chángwēn shuǐ",T("Room-temperature water","น้ำอุณหภูมิห้อง (ไม่เย็นไม่ร้อน)")],
  ["加冰","jiā bīng",T("With ice, please","ใส่น้ำแข็ง")],
  ["买单","mǎidān",T("The bill, please","เช็คบิล")],
  ["可以用支付宝吗？","kěyǐ yòng Zhīfùbǎo ma?",T("Can I pay with Alipay?","จ่ายด้วย Alipay ได้ไหม")],
  ["请带我去这里","qǐng dài wǒ qù zhèlǐ",T("Please take me here","กรุณาพาไปที่นี่")],
- ["我不会说中文","wǒ bú huì shuō Zhōngwén",T("I don't speak Chinese","พูดภาษาจีนไม่ได้")],
- ["我们是泰国人","wǒmen shì Tàiguó rén",T("We are from Thailand","เรามาจากประเทศไทย")]
 ];
 
 /* ---------- Tips & checklist ---------- */
@@ -619,8 +633,8 @@ const S={
  more:T("Learn more about this place","อ่านเรื่องราวของที่นี่"),
  rides:T("Rides, in priority order","เครื่องเล่น เรียงตามความสำคัญ"),ridesLede:T("Top of the list first.","เล่นอันบนก่อน"),
  shows:T("Shows","โชว์"),parkFood:T("Food in the park","ของกินในสวน"),
- soonT:T("Hangzhou plan coming soon","แผนเที่ยวหางโจว เร็ว ๆ นี้"),
- soonB:T("The full day is still being planned. Food ideas so far:","กำลังวางแผนอยู่ เสร็จแล้วจะอัปเดตที่นี่ ร้านที่เล็งไว้:"),
+ soonT:T("More of today coming soon","แผนวันนี้จะเพิ่มเร็ว ๆ นี้"),
+ soonB:T("The rest of the Hangzhou day is still being planned.","ส่วนที่เหลือของวันเที่ยวหางโจวกำลังวางแผนอยู่"),
  foodLede:T("By area, in trip order.","แยกตามย่าน เรียงตามวันที่ไป"),
  wordsLede:T("Tap a line to copy it.","แตะเพื่อคัดลอก"),
  wPlaces:T("Places","สถานที่"),wFood:T("Restaurants","ร้านอาหาร"),wPhr:T("Useful phrases","ประโยคที่ใช้บ่อย"),
@@ -656,7 +670,7 @@ function readHash(){
   const mp=h.match(/^place-([a-z]+)$/);
   if(mp&&P[mp[1]]){pendingSheet=mp[1];if(!view||view==="story"||!loaded){const di=DAYS.findIndex(d=>d.items.some(it=>it.p===mp[1]));view="plan";dayIdx=di<0?0:di}return}
   if(m){view="plan";dayIdx=+m[1]-1}
-  else if(["story","food","words","prep","tips","checklist"].includes(h)){view=(h==="tips"||h==="checklist")?"prep":h}
+  else if(["overview","story","food","words","prep","tips","checklist"].includes(h)){view=(h==="tips"||h==="checklist")?"prep":(h==="overview")?"story":h}
   else{const n=new Date(),during=n.getFullYear()===2026&&n.getMonth()===11&&n.getDate()>=15&&n.getDate()<=20;view=during?"plan":"story";dayIdx=during?n.getDate()-15:0}
 }
 function go(h){if(location.hash!=="#"+h)location.hash=h;else render()}
@@ -693,7 +707,7 @@ function renderPlan(){
   }
   h+=`</div>`;
   if(D.extra==="disney")h+=renderDisney();
-  if(D.extra==="hangzhou")h+=`<div class="panel soon"><h3>${esc(L(S.soonT))}</h3><p class="lede">${esc(L(S.soonB))}</p><p style="margin:0">${["wangshi","punfang","wumingshi"].map(k=>F[k].e+" "+esc(F[k].nm)).join("<br>")}</p></div>`;
+  if(D.extra==="hangzhou")h+=`<div class="soon">${ico("plan")}<div><b>${esc(L(S.soonT))}</b><span>${esc(L(S.soonB))}</span></div></div>`;
   return h;
 }
 function renderDisney(){
@@ -702,17 +716,17 @@ function renderDisney(){
   <div class="group"><h3>${esc(L(S.parkFood))}</h3><div class="list">${Object.values(F).filter(f=>f.a==="dl").map(f=>`<div class="row">${f.e} ${esc(f.nm)}</div>`).join("")}</div></div>`;
 }
 function renderFood(){
-  let h=`<h2 class="section">${esc(L(TAB("food")))}</h2><p class="sectionlede">${esc(L(S.foodLede))}</p>${subnavHTML}`;
-  for(const [a,nm,dd] of AREAS){
-    const it=Object.values(F).filter(f=>f.a===a);
-    h+=`<div class="group" id="g-${a}"><h3>${esc(nm)} <span class="gday">· ${esc(L(T(dd.length>1?"Days":"Day","วันที่")))} ${dd.join(", ")}</span></h3><div class="list">${it.map(f=>`<div class="row"><div class="frow"><span class="nm">${f.e} ${esc(f.nm)}</span>${f.zh?`<button class="zhchip" data-copy="${esc(f.zh)}" aria-label="${esc(L(T("Copy Chinese name","คัดลอกชื่อภาษาจีน")))}: ${esc(f.zh)}" title="${esc(f.zh)}"><span class="big">${esc(f.zh)}</span><span class="cp">${ico("copy")}</span></button>`:""}</div>${f.n?`<ul>${L(f.n).map(x=>`<li>${esc(x)}</li>`).join("")}</ul>`:""}</div>`).join("")}</div></div>`;
+  let h=`<h2 class="section">${esc(L(TAB("food")))}</h2>${subnavHTML}`;
+  for(const [a,nm,dd] of AREAS.filter(x=>x[0]!=="dl")){
+    const it=Object.entries(F).filter(([k,f])=>f.a===a);
+    h+=`<div class="group" id="g-${a}"><h3>${esc(nm)}</h3><div class="list">${it.map(([k,f])=>`<button class="row fbtn" data-eat="${k}"><span class="fe">${f.e}</span><span class="fmain"><span class="nm">${esc(f.nm)}</span>${f.d?`<span class="fdish">${esc(L(f.d))}</span>`:""}</span><span class="fchev" aria-hidden="true">${ico("next")}</span></button>`).join("")}</div></div>`;
   }
   return h;
 }
 function wordRow(zh,py,mean){return `<button class="row wordrow" data-copy="${esc(zh)}"><span><span class="big">${esc(zh)}</span>${py?`<span class="py">${esc(py)}</span>`:""}<span class="mean">${esc(mean)}</span></span><span class="cp" aria-label="${esc(L(S.copy))}" title="${esc(L(S.copy))}">${ico("copy")}</span></button>`}
 function renderWords(){
   const places=["hotel","pvg","nanjing","bund","ffc","wukang","anfu","xtd","yuyuan","bazaar","disney","jingan","tzf","trees","millfun","ljz","stower","hongkou","northbund","hqrail","shrail","hzeast","westlake"];
-  return `<h2 class="section">${esc(L(TAB("words")))}</h2><p class="sectionlede">${esc(L(S.wordsLede))}</p>${subnavHTML}
+  return `<h2 class="section">${esc(L(TAB("words")))}</h2>${subnavHTML}
   <div class="group" id="g-phr"><h3>${esc(L(S.wPhr))}</h3><div class="list">${PHRASES.map(p=>wordRow(p[0],p[1],L(p[2]))).join("")}</div></div>
   <div class="group" id="g-pl"><h3>${esc(L(S.wPlaces))}</h3><div class="list">${places.map(k=>wordRow(P[k].zh,P[k].py,P[k].nm)).join("")}</div></div>`;
 }
@@ -944,13 +958,14 @@ function sheetHTML(k){
 const zhCopy=zh=>`<button class="zhmini" data-copy="${esc(zh)}" aria-label="${esc(L(S.copy))} ${esc(zh)}"><span class="big">${esc(zh)}</span><span class="cp">${ico("copy")}</span></button>`;
 function eatHTML(k){
   const f=F[k],ar=AREAS.find(a=>a[0]===f.a);
-  const where=ar?`${ar[1]} · ${L(T(ar[2].length>1?"Days":"Day","วันที่"))} ${ar[2].join(", ")}`:"";
   return `<div class="mini-top"><span style="width:36px"></span><span class="grab"></span><button class="mini-x" data-close="1" aria-label="${esc(L(T("Close","ปิด")))}">×</button></div>
   <div class="sheet-scroll"><div class="sheet-body">
-   <div class="eat-head"><span class="eat-emo">${f.e}</span><div><h2>${esc(f.nm)}</h2>${f.zh?zhCopy(f.zh):""}</div></div>
-   ${where?`<p class="eat-where">📍 ${esc(where)}</p>`:""}
-   ${f.n&&L(f.n).length?`<section><h3>${esc(L(T("Notes","ข้อมูล")))}</h3><ul>${L(f.n).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></section>`:""}
-   ${f.link?`<a class="eat-link" href="${esc(f.link)}" target="_blank" rel="noopener">${f.link.includes("instagram")?esc(L(T("See it on Instagram","ดูใน Instagram"))):esc(L(T("See it on Trip.com","ดูใน Trip.com")))} ↗</a>`:""}
+   <div class="eat-head"><span class="eat-emo">${f.e}</span><div><h2>${esc(f.nm)}</h2>${f.d?`<div class="eat-dish">${esc(L(f.d))}</div>`:""}${f.zh?zhCopy(f.zh):""}</div></div>
+   <div class="eat-info">
+    ${ar?`<p class="eat-where">${ico("pin")}<span>${esc(ar[1])}</span></p>`:""}
+    ${f.n?`<ul class="eat-det">${L(f.n).flatMap(x=>x.split(" · ")).map(x=>`<li>${esc(x.charAt(0).toUpperCase()+x.slice(1))}</li>`).join("")}</ul>`:""}
+    ${f.link?`<a class="eat-link" href="${esc(f.link)}" target="_blank" rel="noopener">${f.link.includes("instagram")?esc(L(T("See it on Instagram","ดูใน Instagram"))):esc(L(T("See it on Trip.com","ดูใน Trip.com")))} ↗</a>`:""}
+   </div>
   </div></div>`;
 }
 function openSheet(k,push=true){
@@ -971,7 +986,7 @@ function closeSheet(){
   el.classList.remove("open");const bg=document.getElementById("sheet-bg");if(bg)bg.classList.remove("open");
   const done=()=>{closeSheetNow()};
   if(matchMedia("(prefers-reduced-motion: reduce)").matches)done();else setTimeout(done,320);
-  if(sheetPushed){sheetPushed=false;history.back()}else{history.replaceState(null,"","#"+(view==="plan"?"day-"+(dayIdx+1):view))}
+  if(sheetPushed){sheetPushed=false;history.back()}else{history.replaceState(null,"","#"+(view==="plan"?"day-"+(dayIdx+1):view==="story"?"overview":view))}
 }
 addEventListener("popstate",()=>{if(sheetKey&&!/^#(place|eat)-/.test(location.hash)){const el=document.getElementById("sheet");const bg=document.getElementById("sheet-bg");if(bg)bg.classList.remove("open");if(el){el.classList.remove("open");setTimeout(closeSheetNow,320)}sheetPushed=false}});
 document.addEventListener("scroll",e=>{const t=e.target;if(!t.classList||!t.classList.contains("galtrack"))return;const i=Math.round(t.scrollLeft/t.clientWidth);t.parentNode.querySelectorAll(".galdots i").forEach((d,j)=>d.classList.toggle("on",j===i))},true);
@@ -996,8 +1011,8 @@ function render(){
   document.getElementById("lang-en").setAttribute("aria-pressed",lang==="en");document.getElementById("lang-th").setAttribute("aria-pressed",lang==="th");
   const dz=document.getElementById("days");dz.hidden=view!=="plan";
   dz.innerHTML=DAYS.map((d,i)=>`<button role="tab" data-day="${i}" aria-current="${i===dayIdx}"><span class="dow">${esc(L(d.dow))}</span><span class="dn">${d.d}</span></button>`).join("");
-  document.getElementById("tabs").innerHTML=S.tabs.map(([k,ic,lab])=>`<button data-go="${k==="plan"?"day-"+(dayIdx+1):k}" ${view===k?'aria-current="page"':""}>${ico(ic,"ic")}${esc(L(lab))}</button>`).join("");
-  const subs=view==="food"?AREAS.map(([a,nm])=>[a,AREA_SHORT[a]||nm]):view==="words"?[["phr",L(S.wPhr)],["pl",L(S.wPlaces)]]:null;
+  document.getElementById("tabs").innerHTML=S.tabs.map(([k,ic,lab])=>`<button data-go="${k==="plan"?"day-"+(dayIdx+1):k==="story"?"overview":k}" ${view===k?'aria-current="page"':""}>${ico(ic,"ic")}${esc(L(lab))}</button>`).join("");
+  const subs=view==="food"?AREAS.filter(x=>x[0]!=="dl").map(([a,nm])=>[a,AREA_SHORT[a]||nm]):view==="words"?[["phr",L(S.wPhr)],["pl",L(S.wPlaces)]]:null;
   subnavHTML=subs?`<nav class="subnav" aria-label="Sections">${subs.map(([a,nm],i)=>`<button data-jump="g-${a}" ${i===0?'aria-current="true"':""}>${esc(nm)}</button>`).join("")}</nav>`:"";
   main.innerHTML=view==="story"?renderStory():view==="plan"?renderPlan():view==="food"?renderFood():view==="words"?renderWords():renderPrep();
   setHH();
@@ -1015,8 +1030,13 @@ function markSub(id){const sn=main.querySelector(".subnav");if(!sn)return;sn.que
   if(on){const l=b.offsetLeft-sn.offsetLeft,r=l+b.offsetWidth;if(l<sn.scrollLeft+16||r>sn.scrollLeft+sn.clientWidth-16)sn.scrollTo({left:Math.max(0,l-16)})}})}
 function wireSub(){
   if(subObs)subObs.disconnect();
-  subObs=new IntersectionObserver(es=>{if(Date.now()-jumping<900)return;es.forEach(e=>{if(e.isIntersecting)markSub(e.target.id)})},{rootMargin:"-30% 0px -60% 0px"});
-  main.querySelectorAll(".group[id]").forEach(g=>subObs.observe(g));
+  // Highlight the last section whose heading has passed just under the pinned bar
+  const gs=[...main.querySelectorAll(".group[id]")];
+  const onScroll=()=>{if(Date.now()-jumping<900||!gs[0]||!gs[0].isConnected)return;const sn=main.querySelector(".subnav");const line=(sn?sn.getBoundingClientRect().bottom:120)+24;
+    let cur=gs[0].id;for(const g of gs){if(g.getBoundingClientRect().top<=line)cur=g.id}
+    if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)cur=gs[gs.length-1].id;markSub(cur)};
+  removeEventListener("scroll",window.__subScroll||(()=>{}));window.__subScroll=onScroll;addEventListener("scroll",onScroll,{passive:true});
+  subObs={disconnect(){}};
 }
 function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),1400)}
 
@@ -1051,4 +1071,6 @@ document.addEventListener("change",async e=>{
 
 readHash();render();loaded=true;if(pendingSheet){const k=pendingSheet;pendingSheet=null;openSheet(k,false)}
 </script>
-</body></html>
+
+</body>
+</html>
