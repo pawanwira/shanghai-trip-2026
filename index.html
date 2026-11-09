@@ -1090,22 +1090,22 @@ const MP={hotel:[165,140,"People's Square","middle",0,-11],nanjing:[190,139,"","
 const STORY=[
  {k:"bund",col:"#C0632B",route:["pvg","hotel","nanjing","bund"],
   t:T("Hello, Shanghai","สวัสดีเซี่ยงไฮ้!"),
-  s:T("Land, rest, then follow Nanjing Road's neon to the river, where old banks glow gold and the future sparkles across the water.","เมื่อเดินทางถึงแล้ว พักผ่อนสักครู่ จากนั้นเดินชมแสงไฟนีออนบนถนน Nanjing Road ไปจนถึงริมแม่น้ำ ซึ่งอาคารเก่าจะเปิดไฟสีทองงดงาม และตึกระฟ้าฝั่งตรงข้ามส่องประกายระยิบระยับ")},
+  s:T("Land, rest, then follow Nanjing Road's neon to the river, where old banks glow gold and the future sparkles across the water.","ถึงเซี่ยงไฮ้ช่วงบ่าย พักผ่อนที่โรงแรม แล้วเดินถนน Nanjing Road ไปชมวิว The Bund ตอนค่ำ")},
  {k:"yuyuan",col:"#4E7D4A",route:["hotel","wukang","anfu","xtd","yuyuan"],
   t:T("Walking through time","ตามรอยเซี่ยงไฮ้เก่า"),
-  s:T("Plane-tree streets, a ship-shaped building from 1924, dim sum in 1920s lane houses, and a 450-year-old garden a son built for his parents.","ถนนร่มรื่นด้วยต้นเพลน ตึกรูปหัวเรือจากปี 1924 ติ่มซำในบ้านแถวยุค 1920 และสวนอายุ 450 ปีที่ลูกชายสร้างให้พ่อแม่")},
+  s:T("Plane-tree streets, a ship-shaped building from 1924, dim sum in 1920s lane houses, and a 450-year-old garden a son built for his parents.","เดินเล่นย่าน French Concession ชมตึก Wukang Mansion ทานติ่มซำที่ Xintiandi แล้วไปเที่ยวสวน Yuyuan")},
  {k:"disney",col:"#3F5FA8",route:["hotel","disney"],
   t:T("A castle day","เที่ยวดิสนีย์แลนด์เต็มวัน"),
-  s:T("The biggest Disney castle in the world, the first Zootopia, and Christmas lights and snowfall after dark.","ปราสาทดิสนีย์ที่ใหญ่ที่สุดในโลก โซน Zootopia แห่งแรก ปิดท้ายด้วยไฟคริสต์มาสและหิมะโปรยยามค่ำ")},
+  s:T("The biggest Disney castle in the world, the first Zootopia, and Christmas lights and snowfall after dark.","ชมปราสาทดิสนีย์ที่ใหญ่ที่สุดในโลก เล่นโซน Zootopia แห่งแรก ปิดท้ายด้วยพิธีเปิดไฟต้นคริสต์มาสและหิมะโปรยตอนค่ำ")},
  {k:"jingan",col:"#B5862E",route:["hotel","jingan","tzf","trees","ljz"],
   t:T("Gold roofs & city lights","วัดหลังคาทองและแสงไฟยามค่ำ"),
-  s:T("A temple with real gold roofs, a maze of little alleys, a building covered in trees, and dinner inside China's tallest tower.","วัดหลังคาทองคำแท้ ตรอกเล็ก ๆ ชวนหลง ตึกที่มีต้นไม้ขึ้นเต็ม และมื้อเย็นในตึกที่สูงที่สุดในจีน")},
+  s:T("A temple with real gold roofs, a maze of little alleys, a building covered in trees, and dinner inside China's tallest tower.","ไหว้พระที่วัดจิ้งอัน เดินเล่น Tianzifang ชมตึก 1000 Trees แล้วทานมื้อเย็นที่ Shanghai Tower")},
  {k:"westlake",col:"#2F7F86",route:["hotel","westlake"],
   t:T("Heaven on earth","สวรรค์บนดิน"),
-  s:T("One hour by bullet train to Hangzhou's West Lake, loved by poets for a thousand years. Full plan coming soon.","นั่งรถไฟความเร็วสูงแค่ชั่วโมงเดียวไปทะเลสาบซีหูที่หางโจว ที่กวีหลงรักมากว่าพันปี แผนฉบับเต็มกำลังตามมา")},
+  s:T("One hour by bullet train to Hangzhou's West Lake, loved by poets for a thousand years. Full plan coming soon.","นั่งรถไฟความเร็วสูงประมาณ 1 ชั่วโมง ไปเที่ยวทะเลสาบซีหูที่หางโจว (แผนฉบับเต็มจะตามมา)")},
  {k:"northbund",col:"#8A5A9E",route:["hotel","rockbund","hongkou","northbund","hotel","pvg"],
   t:T("One last walk by the river","ส่งท้ายทริปริมแม่น้ำ"),
-  s:T("Red-brick lanes and old bridges, a quiet canal, coffee facing the skyline, then home by 22:25.","ตรอกตึกอิฐแดงกับสะพานเก่า คลองเงียบ ๆ นั่งจิบกาแฟหน้าวิวตึกสูง แล้วบินกลับถึงบ้าน 22:25 น.")}
+  s:T("Red-brick lanes and old bridges, a quiet canal, coffee facing the skyline, then home by 22:25.","เดินเล่นย่าน Rock Bund ถึง North Bund แวะจิบกาแฟริมแม่น้ำ ก่อนบินกลับถึงกรุงเทพฯ 22:25 น.")}
 ];
 function storyMap(){
   const dots=Object.entries(MP).map(([k,[x,y,n,a,dx,dy]])=>`<g class="mdot" data-k="${k}"><circle cx="${x}" cy="${y}" r="3.5"/>${n?`<text x="${x+dx}" y="${y+dy}" text-anchor="${a}">${esc(n)}</text>`:""}</g>`).join("");
