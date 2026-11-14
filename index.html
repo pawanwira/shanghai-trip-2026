@@ -366,6 +366,15 @@ body.noscroll{overflow:hidden}
 .erow .emain{display:block;font-size:.98rem;line-height:1.45}
 .erow .esub{display:block;font-size:.9rem;color:var(--muted);line-height:1.4;margin-top:1px}
 .eat-link{display:inline-block;margin-top:14px;font-weight:600}
+.wlink{display:block;width:100%;margin:0;padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.wlink .wmap{margin:4px 0 0}
+.wlink .wcap{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:.92rem;color:var(--muted)}
+.wlink .wcap span{flex:1}
+.wlink .wlc{width:16px;height:16px;flex-shrink:0;color:var(--muted)}
+.wmap .wpt.must.far circle{fill:var(--card)}
+.wmap .wpt.must.far text{fill:var(--red)}
+.wmap .wpt.must.far .wname{fill:var(--muted)}
+.wmap .wpt circle.ring{fill:none;stroke:var(--red);stroke-width:1;opacity:.5}
 .walkstrip{padding:12px 16px 0;cursor:pointer}
 .walkstrip .wsh{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .walkstrip .wsh b{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:1.05rem}
@@ -373,6 +382,8 @@ body.noscroll{overflow:hidden}
 .walkstrip .more{display:inline-flex;align-items:center;gap:2px;color:var(--muted);font-size:.88rem}
 .walkstrip .more .svg{width:18px;height:18px}
 .walkstrip .more .wk{width:15px;height:15px;margin-right:3px}
+.walkstrip .wlist{margin:6px 0 0;font-size:.88rem;line-height:1.45;color:var(--muted)}
+.walkstrip .wlist .nw{white-space:nowrap}
 .walkstrip .wsl{position:relative;height:18px;margin:10px -16px 0}
 .walkstrip .wsw{position:absolute;left:0;right:0;bottom:0;width:100%;height:18px}
 .walkstrip .wsw path{fill:var(--sky-soft)}
@@ -662,8 +673,7 @@ const DAYS=[
    {t:"go",ic:"🚕",txt:T("To the hotel by DiDi (45–60 min) or Metro Line 2 (60–75 min)","ไปโรงแรมด้วย DiDi (45–60 นาที) หรือรถไฟใต้ดินสาย 2 (60–75 นาที)")},
    {t:"s",p:"nanjing",time:"17:00"},
    {t:"m",ic:"🦀",h:T("Dinner","มื้อเย็น"),o:["supremecrab","xiesanbao"]},
-   {t:"s",p:"bund",time:"19:00"},
-   {t:"w",part:"tue",h:T("8 stops along the river","แวะ 8 จุดริมแม่น้ำ")}
+   {t:"s",p:"bund",time:"19:00"}
   ]},
  {dow:T("Wed","พ."),d:16,date:T("Wednesday 16 December","วันพุธที่ 16 ธันวาคม"),
   title:T("Old Shanghai on foot","เที่ยวย่านเซี่ยงไฮ้เก่า"),
@@ -679,6 +689,7 @@ const DAYS=[
    {t:"m",ic:"🥢",h:T("Lunch & desserts","มื้อกลางวันและของหวาน"),o:["taotaoju","bagel","butterful","matcha"]},
    {t:"go",ic:"🚇",ln:["l10"],txt:T("Line 10 to Yuyuan Garden, exit 7 · 7 min","นั่งสาย 10 ไปสถานี Yuyuan Garden ทางออก 7 · 7 นาที")},
    {t:"s",p:"yuyuan"},
+   {t:"go",ic:"🚶",txt:T("Next door, 2 min","อยู่ติดกัน เดินราว 2 นาที")},
    {t:"s",p:"bazaar"},
    {t:"go",ic:"🚇",ln:["l10","l2"],txt:T("Line 10, then Line 2 back to People's Square — or DiDi","นั่งสาย 10 ต่อสาย 2 กลับ People's Square หรือเรียก DiDi ก็ได้")},
    {t:"m",ic:"🍢",h:T("Dinner","มื้อเย็น"),o:["longtime","rourou","xiaoqiu"]}
@@ -724,9 +735,18 @@ const DAYS=[
   items:[
    {t:"x",h:T("Check out, leave bags at the hotel","เช็คเอาท์ แล้วฝากกระเป๋าไว้ที่โรงแรม")},
    {t:"go",ic:"🚕",txt:T("DiDi about 10 min to Rock Bund","นั่ง DiDi ราว 10 นาที ไป Rock Bund")},
-   {t:"w",part:"sun",h:T("Rock Bund to North Bund Greenland","จาก Rock Bund ถึง North Bund Greenland")},
+   {t:"s",p:"rockbund"},
+   {t:"go",ic:"🚶",txt:T("Walk about 5 min","เดินราว 5 นาที")},
+   {t:"s",p:"union"},
+   {t:"go",ic:"🚶",txt:T("Next door, 1 min","อยู่ติดกัน เดินราว 1 นาที")},
+   {t:"s",p:"rowing"},
+   {t:"go",ic:"🚶",txt:T("Walk about 5 min","เดินราว 5 นาที")},
+   {t:"s",p:"waibaidu"},
+   {t:"go",ic:"🚶",txt:T("Walk about 8 min along Suzhou Creek","เดินเลียบคลองซูโจวราว 8 นาที")},
+   {t:"s",p:"zhapu"},
+   {t:"go",ic:"🚶",txt:T("Walk about 20 min","เดินราว 20 นาที")},
    {t:"s",p:"hongkou"},
-   {t:"go",ic:"🚶",txt:T("Scenic walk, 1 km · 10–15 min. Head towards the Huangpu River and follow the riverside paths to North Bund Greenland","เดินชมวิวราว 1 กม. · 10–15 นาที เดินไปทางแม่น้ำหวงผู่ แล้วเลียบทางเดินริมน้ำไปจนถึง North Bund Greenland")},
+   {t:"go",ic:"🚶",txt:T("Walk about 15 min","เดินราว 15 นาที")},
    {t:"s",p:"northbund"},
    {t:"m",ic:"☕",h:T("Coffee","กาแฟ"),o:["manner"]},
    {t:"go",ic:"🚕",txt:T("DiDi about 15 min back to People's Square","นั่ง DiDi ราว 15 นาที กลับ People's Square")},
@@ -848,7 +868,9 @@ function readHash(){
   else if(["overview","story","food","words","prep","tips","checklist"].includes(h)){view=(h==="tips"||h==="checklist")?"prep":(h==="overview")?"story":h}
   else{const n=new Date(),during=n.getFullYear()===2026&&n.getMonth()===11&&n.getDate()>=15&&n.getDate()<=20;view=during?"plan":"story";dayIdx=during?n.getDate()-15:0}
 }
-function go(h){if(location.hash!=="#"+h)location.hash=h;else render()}
+function go(h){if(location.hash==="#"+h){render();return}
+  const pv=view,pd=dayIdx;try{history.replaceState(null,"","#"+h)}catch(_){location.hash=h;return}
+  readHash();pendingSheet=null;if(pv===view&&pd===dayIdx)return;render();scrollTo({top:0})}
 let pendingSheet=null,loaded=false;
 let ignoreHash=false;
 addEventListener("hashchange",()=>{
@@ -873,7 +895,7 @@ function placeCard(it){
 }
 function renderPlan(){
   const D=DAYS[dayIdx];
-  let h=`<section class="dayhead"><div class="date">${esc(L(D.date))}</div><h2>${esc(L(D.title))}</h2><p>${esc(L(D.lede))}</p>${D.warn?`<p class="daywarn">${ico("alert")}<span>${L(D.warn).map((w,i)=>i?`<span class="dw2">· ${esc(w)}</span>`:`<b>${esc(w)}</b>`).join(" ")}</span></p>`:""}</section><div class="flow">`;
+  let h=`<section class="dayhead"><div class="date">${esc(L(D.date))}</div><h2>${esc(L(D.title))}</h2><p>${esc(L(D.lede))}</p>${D.warn?`<p class="daywarn">${ico("alert")}<span>${L(D.warn).map(w=>`<b>${esc(w)}</b>`).join(" · ")}</span></p>`:""}</section><div class="flow">`;
   for(const it of D.items){
     if(it.t==="s")h+=placeCard(it);
     else if(it.t==="go")h+=`<div class="step">${ico(EMO2ICO[it.ic]||"car","ic")}<span>${it.ln?`<span class="lines">${it.ln.map(l=>`<span class="ml ${l}">${l.slice(1)}</span>`).join("")}</span>`:""}${esc(L(it.txt))}${it.sub?`<span class="sub">${esc(L(it.sub))}</span>`:""}</span></div>`;
@@ -881,7 +903,7 @@ function renderPlan(){
     else if(it.t==="a")h+=`<article class="card plain alert"><div class="body">${ico("alert")}<h3>${esc(L(it.h))}</h3></div></article>`;
     else if(it.t==="f"){const end=(x,al)=>`<div class="fend" style="text-align:${al}"><div class="ftime">${x[2]}</div><div class="fcity">${esc(L(x[1]))} <span>${x[0]}</span></div></div>`;
       h+=`<article class="card plain flight"><div class="body"><div class="frow2">${end(it.a,"left")}<div class="fline"><svg class="svg" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg></div>${end(it.b,"right")}</div>${it.sub?`<p class="fnote">${esc(L(it.sub))}</p>`:""}</div></article>`}
-    else if(it.t==="w")h+=`<article class="card tap walkstrip" data-walk="1" role="button" tabindex="0" aria-label="${esc(L(T("Bund Walk","เดินเล่นย่าน The Bund")))}"><div class="wsh"><b>${esc(L(T("Bund Walk","เดินเล่นย่าน The Bund")))}</b><span class="more">${ico("walk","wk")}${esc(L(T("8 stops","แวะ 8 จุด")))}${ico("next")}</span></div><div class="wsl"><svg class="wsw" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true"><path d="M0,5 Q12,1 24,5 Q36,9 48,5 Q60,1 72,5 Q84,9 96,5 Q108,1 120,5 Q132,9 144,5 Q156,1 168,5 Q180,9 192,5 Q204,1 216,5 Q228,9 240,5 Q252,1 264,5 Q276,9 288,5 Q300,1 312,5 Q324,9 336,5 Q348,1 360,5 Q372,9 384,5 Q396,1 408,5 L400,14 L0,14 Z"/></svg></div></article>`;
+    else if(it.t==="w")h+=`<article class="card tap walkstrip" data-walk="1" role="button" tabindex="0" aria-label="${esc(L(T("Bund Walk","เดินเล่นย่าน The Bund")))}"><div class="wsh"><b>${esc(L(T("Bund Walk","เดินเล่นย่าน The Bund")))}</b><span class="more">${ico("walk","wk")}${esc(L(T("8 stops","แวะ 8 จุด")))}${ico("next")}</span></div>${it.list?`<p class="wlist">${WALK.filter(w=>w.when.includes(it.part)&&!D.items.some(x=>x.p===w.k)).map(w=>`<span class="nw">${esc(w.nm)}</span>`).join("&nbsp;· ")}</p>`:""}<div class="wsl"><svg class="wsw" viewBox="0 0 400 14" preserveAspectRatio="none" aria-hidden="true"><path d="M0,5 Q12,1 24,5 Q36,9 48,5 Q60,1 72,5 Q84,9 96,5 Q108,1 120,5 Q132,9 144,5 Q156,1 168,5 Q180,9 192,5 Q204,1 216,5 Q228,9 240,5 Q252,1 264,5 Q276,9 288,5 Q300,1 312,5 Q324,9 336,5 Q348,1 360,5 Q372,9 384,5 Q396,1 408,5 L400,14 L0,14 Z"/></svg></div></article>`;
     else if(it.t==="x")h+=`<div class="note">${ico(it.ic||"bag","ic")}<div><span class="nt">${esc(L(it.h))}${it.time?` · ${esc(it.time)}`:""}</span>${it.sub?`<span class="sub">${esc(L(it.sub))}</span>`:""}</div></div>`;
     if(it.t==="s"||it.t==="x"){} // spacing handled by steps/meals
   }
@@ -1187,7 +1209,7 @@ const WALK=[
 ];
 const WHEN={tue:T("🌙 Tue night","🌙 คืนวันอังคาร"),sun:T("☀️ Sun morning","☀️ เช้าวันอาทิตย์")};
 const WLBL={bund:["The Bund",-9,2.5,"end"],rockbund:["Rock Bund",-9,2.5,"end"],union:["Union Church",-9,2.5,"end"],rowing:["Rowing Club",9,3.5,"start"],waibaidu:["Waibaidu Bridge",9,1,"start"],zhapu:["Zhapu Bridge",-9,2.5,"end"],hongkou:["Hongkou Creek",0,-9,"middle"],northbund:["North Bund",0,14,"middle"]};
-function walkMap(part,cls="wmap"){
+function walkMap(part,cls="wmap",here=null){
   const pts=WALK.map(w=>[w.x,w.y]);
   const route="M120,200 L120,148 L102,137 L126,127 L141,116 C128,110 112,107 100,106 C120,96 160,78 196,68 C202,64 206,61 211,60 C226,56 240,60 252,66";
   return `<svg class="${cls}" viewBox="${cls.includes("wmini")?"80 42 198 178":"30 38 250 184"}" role="img" aria-label="${esc(L(T("Map of the Bund Walk","แผนที่เส้นทางเดินเล่นย่าน The Bund")))}">
@@ -1198,7 +1220,7 @@ function walkMap(part,cls="wmap"){
    <text class="wlabel" x="44" y="93">Suzhou Creek</text>
    <text class="land" x="236" y="170">Pudong</text>
    <path class="route" d="${route}"/>
-   ${WALK.map((w,i)=>{const lb=WLBL[w.k];return `<g class="wpt must${part&&!w.when.includes(part)?" dim":""}" data-wstop="${i}">${lb?`<text class="wname" x="${w.x+lb[1]}" y="${w.y+lb[2]}" text-anchor="${lb[3]}">${esc(lb[0])}</text>`:""}<circle class="whit" cx="${w.x}" cy="${w.y}" r="13"/><circle cx="${w.x}" cy="${w.y}" r="5.2"/><text x="${w.x}" y="${w.y+2.4}" text-anchor="middle">${i+1}</text></g>`}).join("")}
+   ${WALK.map((w,i)=>{const lb=WLBL[w.k];return `<g class="wpt must${part&&!w.when.includes(part)?" dim":""}${here!=null?(i===here?" here":" far"):""}"${here==null?` data-wstop="${i}"`:""}>${i===here?`<circle class="ring" cx="${w.x}" cy="${w.y}" r="8.5"/>`:""}${lb?`<text class="wname" x="${w.x+lb[1]}" y="${w.y+lb[2]}" text-anchor="${lb[3]}">${esc(lb[0])}</text>`:""}<circle class="whit" cx="${w.x}" cy="${w.y}" r="13"/><circle cx="${w.x}" cy="${w.y}" r="5.2"/><text x="${w.x}" y="${w.y+2.4}" text-anchor="middle">${i+1}</text></g>`}).join("")}
   </svg>`;
 }
 function walkHTML(){
@@ -1235,8 +1257,11 @@ function sheetHTML(k){
     ${d.fact?`<section class="fact"><h3>✦ ${esc(L(T("Did you know?","รู้หรือไม่?")))}</h3><p>${esc(L(d.fact))}</p></section>`:""}
     ${p.taxi?`<section><h3>${esc(L(T("Getting there","การเดินทาง")))}</h3><p>${esc(L(T("For DiDi or Amap, copy this street corner (Jiulong Rd & Changzhi Rd):","จะเรียก DiDi หรือค้นใน Amap ให้คัดลอกชื่อสี่แยกนี้ไปใช้ (ถนนจิ่วหลง ตัดกับถนนฉางจื้อ):")))}</p>${zhCopy(p.taxi)}</section>`:""}
     ${p.insp?`<section><h3>${esc(L(T("Photo inspiration","ไอเดียถ่ายรูป")))}</h3><a class="eat-link" style="margin-top:0" href="${esc(p.insp)}" target="_blank" rel="noopener">${esc(L(T("See examples on Instagram","ดูตัวอย่างใน Instagram")))} ↗</a></section>`:""}
+    ${walkLink(k)}
    </div></div>${k==="showsnow"?snowFx():""}`;
 }
+function walkLink(k){const i=WALK.findIndex(w=>w.k===k);if(i<0)return "";
+  return `<section class="wsec"><h3>${esc(L(T("Bund Walk","เดินเล่นย่าน The Bund")))}</h3><button class="wlink" data-walklink="1">${walkMap(null,"wmap wpin",i)}<span class="wcap"><span>${esc(L(T(`Stop ${i+1} of ${WALK.length} · See the full walk`,`จุดแวะที่ ${i+1} จาก ${WALK.length} · ดูเส้นทางทั้งหมด`)))}</span>${ico("next","wlc")}</span></button></section>`}
 function snowFx(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return "";let h="";for(let i=0;i<60;i++){const z=Math.random(),sz=(2.2+z*3.6).toFixed(1),l=(Math.random()*100).toFixed(1),d=(26-z*9+Math.random()*3).toFixed(1),dl=(Math.random()*20-10).toFixed(1),sw=(4+Math.random()*4).toFixed(1),dx=(6+Math.random()*14).toFixed(0),op=(.45+z*.5).toFixed(2);
   h+=`<i style="left:${l}%;animation-duration:${d}s;animation-delay:${dl}s;--op:${op}"><b style="width:${sz}px;height:${sz}px;animation-duration:${sw}s;--dx:${dx}px;${z<.25?"filter:blur(.6px);":""}"></b></i>`}return `<div class="snowfx" aria-hidden="true">${h}</div>`}
 const zhCopy=zh=>`<button class="zhmini" data-copy="${esc(zh)}" aria-label="${esc(L(S.copy))} ${esc(zh)}"><span class="big">${esc(zh)}</span><span class="cp">${ico("copy")}</span></button>`;
@@ -1363,6 +1388,7 @@ document.addEventListener("click",e=>{
   if(e.target.closest("[data-close]")){closeSheet();return}
   const wst=e.target.closest(".sheet [data-wstop]");if(wst){const li=document.querySelectorAll("#sheet .wstops .ws")[+wst.dataset.wstop],sc=document.querySelector("#sheet .sheet-scroll");if(li&&sc){sc.scrollTo({top:li.getBoundingClientRect().top-sc.getBoundingClientRect().top+sc.scrollTop-12,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});li.classList.remove("flash");void li.offsetWidth;li.classList.add("flash");setTimeout(()=>li.classList.remove("flash"),1600)}return}
   const wk=e.target.closest("[data-walk]");if(wk){openSheet("walk");return}
+  const wl=e.target.closest("[data-walklink]");if(wl){const cur=document.getElementById("sheet");if(cur&&cur.classList.contains("push")&&document.getElementById("sheet-under"))closeSheet();else openSheet("walk");return}
   const wp=e.target.closest("[data-wplace]");if(wp){const sc=wp.closest(".sheet-scroll");walkScroll=sc?sc.scrollTop:0;openSheet(wp.dataset.wplace,true,false,true);return}
   const eb=e.target.closest("[data-eat]");if(eb){openSheet("eat-"+eb.dataset.eat);return}
   const b=e.target.closest("button");if(!b)return;
