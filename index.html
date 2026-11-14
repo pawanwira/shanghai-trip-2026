@@ -374,7 +374,7 @@ body.noscroll{overflow:hidden}
 .wmap .wpt.must.far circle{fill:var(--card)}
 .wmap .wpt.must.far text{fill:var(--red)}
 .wmap .wpt.must.far .wname{fill:var(--muted)}
-.wmap .wpt circle.ring{fill:none;stroke:var(--red);stroke-width:1;opacity:.5}
+.wmap .wpt.must circle.ring{fill:none;stroke:var(--red);stroke-width:1;opacity:.55}
 .walkstrip{padding:12px 16px 0;cursor:pointer}
 .walkstrip .wsh{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .walkstrip .wsh b{display:inline-flex;align-items:center;gap:8px;font-weight:500;font-size:1.05rem}
@@ -1220,7 +1220,7 @@ function walkMap(part,cls="wmap",here=null){
    <text class="wlabel" x="44" y="93">Suzhou Creek</text>
    <text class="land" x="236" y="170">Pudong</text>
    <path class="route" d="${route}"/>
-   ${WALK.map((w,i)=>{const lb=WLBL[w.k];return `<g class="wpt must${part&&!w.when.includes(part)?" dim":""}${here!=null?(i===here?" here":" far"):""}"${here==null?` data-wstop="${i}"`:""}>${i===here?`<circle class="ring" cx="${w.x}" cy="${w.y}" r="8.5"/>`:""}${lb?`<text class="wname" x="${w.x+lb[1]}" y="${w.y+lb[2]}" text-anchor="${lb[3]}">${esc(lb[0])}</text>`:""}<circle class="whit" cx="${w.x}" cy="${w.y}" r="13"/><circle cx="${w.x}" cy="${w.y}" r="5.2"/><text x="${w.x}" y="${w.y+2.4}" text-anchor="middle">${i+1}</text></g>`}).join("")}
+   ${WALK.map((w,i)=>{const lb=WLBL[w.k];return `<g class="wpt must${part&&!w.when.includes(part)?" dim":""}${here!=null?(i===here?" here":" far"):""}"${here==null?` data-wstop="${i}"`:""}>${i===here?`<circle class="ring" cx="${w.x}" cy="${w.y}" r="7.6"/>`:""}${lb?`<text class="wname" x="${w.x+lb[1]}" y="${w.y+lb[2]}" text-anchor="${lb[3]}">${esc(lb[0])}</text>`:""}<circle class="whit" cx="${w.x}" cy="${w.y}" r="13"/><circle cx="${w.x}" cy="${w.y}" r="5.2"/><text x="${w.x}" y="${w.y+2.4}" text-anchor="middle">${i+1}</text></g>`}).join("")}
   </svg>`;
 }
 function walkHTML(){
@@ -1234,7 +1234,7 @@ function walkHTML(){
      return `<li class="ws must"><span class="wdot">${i+1}</span>
       ${guide?`<button class="whead" data-wplace="${w.k}">${head}${ico("next")}</button>`:`<div class="whead">${head}</div>`}
       ${IMG(w.k)?`<button class="wban" data-wplace="${w.k}" tabindex="-1" aria-hidden="true"><img src="${IMG(w.k)}" alt="" loading="lazy"></button>`:""}
-      <p class="wd">${esc(L(w.d))}</p>${w.tip?`<p class="wtip">${esc(L(w.tip))}</p>`:""}
+      <p class="wd">${esc(L(w.d))}</p>
       ${guide?"":zhCopy(w.zh)}</li>`}).join("")}</ol>
   </div></div>`;
 }
