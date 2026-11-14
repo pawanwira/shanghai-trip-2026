@@ -610,10 +610,10 @@ const F = {
     tip:T(["Closes once it sells out, so go earlier"],["ของหมดร้านปิด ไปเร็ว ๆ หน่อยดีกว่า"])},
   weixiang:{mich:1,a:"ps",nm:"Wei Xiang Zhai",zh:"味香斋",e:"🍜",d:T("Sesame noodles, pork liver noodles","บะหมี่งา บะหมี่ตับหมู"),
     ab:T("A simple noodle shop that has been feeding locals for over 80 years. The classic is noodles in sesame sauce. It's listed in the Michelin Guide.","ร้านบะหมี่เรียบง่ายที่อยู่คู่คนท้องถิ่นมากว่า 80 ปี เมนูคลาสสิกคือบะหมี่ซอสงา ติดอยู่ในมิชลินไกด์")},
-  longtime:{a:"ps",nm:"Long Time Ago",zh:"很久以前",e:"🍢",d:T("Grilled skewers","ปิ้งย่างเสียบไม้"),link:"https://www.instagram.com/reel/DOV23f1iUPf/?stkn=NTc4MTIwNjQ2YQ==",linkLabel:T("How to join the queue (Instagram video)","วิธีกดคิว (คลิปใน Instagram)"),optWarn:T("Join the queue in Alipay before going","กดคิวใน Alipay ก่อนไป"),
+  longtime:{a:"ps",nm:"Long Time Ago",zh:"很久以前",e:"🍢",d:T("Grilled skewers","ปิ้งย่างเสียบไม้"),link:"https://www.instagram.com/reel/DOV23f1iUPf/?stkn=NTc4MTIwNjQ2YQ==",linkLabel:T("How to join the queue (Instagram video)","วิธีกดคิว (คลิปใน Instagram)"),optWarn:T("Join the Alipay queue 2 hours ahead","กดคิวใน Alipay ล่วงหน้า 2 ชม."),
     ab:T("A barbecue chain that started in Beijing in 2008, known for lamb skewers from the Inner Mongolian grasslands. The skewers turn by themselves on an electric grill at your table.","ร้านปิ้งย่างเชนที่เริ่มต้นจากปักกิ่งเมื่อปี 2008 ขึ้นชื่อเรื่องเนื้อแกะเสียบไม้จากทุ่งหญ้ามองโกเลียใน ไม้เสียบจะหมุนเองบนเตาไฟฟ้าที่โต๊ะ"),
     loc:T("No. 1 Shopping Center, 6F","ห้าง No. 1 Shopping Center ชั้น 6"),
-    tip:T(["Join the queue in Alipay before going"],["กดคิวใน Alipay ก่อนไป"])},
+    tip:T(["Join the Alipay queue 2 hours ahead"],["กดคิวใน Alipay ล่วงหน้า 2 ชม."])},
   gaolaojiu:{a:"ps",nm:"Gaolaojiu Hotpot",zh:"重庆高老九火锅",e:"♨️",d:T("Chongqing hotpot","หม่าล่าฉงชิ่ง"),
     ab:T("Chongqing-style hotpot: a bubbling, numbing-spicy broth of chili and Sichuan pepper that you cook meat and vegetables in. If anyone wants it mild, ask for a split pot (鸳鸯锅).","หม่าล่าสไตล์ฉงชิ่ง น้ำซุปเผ็ดชาจากพริกและฮวาเจียวเดือดปุด ๆ เอาไว้ลวกเนื้อและผักกินเอง ถ้ามีคนกินเผ็ดไม่ได้ สั่งหม้อแบ่งสองฝั่ง (鸳鸯锅) ได้"),
     loc:T("East Nanjing Road","ถนน East Nanjing")},
@@ -709,10 +709,10 @@ const DAYS=[
    {t:"m",ic:"🍜",h:T("Brunch","มื้อสาย"),o:["weixiang","jiajia"]},
    {t:"go",ic:"🚇",ln:["l2"],txt:T("Line 2 to Jing'an Temple, exit 1","นั่งสาย 2 ไปสถานี Jing'an Temple ทางออก 1")},
    {t:"s",p:"jingan"},
-   {t:"go",ic:"🚕",txt:T("DiDi","DiDi")},
+   {t:"go",ic:"🚕",txt:T("DiDi to Tianzifang, about 15–20 min","นั่ง DiDi ไป Tianzifang ราว 15–20 นาที")},
    {t:"s",p:"tzf"},
    {t:"m",ic:"🍜",h:T("Lunch","มื้อกลางวัน"),sub:T("Lunch can be at Tianzifang, anywhere that looks good","มื้อกลางวันรับประทานที่ Tianzifang ได้ ร้านไหนน่าสนใจก็แวะได้เลย")},
-   {t:"go",ic:"🚕",txt:T("DiDi","DiDi")},
+   {t:"go",ic:"🚕",txt:T("DiDi to 1000 Trees, about 20–25 min","นั่ง DiDi ไป 1000 Trees ราว 20–25 นาที")},
    {t:"s",p:"trees"},
    {t:"go",ic:"🚕",txt:T("DiDi to 1933 Old Millfun, about 15–20 min","นั่ง DiDi ไป 1933 Old Millfun ราว 15–20 นาที")},
    {t:"s",p:"millfun",note:T("If time allows. Otherwise, go on the last day.","ถ้ามีเวลาก็แวะ ถ้าไม่ทันค่อยไปวันสุดท้าย")},
@@ -874,8 +874,8 @@ function go(h){if(location.hash==="#"+h){render();return}
 let pendingSheet=null,loaded=false;
 let ignoreHash=false;
 addEventListener("hashchange",()=>{
-  if(ignoreHash){ignoreHash=false;if(location.hash==="#bund-walk")return}
-  if(location.hash==="#bund-walk"&&document.getElementById("sheet-under")){const cur=document.getElementById("sheet");if(cur&&cur.classList.contains("push")){sheetPushed=backToWalk(cur);return}}
+  if(ignoreHash){ignoreHash=false;if(sheetKey&&location.hash==="#"+sheetHash(sheetKey))return}
+  const und=document.getElementById("sheet-under");if(und&&location.hash==="#"+sheetHash(und.dataset.key||"walk")){const cur=document.getElementById("sheet");if(cur&&cur.classList.contains("push")){sheetPushed=backToWalk(cur);return}}
   const pv=view,pd=dayIdx;readHash();
   if(pendingSheet){const k=pendingSheet;pendingSheet=null;if(sheetKey!==k){const cur=document.getElementById("sheet");if(cur&&k==="walk"&&!cur.classList.contains("mini")){cur.classList.remove("open");cur.id="sheet-old";sheetKey=null;setTimeout(()=>cur.remove(),340)}openSheet(k,false,!!document.getElementById("sheet-old"))}return}
   if(sheetKey){const el=document.getElementById("sheet");const bg=document.getElementById("sheet-bg");if(bg)bg.classList.remove("open");if(el){el.classList.remove("open");setTimeout(closeSheetNow,320)}sheetPushed=false}
@@ -1284,11 +1284,13 @@ function refreshSheet(){const el=document.getElementById("sheet");if(!el||!sheet
   const sc=el.querySelector(".sheet-scroll"),top=sc?sc.scrollTop:0;el.innerHTML=sheetInner(sheetKey);const sc2=el.querySelector(".sheet-scroll");if(sc2)sc2.scrollTop=top}
 function retireSheet(el){if(!el)return;el.id="sheet-old";setTimeout(()=>el.remove(),380)}
 let walkScroll=0;
+const underStack=[];
+const sheetHash=k=>k.startsWith("eat-")?k:k==="walk"?"bund-walk":"place-"+k;
 function openSheet(k,push=true,instant=false,nested=false){
   const isEat=k.startsWith("eat-"),isWalk=k==="walk";
   if(isEat?!F[k.slice(4)]:!isWalk&&!P[k])return;
   const prev=document.getElementById("sheet");
-  if(nested&&prev&&sheetKey==="walk"){const u=document.getElementById("sheet-under");if(u)u.remove();prev.id="sheet-under";prev.dataset.pushed=sheetPushed?"1":"";prev.dataset.lang=lang;sheetKey=null}
+  if(nested&&prev&&sheetKey&&!prev.classList.contains("mini")){const u=document.getElementById("sheet-under");if(u){u.id="";u.classList.add("sheet-deep");underStack.push(u)}prev.id="sheet-under";prev.dataset.key=sheetKey;prev.dataset.pushed=sheetPushed?"1":"";prev.dataset.lang=lang;sheetKey=null}
   else if(prev&&!isEat&&!prev.classList.contains("mini")){retireSheet(prev);sheetKey=null}else closeSheetNow();
   sheetKey=k;
   if(isEat){const bg=document.createElement("div");bg.className="sheet-bg";bg.id="sheet-bg";bg.dataset.close="1";document.body.appendChild(bg);requestAnimationFrame(()=>requestAnimationFrame(()=>bg.classList.add("open")))}
@@ -1318,13 +1320,13 @@ function wireSwipe(el){
   el.addEventListener("touchend",end);el.addEventListener("touchcancel",end)}
 function backToWalk(el){const u=document.getElementById("sheet-under");if(!u)return false;
   el.classList.remove("open");el.id="sheet-old";setTimeout(()=>el.remove(),360);
-  u.id="sheet";sheetKey="walk";const pushed=u.dataset.pushed==="1";delete u.dataset.pushed;if(u.dataset.lang!==lang)refreshSheet();delete u.dataset.lang;return pushed}
-function closeSheetNow(){const el=document.getElementById("sheet");if(el)el.remove();const un=document.getElementById("sheet-under");if(un)un.remove();const bg=document.getElementById("sheet-bg");if(bg)bg.remove();document.body.classList.remove("noscroll");sheetKey=null}
+  u.id="sheet";sheetKey=u.dataset.key||"walk";delete u.dataset.key;{const d=underStack.pop();if(d){d.classList.remove("sheet-deep");d.id="sheet-under"}}const pushed=u.dataset.pushed==="1";delete u.dataset.pushed;if(u.dataset.lang!==lang)refreshSheet();delete u.dataset.lang;return pushed}
+function closeSheetNow(){const el=document.getElementById("sheet");if(el)el.remove();const un=document.getElementById("sheet-under");if(un)un.remove();underStack.splice(0).forEach(d=>d.remove());const bg=document.getElementById("sheet-bg");if(bg)bg.remove();document.body.classList.remove("noscroll");sheetKey=null}
 function closeSheet(){
   const el=document.getElementById("sheet");if(!el)return;
   if(el.classList.contains("push")&&document.getElementById("sheet-under")){const wasPushed=sheetPushed;const walkPushed=backToWalk(el);
-    if(wasPushed){sheetPushed=walkPushed;ignoreHash=true;history.back()}else{sheetPushed=walkPushed;try{history.replaceState(null,"","#bund-walk")}catch(_){}}return}
-  {const un=document.getElementById("sheet-under");if(un){un.classList.remove("open");setTimeout(()=>un.remove(),340)}}
+    if(wasPushed){sheetPushed=walkPushed;ignoreHash=true;history.back()}else{sheetPushed=walkPushed;try{history.replaceState(null,"","#"+sheetHash(sheetKey))}catch(_){}}return}
+  {const un=document.getElementById("sheet-under");if(un){un.classList.remove("open");setTimeout(()=>un.remove(),340)}underStack.splice(0).forEach(d=>{d.classList.remove("open");setTimeout(()=>d.remove(),340)})}
   el.classList.remove("open");const bg=document.getElementById("sheet-bg");if(bg)bg.classList.remove("open");
   el.id="sheet-old";sheetKey=null;
   const done=()=>{el.remove();if(bg&&bg.isConnected)bg.remove();if(!document.getElementById("sheet"))document.body.classList.remove("noscroll")};
@@ -1388,7 +1390,7 @@ document.addEventListener("click",e=>{
   if(e.target.closest("[data-close]")){closeSheet();return}
   const wst=e.target.closest(".sheet [data-wstop]");if(wst){const li=document.querySelectorAll("#sheet .wstops .ws")[+wst.dataset.wstop],sc=document.querySelector("#sheet .sheet-scroll");if(li&&sc){sc.scrollTo({top:li.getBoundingClientRect().top-sc.getBoundingClientRect().top+sc.scrollTop-12,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});li.classList.remove("flash");void li.offsetWidth;li.classList.add("flash");setTimeout(()=>li.classList.remove("flash"),1600)}return}
   const wk=e.target.closest("[data-walk]");if(wk){openSheet("walk");return}
-  const wl=e.target.closest("[data-walklink]");if(wl){const cur=document.getElementById("sheet");if(cur&&cur.classList.contains("push")&&document.getElementById("sheet-under"))closeSheet();else openSheet("walk");return}
+  const wl=e.target.closest("[data-walklink]");if(wl){const cur=document.getElementById("sheet");if(cur&&cur.classList.contains("push")&&document.getElementById("sheet-under"))closeSheet();else openSheet("walk",true,false,true);return}
   const wp=e.target.closest("[data-wplace]");if(wp){const sc=wp.closest(".sheet-scroll");walkScroll=sc?sc.scrollTop:0;openSheet(wp.dataset.wplace,true,false,true);return}
   const eb=e.target.closest("[data-eat]");if(eb){openSheet("eat-"+eb.dataset.eat);return}
   const b=e.target.closest("button");if(!b)return;
