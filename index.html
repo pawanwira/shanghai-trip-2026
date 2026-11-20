@@ -784,14 +784,13 @@ const DAYS=[
    {t:"s",p:"jixian",time:"11:00"},
    {t:"go",ic:"🚶",txt:T("Walk 20 min along the lakeshore","เดินเลียบริมทะเลสาบ 20 นาที")},
    {t:"s",p:"brokenbridge"},
-   {t:"go",ic:"🚶",txt:T("Walk 20 min along the Bai Causeway","เดินไปตามทางเดินไป๋ตี้ 20 นาที")},
-   {t:"s",p:"gushan"},
+   {t:"go",ic:"🚶",txt:T("Walk the Bai Causeway as far as you like, then back","เดินเล่นบนทางเดินไป๋ตี้ตามสบาย แล้วเดินกลับมา")},
    {t:"go",ic:"🚕",txt:T("DiDi to Lingyin Temple · 15–20 min","นั่ง DiDi ไปวัดหลิงอิ่น · 15–20 นาที")},
-   {t:"s",p:"lingyin",time:"12:30"},
+   {t:"s",p:"lingyin",time:"13:00"},
    {t:"go",ic:"🚕",txt:T("DiDi to Leifeng Pagoda · 20 min","นั่ง DiDi ไปเจดีย์เหลยเฟิง · 20 นาที")},
-   {t:"s",p:"leifeng",time:"14:45"},
+   {t:"s",p:"leifeng",time:"15:10"},
    {t:"go",ic:"🚶",txt:T("Walk 5–10 min","เดิน 5–10 นาที")},
-   {t:"s",p:"changqiao",time:"16:30",note:T("Sunset around 17:00. Running late? Skip Leifeng and come straight here.","พระอาทิตย์ตกราว 17:00 น. ถ้าไม่ทันเวลา ข้ามเจดีย์เหลยเฟิงแล้วมาที่นี่เลย")},
+   {t:"s",p:"changqiao",time:"16:30",note:T("Sunset around 17:00","พระอาทิตย์ตกราว 17:00 น.")},
    {t:"go",ic:"🚕",txt:T("DiDi to Hubin · 10–15 min","นั่ง DiDi ไปย่าน Hubin · 10–15 นาที")},
    {t:"m",ic:"🍽️",time:"17:30",h:T("Dinner in Hubin","มื้อเย็นย่าน Hubin"),sub:T("Near Longxiangqiao station · restaurant to be decided","ใกล้สถานี Longxiangqiao · ยังไม่ได้เลือกร้าน")},
    {t:"go",ic:"🚇",time:"18:40",ln:["l1"],txt:T("Hangzhou Line 1 to Hangzhou East · 25 min","นั่งรถไฟใต้ดินหางโจวสาย 1 ไปสถานี Hangzhou East · 25 นาที"),sub:T("Arrive by 19:10","ควรถึงก่อน 19:10 น.")},
@@ -1010,7 +1009,7 @@ function renderFood(){
 }
 function wordRow(zh,py,mean){return `<button class="row wordrow" data-copy="${esc(zh)}"><span><span class="big">${esc(zh)}</span>${py?`<span class="py">${esc(py)}</span>`:""}<span class="mean">${esc(mean)}</span></span><span class="cp" aria-label="${esc(L(S.copy))}" title="${esc(L(S.copy))}">${ico("copy")}</span></button>`}
 function renderWords(){
-  const places=["hotel","pvg","nanjing","bund","ffc","wukang","anfu","xtd","yuyuan","bazaar","disney","jingan","trees","millfun","ljz","stower","hongkou","northbund","hqrail","shrail","hzeast","westlake","jixian","brokenbridge","gushan","lingyin","leifeng","changqiao"];
+  const places=["hotel","pvg","nanjing","bund","ffc","wukang","anfu","xtd","yuyuan","bazaar","disney","jingan","trees","millfun","ljz","stower","hongkou","northbund","hqrail","shrail","hzeast","westlake","jixian","brokenbridge","lingyin","leifeng","changqiao"];
   return `<h2 class="section">${esc(L(TAB("words")))}</h2>${subnavHTML}
   <div class="group" id="g-phr"><h3>${esc(L(S.wPhr))}</h3><div class="list">${PHRASES.map(p=>wordRow(p[0],p[1],L(p[2]))).join("")}</div></div>
   <div class="group" id="g-pl"><h3>${esc(L(S.wPlaces))}</h3><div class="list">${places.map(k=>wordRow(P[k].zh,P[k].py,P[k].nm)).join("")}</div></div>`;
@@ -1187,7 +1186,7 @@ const DEEP={
  brokenbridge:{
   hist:T("The bridge isn't actually broken. In winter, snow melts first on the sunny side of the arch, so from a distance the bridge seems to break in the middle. This view, \"Lingering Snow on Broken Bridge\", is one of the Ten Views of West Lake. It's also where, in the Legend of the White Snake, the snake spirit Bai Suzhen first meets the young scholar Xu Xian.",
          "สะพานนี้ไม่ได้ขาดจริง ๆ ช่วงหน้าหนาว หิมะบนสะพานฝั่งที่โดนแดดจะละลายก่อน มองจากไกล ๆ เลยเหมือนสะพานขาดตรงกลาง ภาพนี้มีชื่อว่า \"หิมะค้างบนสะพานขาด\" เป็นหนึ่งในสิบทิวทัศน์ของทะเลสาบซีหู ที่นี่ยังเป็นสถานที่ในตำนานนางพญางูขาว ที่ไป๋ซู่เจินพบกับบัณฑิตหนุ่มสวี่เซียนเป็นครั้งแรก"),
-  tip:T(["From here the Bai Causeway runs 1 km across the lake to Gushan."],["จากตรงนี้ ทางเดินไป๋ตี้ทอดยาวข้ามทะเลสาบไปถึงกูซาน ระยะทาง 1 กม."]),
+  tip:T(["The Bai Causeway starts here and runs 1 km across the lake. Walk out as far as you like, then come back.","For the DiDi to Lingyin, use Beishan Road, right by the bridge."],["ทางเดินไป๋ตี้เริ่มจากตรงนี้ ทอดยาวข้ามทะเลสาบ 1 กม. เดินเล่นไปได้ตามสบายแล้วเดินกลับมา","เรียก DiDi ไปวัดหลิงอิ่นได้ที่ถนนเป่ยซาน ข้าง ๆ สะพาน"]),
   fact:T("Locals like to say: \"Broken Bridge isn't broken, Solitary Hill isn't solitary, and Long Bridge isn't long.\"","คนหางโจวชอบพูดกันว่า \"สะพานขาดไม่ขาด เขาโดดเดี่ยวไม่โดดเดี่ยว สะพานยาวไม่ยาว\"")},
  gushan:{
   hist:T("The Bai Causeway is named after the poet Bai Juyi, who governed Hangzhou in the 820s and loved this lake. At its far end is Gushan, \"Solitary Hill\", the only natural island in West Lake, with gardens, pavilions and the Xiling Seal Engravers' Society.",
@@ -1203,7 +1202,7 @@ const DEEP={
   hist:T("The first Leifeng Pagoda was built in the 970s by the king of Wuyue. It stood for almost a thousand years until it collapsed in 1924. The pagoda you see today was rebuilt in 2002 over the old foundations. In the Legend of the White Snake, the monk Fahai imprisons the White Snake beneath this pagoda.",
          "เจดีย์เหลยเฟิงองค์แรกสร้างในช่วงทศวรรษ 970 โดยกษัตริย์แคว้นอู๋เยว่ ตั้งอยู่เกือบพันปี ก่อนจะพังลงในปี 1924 องค์ที่เห็นทุกวันนี้สร้างใหม่ในปี 2002 บนฐานเดิม ในตำนานนางพญางูขาว หลวงจีนฝาไห่ได้กักขังนางพญางูขาวไว้ใต้เจดีย์องค์นี้"),
   see:T(["Views over the whole lake from the top","Ruins of the original pagoda's base, inside"],["วิวทะเลสาบทั้งหมดจากด้านบน","ซากฐานเจดีย์องค์เดิมที่อยู่ด้านใน"]),
-  tip:T(["A lift goes most of the way up; the last part is stairs.","Last entry 17:00. Running late? Skip going up and head to Changqiao Park."],["มีลิฟต์ขึ้นไปเกือบถึงบน ช่วงสุดท้ายต้องเดินขึ้นบันได","เข้าได้ถึง 17:00 น. ถ้าไม่ทันเวลา ข้ามการขึ้นเจดีย์แล้วไปสวน Changqiao เลย"])},
+  tip:T(["A lift goes most of the way up; the last part is stairs.","Last entry 17:00."],["มีลิฟต์ขึ้นไปเกือบถึงบน ช่วงสุดท้ายต้องเดินขึ้นบันได","เข้าได้ถึง 17:00 น."])},
  changqiao:{
   hist:T("Changqiao means \"Long Bridge\", though the bridge is famously short. It's linked to the Butterfly Lovers, China's Romeo and Juliet: Liang Shanbo and Zhu Yingtai are said to have walked back and forth here, not wanting to say goodbye.",
          "ฉางเฉียว แปลว่า \"สะพานยาว\" แต่ตัวสะพานกลับสั้นมาก ที่นี่เกี่ยวข้องกับตำนานคู่รักผีเสื้อ หรือโรมิโอกับจูเลียตของจีน เล่ากันว่าเหลียงซานป๋อกับจู้อิงไถเดินไปมาบนสะพานนี้ เพราะไม่อยากจากกัน"),
@@ -1234,7 +1233,7 @@ const STORY=[
  {k:"jingan",col:"#B5862E",route:["hotel","jingan","trees","millfun","ljz"],
   t:T("Gold roofs & city lights","เซี่ยงไฮ้เก่าและใหม่"),
   s:T("A temple with real gold roofs, a building covered in trees, a 1933 building of spiral ramps and bridges, and dinner inside China's tallest tower.","ไหว้พระที่วัดจิ้งอัน ชมตึก 1000 Trees เดินถ่ายรูปที่ 1933 Old Millfun แล้วทานมื้อเย็นที่ Shanghai Tower")},
- {k:"westlake",col:"#2F7F86",hz:1,route:["jixian","brokenbridge","gushan","lingyin","leifeng","changqiao"],
+ {k:"westlake",col:"#2F7F86",hz:1,route:["jixian","brokenbridge","lingyin","leifeng","changqiao"],
   t:T("Heaven on earth","เที่ยวหางโจว"),
   s:T("One hour by bullet train to West Lake: a walk across the water, an ancient temple in the hills, and a pagoda at sunset.","นั่งรถไฟความเร็วสูง 1 ชั่วโมงไปหางโจว เดินเล่นทะเลสาบซีหู ไหว้พระที่วัดหลิงอิ่น แล้วชมเจดีย์เหลยเฟิงตอนพระอาทิตย์ตก")},
  {k:"northbund",col:"#8A5A9E",route:["hotel","rockbund","waibaidu","hongkou","northbund","hotel","pvg"],
