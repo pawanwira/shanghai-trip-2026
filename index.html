@@ -77,6 +77,8 @@ main{padding-block:8px calc(96px + env(safe-area-inset-bottom,0px))}
 .galdots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.55);box-shadow:0 0 3px rgba(0,0,0,.35)}
 .galdots i.on{background:#fff}
 .card .ph{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;background:var(--line)}
+.card .ph.phold{display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted);font-size:.9rem;background:var(--accent-soft)}
+.card .ph.phold .svg{width:20px;height:20px;flex-shrink:0}
 .card .body{padding:14px 16px 16px}
 .flight .frow2{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
 .flight .ftime{font-size:1.5rem;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2}
@@ -110,13 +112,14 @@ details.more .facts{color:var(--muted);font-size:.92rem}
 .step{display:flex;align-items:flex-start;gap:10px;padding:2px 6px;color:var(--muted);font-size:.95rem;line-height:1.45}
 button.step{width:100%;background:none;border:0;font-family:inherit;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}.altlnk{color:var(--sky);font-weight:600;white-space:nowrap}.altlnk .svg{width:14px;height:14px;vertical-align:-2px;margin-left:1px}.ropt{margin-top:14px;padding:12px 8px 8px 6px;border:1px solid var(--line);border-radius:14px;background:var(--card)}.rhead{display:flex;align-items:center;gap:8px;margin:0 0 6px 6px;font-weight:600;font-size:1.05rem;color:var(--ink)}.rtag{font-size:.78rem;font-weight:600;color:var(--red);background:var(--red-soft);border-radius:999px;padding:2px 9px}.ropt .step{padding:3px 6px}.sheet.mini .rbody h2{font-family:var(--body)!important;font-weight:600!important;font-size:1.35rem!important}
 .step .sub{display:block;font-size:.88rem;margin-top:3px;opacity:.9}
+.step .stime{font-weight:600;font-variant-numeric:tabular-nums}
 .step .ic{width:20px;height:20px;flex-shrink:0;margin-top:1px}
 .step .lines{display:inline-flex;gap:4px;margin-right:4px;vertical-align:1px}
 .ml{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:20px;padding:0 5px;border-radius:5px;font-size:.75rem;font-weight:700;color:#fff}
 .l1{background:#E4002B}.l8{background:#009EDB}.l2{background:#6E9F0F}.l10{background:#9C79B3}.l11{background:#871C2B}.l13{background:#D06A98}.l7{background:#F3560F}.rcost{font-size:.85rem;font-weight:600;margin:2px 0 6px}
 .meal{display:flex;gap:10px;align-items:flex-start;padding:6px 6px 8px}
 .meal .ic{width:20px;height:20px;flex-shrink:0;margin-top:2px;color:var(--muted)}
-.meal b{display:block;font-weight:600;font-size:.88rem;color:var(--muted);letter-spacing:.02em}
+.meal b{display:block;font-weight:600;font-size:.95rem;color:var(--muted);letter-spacing:.02em;font-variant-numeric:tabular-nums}
 .meal > div{flex:1;min-width:0}
 .meal .opt{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;border:0;background:none;padding:5px 0;text-align:left;color:var(--ink);font-size:1rem;line-height:1.4}
 .meal .opt .svg{width:16px;height:16px;color:var(--muted);flex-shrink:0}
@@ -266,6 +269,11 @@ h2.section{font-family:var(--display);font-weight:400;font-size:1.75rem;margin:2
 .smap .mdot text{font-size:12.5px;fill:var(--ink);font-weight:600;opacity:0;transition:opacity .3s;paint-order:stroke;stroke:var(--card);stroke-width:3px}
 .smap .mdot.on circle{fill:var(--c);r:5.5}
 .smap .mdot.on text{opacity:1}
+.smap .lyr{transition:opacity .45s}
+.smap.hz .sh,.smap:not(.hz) .hzl{opacity:0;pointer-events:none}
+.smap .hzland{fill:var(--card);stroke:var(--line)}
+.smap .cway{fill:none;stroke:var(--card);stroke-width:3;stroke-linecap:round}
+.smap .hzlbl{font-size:10px;fill:var(--muted);letter-spacing:.03em}
 .ovnav{display:flex;align-items:center;justify-content:center;gap:4px;margin-top:10px}
 .ovbtn{width:40px;height:40px;border-radius:50%;border:0;background:none;color:var(--ink);display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0}
 .ovbtn .svg{width:22px;height:22px;display:block}
@@ -478,6 +486,7 @@ const I={
  story:'<path d="M4 5.5c3-1 6-1 8 1v13c-2-2-5-2-8-1z"/><path d="M20 5.5c-3-1-6-1-8 1v13c2-2 5-2 8-1z"/>',
  copy:'<rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/>',
  tick:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+ camera:'<path d="M4 8.5h3.2l1.6-2.2h6.4l1.6 2.2H20v10.5H4z"/><circle cx="12" cy="13.5" r="3.3"/>',
  back:'<path d="M14.5 5.5 8 12l6.5 6.5"/>',
  next:'<path d="M9.5 5.5 16 12l-6.5 6.5"/>',
  alert:'<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5.5"/><circle cx="12" cy="16.3" r=".6" fill="currentColor"/>',
@@ -562,6 +571,20 @@ const P = {
   westlake:{nm:"West Lake",zh:"西湖",py:"Xīhú",
     sum:T("Hangzhou's famous lake of temples, pagodas and gardens.","ทะเลสาบชื่อดังของหางโจว รายล้อมด้วยวัด เจดีย์ และสวน"),
     about:T("A UNESCO World Heritage site praised by Chinese poets for over a thousand years. An old saying goes: \"Above there is heaven; below there are Suzhou and Hangzhou.\"","เป็นมรดกโลกของยูเนสโก และเป็นที่ที่กวีจีนพรรณนาถึงมากว่าพันปี มีคำกล่าวว่า \"บนฟ้ามีสวรรค์ บนดินมีซูโจวกับหางโจว\"")},
+  jixian:{nm:"Jixian Pavilion",zh:"集贤亭",py:"Jíxián Tíng",ph:1,
+    sum:T("A pavilion out on the lake at the end of a stone path. A classic photo spot.","ศาลากลางน้ำที่ปลายทางเดินหินยื่นลงไปในทะเลสาบ เป็นมุมถ่ายรูปยอดนิยม")},
+  brokenbridge:{nm:"Broken Bridge",zh:"断桥",py:"Duàn Qiáo",ph:1,
+    sum:T("The famous bridge where the Bai Causeway meets the shore.","สะพานชื่อดังตรงจุดที่ทางเดินไป๋ตี้เชื่อมกับฝั่ง")},
+  gushan:{nm:"Bai Causeway & Gushan",zh:"孤山",py:"Gūshān",ph:1,
+    sum:T("A flat walk across the lake to Gushan, a small hill-island of gardens.","ทางเดินเรียบข้ามทะเลสาบ ไปจนถึงกูซาน เกาะเนินเขาเล็ก ๆ ที่มีสวนสวย")},
+  lingyin:{nm:"Lingyin Temple",zh:"灵隐寺",py:"Língyǐn Sì",ph:1,
+    sum:T("One of China's most famous Buddhist temples, with ancient cliff carvings beside it.","วัดพุทธที่มีชื่อเสียงที่สุดแห่งหนึ่งของจีน ข้าง ๆ มีพระพุทธรูปแกะสลักบนหน้าผาเก่าแก่"),
+    warn:T("Reserve ahead · last entry 17:00","ต้องจองล่วงหน้า · เข้าได้ถึง 17:00 น.")},
+  leifeng:{nm:"Leifeng Pagoda",zh:"雷峰塔",py:"Léifēng Tǎ",ph:1,
+    sum:T("A pagoda on the south shore with views over the whole lake.","เจดีย์ริมฝั่งใต้ของทะเลสาบ ขึ้นไปชมวิวทะเลสาบได้ทั้งหมด"),
+    warn:T("Last entry 17:00","เข้าได้ถึง 17:00 น.")},
+  changqiao:{nm:"Changqiao Park",zh:"长桥公园",py:"Chángqiáo Gōngyuán",ph:1,
+    sum:T("A small, free lakeside park with the classic view of Leifeng Pagoda at sunset.","สวนเล็ก ๆ ริมทะเลสาบ เข้าฟรี เป็นจุดชมวิวเจดีย์เหลยเฟิงยามพระอาทิตย์ตกแบบคลาสสิก")},
   rockbund:{nm:"Rock Bund",zh:"外滩源",py:"Wàitān Yuán",insp:"https://www.instagram.com/p/DT2g67oiSWP/?img_index=3",
     sum:T("Red-brick lanes at the north end of the Bund, with cafés and small shops.","ย่านอาคารอิฐแดงทางเหนือของ The Bund มีคาเฟ่และร้านค้าเล็ก ๆ")},
   union:{nm:"Union Church",zh:"新天安堂",py:"Xīn Tiān'ān Táng",
@@ -670,6 +693,7 @@ const F = {
     ab:T("A local favorite for Hangzhou-style snacks, listed in the Michelin Guide. Go for the pan-fried dumplings, crispy on the bottom and juicy inside, with noodles or a bowl of soy milk.","ร้านของกินสไตล์หางโจวที่คนท้องถิ่นชอบ ติดอยู่ในมิชลินไกด์ ต้องลองเกี๊ยวทอดก้นกรอบ ไส้ฉ่ำ กินคู่กับบะหมี่หรือน้ำเต้าหู้สักถ้วย")},
   wumingshi:{mich:1,a:"hz",nm:"Wu Ming Shi Mian Guan",zh:"无名氏面馆",e:"🍜",d:T("Noodles","บะหมี่"),
     ab:T("A tiny family noodle shop, now in its third generation; its name means \"the nameless noodle shop.\" It's listed in the Michelin Guide, and the star is pork chop noodles; the pork chops are limited each day.","ร้านบะหมี่เล็ก ๆ ของครอบครัว ตอนนี้ส่งต่อมาถึงรุ่นที่สามแล้ว ชื่อร้านแปลว่า \"ร้านบะหมี่ไม่มีชื่อ\" ติดอยู่ในมิชลินไกด์ เมนูเด็ดคือบะหมี่หมูทอดชิ้นโต ซึ่งมีจำกัดในแต่ละวัน"),
+    loc:T("17-1 Youdian Road · 10–15 min walk from Longxiangqiao","ถนนโหยวเตี้ยน เลขที่ 17-1 · เดินจากสถานี Longxiangqiao 10–15 นาที"),
     tip:T(["Only six tables; share a table and grab your own chopsticks"],["มีแค่ 6 โต๊ะ ต้องนั่งรวมกับคนอื่น และหยิบตะเกียบเอง"])}
 };
 // In visiting order; third item = which days we eat there
@@ -747,14 +771,33 @@ const DAYS=[
    {t:"go",ic:"🚇",ln:["l2"],txt:T("Line 2 to People's Square, exit 9 · 10 min","นั่งสาย 2 ไปสถานี People's Square ทางออก 9 · 10 นาที")}
   ]},
  {dow:T("Sat","ส."),d:19,date:T("Saturday 19 December","วันเสาร์ที่ 19 ธันวาคม"),
-  title:T("Day trip to Hangzhou","เที่ยวหางโจว"),warn:T(["Bring passports for the train"],["พกพาสปอร์ตไปทุกคน ต้องใช้ตอนขึ้นรถไฟ"]),
-  lede:T("High-speed train to Hangzhou and West Lake.","นั่งรถไฟความเร็วสูงไปหางโจว เที่ยวทะเลสาบซีหู"),
+  title:T("Day trip to Hangzhou","เที่ยวหางโจว"),warn:T(["Bring passports for the train and Lingyin","Reserve Lingyin ahead"],["พกพาสปอร์ตไปทุกคน ต้องใช้ตอนขึ้นรถไฟและเข้าวัดหลิงอิ่น","ต้องจองวัดหลิงอิ่นล่วงหน้า"]),
+  lede:T("West Lake on foot, Lingyin Temple, then Leifeng Pagoda at sunset.","เดินเล่นทะเลสาบซีหู ไหว้พระที่วัดหลิงอิ่น แล้วชมเจดีย์เหลยเฟิงตอนพระอาทิตย์ตก"),
   items:[
-   {t:"m",ic:"🍳",h:T("Breakfast near the hotel","มื้อเช้าแถวโรงแรม")},
-   {t:"go",ic:"🚄",txt:T("Train to Hangzhou East · 1 hr","นั่งรถไฟไป Hangzhou East · 1 ชม."),sub:T("From Shanghai Hongqiao or Shanghai Railway Station","ขึ้นที่ Shanghai Hongqiao หรือ Shanghai Railway Station")},
-   {t:"go",ic:"🚇",ln:["l1"],txt:T("Hangzhou Line 1 to Longxiangqiao, exit C · 6 stops","นั่งรถไฟใต้ดินหางโจวสาย 1 ไปสถานี Longxiangqiao ทางออก C · 6 สถานี")},
-   {t:"s",p:"westlake"}
-  ],extra:"hangzhou"},
+   {t:"go",ic:"🚶",time:"06:40",txt:T("Leave the hotel","ออกจากโรงแรม")},
+   {t:"go",ic:"🚇",ln:["l1"],txt:T("Line 1 to Shanghai Railway Station · 10 min","นั่งสาย 1 ไปสถานี Shanghai Railway Station · 10 นาที"),sub:T("Arrive by 07:00","ควรถึงก่อน 07:00 น.")},
+   {t:"m",ic:"🍳",h:T("Light breakfast at the station, before the train","มื้อเช้าเบา ๆ ที่สถานี ก่อนขึ้นรถไฟ")},
+   {t:"go",ic:"🚄",time:"08:00–09:36",txt:T("Train to Hangzhou East","นั่งรถไฟไป Hangzhou East")},
+   {t:"go",ic:"🚇",ln:["l1"],txt:T("Hangzhou Line 1 to Longxiangqiao, exit C · 25 min","นั่งรถไฟใต้ดินหางโจวสาย 1 ไปสถานี Longxiangqiao ทางออก C · 25 นาที"),sub:T("Then walk 10–15 min to Wu Ming Shi","จากนั้นเดิน 10–15 นาทีไปร้าน Wu Ming Shi")},
+   {t:"m",ic:"🍜",time:"10:15",h:T("Brunch","มื้อสาย"),o:["wumingshi"]},
+   {t:"go",ic:"🚶",txt:T("Walk 10–15 min to the lake","เดิน 10–15 นาทีไปริมทะเลสาบ")},
+   {t:"s",p:"jixian",time:"11:00"},
+   {t:"go",ic:"🚶",txt:T("Walk 20 min along the lakeshore","เดินเลียบริมทะเลสาบ 20 นาที")},
+   {t:"s",p:"brokenbridge"},
+   {t:"go",ic:"🚶",txt:T("Walk 20 min along the Bai Causeway","เดินไปตามทางเดินไป๋ตี้ 20 นาที")},
+   {t:"s",p:"gushan"},
+   {t:"go",ic:"🚕",txt:T("DiDi to Lingyin Temple · 15–20 min","นั่ง DiDi ไปวัดหลิงอิ่น · 15–20 นาที")},
+   {t:"s",p:"lingyin",time:"12:30"},
+   {t:"go",ic:"🚕",txt:T("DiDi to Leifeng Pagoda · 20 min","นั่ง DiDi ไปเจดีย์เหลยเฟิง · 20 นาที")},
+   {t:"s",p:"leifeng",time:"14:45"},
+   {t:"go",ic:"🚶",txt:T("Walk 5–10 min","เดิน 5–10 นาที")},
+   {t:"s",p:"changqiao",time:"16:30",note:T("Sunset around 17:00. Running late? Skip Leifeng and come straight here.","พระอาทิตย์ตกราว 17:00 น. ถ้าไม่ทันเวลา ข้ามเจดีย์เหลยเฟิงแล้วมาที่นี่เลย")},
+   {t:"go",ic:"🚕",txt:T("DiDi to Hubin · 10–15 min","นั่ง DiDi ไปย่าน Hubin · 10–15 นาที")},
+   {t:"m",ic:"🍽️",time:"17:30",h:T("Dinner in Hubin","มื้อเย็นย่าน Hubin"),sub:T("Near Longxiangqiao station · restaurant to be decided","ใกล้สถานี Longxiangqiao · ยังไม่ได้เลือกร้าน")},
+   {t:"go",ic:"🚇",time:"18:40",ln:["l1"],txt:T("Hangzhou Line 1 to Hangzhou East · 25 min","นั่งรถไฟใต้ดินหางโจวสาย 1 ไปสถานี Hangzhou East · 25 นาที"),sub:T("Arrive by 19:10","ควรถึงก่อน 19:10 น.")},
+   {t:"go",ic:"🚄",time:"20:10–21:03",txt:T("Train to Shanghai Hongqiao","นั่งรถไฟไป Shanghai Hongqiao")},
+   {t:"go",ic:"🚇",ln:["l2"],txt:T("Line 2 to People's Square, exit 9 · 35–40 min","นั่งสาย 2 ไปสถานี People's Square ทางออก 9 · 35–40 นาที"),sub:T("From Hongqiao Railway Station metro stop","ขึ้นที่สถานีรถไฟใต้ดิน Hongqiao Railway Station")}
+  ]},
  {dow:T("Sun","อา."),d:20,date:T("Sunday 20 December","วันอาทิตย์ที่ 20 ธันวาคม"),
   title:T("Bund Walk, then home","เดินเล่นริมแม่น้ำ และเดินทางกลับ"),
   lede:T("A relaxed last morning by the river before the flight.","ช่วงเช้าเดินเล่นริมแม่น้ำ แล้วเดินทางไปสนามบิน"),
@@ -841,6 +884,7 @@ const CHECK=[
  ["sim",T("Roaming or eSIM ready, LINE tested","เปิดโรมมิ่งหรือ eSIM แล้ว ลองใช้ LINE ดูแล้ว")],
  ["disney",T("Disneyland tickets bought","ซื้อบัตรดิสนีย์แลนด์แล้ว")],
  ["train",T("Hangzhou train tickets booked","จองตั๋วรถไฟไปหางโจวแล้ว")],
+ ["lingyin",T("Lingyin Temple reserved (opens 12 Dec, 8:00 China time)","จองวัดหลิงอิ่นแล้ว (เปิดจอง 12 ธ.ค. 8:00 น. เวลาจีน)")],
  ["cash",T("Some cash in yuan","แลกเงินหยวนติดตัวไว้นิดหน่อย")],
  ["coat",T("Warm coat, scarf, gloves, hat","เสื้อโค้ทกันหนาว ผ้าพันคอ ถุงมือ หมวก")],
  ["shoes",T("Comfortable walking shoes","รองเท้าที่ใส่เดินสบาย")],
@@ -916,7 +960,7 @@ addEventListener("hashchange",()=>{
 /* ---------- Views ---------- */
 function placeCard(it){
   const p=P[it.p];
-  let h=`<article class="card tap" data-place="${it.p}" role="button" tabindex="0" aria-label="${esc(p.nm)} — ${esc(L(S.more))}">${img(it.p,"ph")}<div class="body">`;
+  let h=`<article class="card tap" data-place="${it.p}" role="button" tabindex="0" aria-label="${esc(p.nm)} — ${esc(L(S.more))}">${img(it.p,"ph")||(p.ph?`<div class="ph phold">${ico("camera")}${esc(L(T("Photo coming soon","รูปภาพกำลังจะตามมา")))}</div>`:"")}<div class="body">`;
   h+=`<div class="ttl"><div><h3>${esc(p.nm)}${it.time?`<span class="tm"> · ${esc(it.time)}</span>`:""}</h3></div><span class="chev" aria-hidden="true">${ico("next")}</span></div>`;
   if(p.sum)h+=`<p class="sum">${esc(L(p.sum))}</p>`;
   if(p.warn)h+=`<p class="warn">⏰ ${esc(L(p.warn))}</p>`;
@@ -948,7 +992,7 @@ function renderDisney(){
   <div class="group"><h3>${esc(L(S.shows))}</h3><div class="list">${SHOWS.map(s=>`<button class="row showrow" data-place="${s[0]}"><span>${esc(L(s[1]).split(" ")[0])} <span class="sn">${esc(L(s[1]).split(" ").slice(1).join(" "))}</span></span><span class="t">${esc(L(s[2]))}</span></button>`).join("")}</div></div>
   <div class="group"><h3>${esc(L(S.parkFood))}</h3><div class="list">${Object.values(F).filter(f=>f.a==="dl").map(f=>`<div class="row">${f.e} ${esc(f.nm)}</div>`).join("")}</div></div>`;
 }
-function stepH(s,rid){const tx=esc(L(s.txt)).replace(/(\d)–(\d)/g,"$1–⁠$2"),tag=rid?"button":"div";return `<${tag} class="step"${rid?` data-route="${rid}"`:""}>${ico(EMO2ICO[s.ic]||"car","ic")}<span>${s.ln?`<span class="lines">${s.ln.map(l=>`<span class="ml ${l}">${l.slice(1)}</span>`).join("")}</span>`:""}${tx}${rid?` · <span class="altlnk">${esc(L(ALTLBL[s.alt[0].ic]||T("other ways","ทางอื่น")))}${ico("next")}</span>`:""}${s.sub?`<span class="sub">${esc(L(s.sub))}</span>`:""}</span></${tag}>`}
+function stepH(s,rid){const tx=esc(L(s.txt)).replace(/(\d)–(\d)/g,"$1–⁠$2"),tag=rid?"button":"div";return `<${tag} class="step"${rid?` data-route="${rid}"`:""}>${ico(EMO2ICO[s.ic]||"car","ic")}<span>${s.time?`<b class="stime">${esc(s.time)}</b> · `:""}${s.ln?`<span class="lines">${s.ln.map(l=>`<span class="ml ${l}">${l.slice(1)}</span>`).join("")}</span>`:""}${tx}${rid?` · <span class="altlnk">${esc(L(ALTLBL[s.alt[0].ic]||T("other ways","ทางอื่น")))}${ico("next")}</span>`:""}${s.sub?`<span class="sub">${esc(L(s.sub))}</span>`:""}</span></${tag}>`}
 const ALTLBL={"🚶":T("or metro","หรือรถไฟใต้ดิน"),"🚇":T("or metro","หรือรถไฟใต้ดิน"),"🚕":T("or DiDi","หรือ DiDi")};
 const MODE={"🚶":T("Metro","รถไฟใต้ดิน"),"🚇":T("Metro","รถไฟใต้ดิน"),"🚕":T("DiDi","DiDi")};
 const RT={};DAYS.forEach((d,di)=>d.items.forEach((it,ii)=>{if(it.alt){it.rid=(di+1)+"-"+ii;RT[it.rid]=it;if(!it.to){const nx=d.items.slice(ii+1).find(x=>x.t==="s");if(nx&&P[nx.p])it.to=P[nx.p].nm}}}));
@@ -966,7 +1010,7 @@ function renderFood(){
 }
 function wordRow(zh,py,mean){return `<button class="row wordrow" data-copy="${esc(zh)}"><span><span class="big">${esc(zh)}</span>${py?`<span class="py">${esc(py)}</span>`:""}<span class="mean">${esc(mean)}</span></span><span class="cp" aria-label="${esc(L(S.copy))}" title="${esc(L(S.copy))}">${ico("copy")}</span></button>`}
 function renderWords(){
-  const places=["hotel","pvg","nanjing","bund","ffc","wukang","anfu","xtd","yuyuan","bazaar","disney","jingan","trees","millfun","ljz","stower","hongkou","northbund","hqrail","shrail","hzeast","westlake"];
+  const places=["hotel","pvg","nanjing","bund","ffc","wukang","anfu","xtd","yuyuan","bazaar","disney","jingan","trees","millfun","ljz","stower","hongkou","northbund","hqrail","shrail","hzeast","westlake","jixian","brokenbridge","gushan","lingyin","leifeng","changqiao"];
   return `<h2 class="section">${esc(L(TAB("words")))}</h2>${subnavHTML}
   <div class="group" id="g-phr"><h3>${esc(L(S.wPhr))}</h3><div class="list">${PHRASES.map(p=>wordRow(p[0],p[1],L(p[2]))).join("")}</div></div>
   <div class="group" id="g-pl"><h3>${esc(L(S.wPlaces))}</h3><div class="list">${places.map(k=>wordRow(P[k].zh,P[k].py,P[k].nm)).join("")}</div></div>`;
@@ -1134,8 +1178,37 @@ const DEEP={
   hist:T("West Lake has inspired Chinese poets and painters for over a thousand years. Two of its causeways are named after poet-governors who built them: Bai Juyi in the 9th century and Su Dongpo in the 11th. It became a UNESCO World Heritage site in 2011.",
          "ทะเลสาบซีหูเป็นแรงบันดาลใจให้กวีและจิตรกรจีนมานานกว่าพันปี ทางเดินกลางทะเลสาบ 2 สายตั้งชื่อตามกวีที่เคยเป็นเจ้าเมืองและสร้างทางนี้ขึ้นมา คือ ไป๋จวีอี้ ในศตวรรษที่ 9 และซูตงพอ ในศตวรรษที่ 11 ทะเลสาบแห่งนี้ได้ขึ้นทะเบียนเป็นมรดกโลกของยูเนสโกเมื่อปี 2011"),
   see:T(["Su Causeway and Bai Causeway","Broken Bridge, from the Legend of the White Snake","Leifeng Pagoda"],["ทางเดินซูตี้และไป๋ตี้", "สะพานขาด (ต้วนเฉียว) จากตำนานนางพญางูขาว", "เจดีย์เหลยเฟิง"]),
-  tip:T(["The full Hangzhou plan is coming soon."],["แผนเที่ยวหางโจวฉบับเต็มกำลังจะตามมา"]),
+  tip:T(["Today we walk the Bai Causeway, then see Leifeng Pagoda at sunset."],["วันนี้เราจะเดินเล่นทางเดินไป๋ตี้ แล้วชมเจดีย์เหลยเฟิงตอนพระอาทิตย์ตก"]),
   fact:T("Dongpo pork, Hangzhou's famous braised pork belly, is named after the same poet who built the Su Causeway.","หมูตงพอ หมูสามชั้นตุ๋นชื่อดังของหางโจว ตั้งชื่อตามซูตงพอ กวีคนเดียวกับที่สร้างทางเดินซูตี้นั่นเอง")},
+ jixian:{
+  hist:T("Jixian Pavilion stands on the Hubin lakefront, where West Lake meets the city centre. A stone path leads out over the water to the pavilion. The one you see today was rebuilt after the old pavilion collapsed in 2012.",
+         "ศาลาจี๋เสียนตั้งอยู่ริมทะเลสาบย่านหูปิน ช่วงที่ทะเลสาบซีหูติดกับใจกลางเมือง มีทางเดินหินยื่นลงไปในน้ำจนถึงตัวศาลา ศาลาที่เห็นทุกวันนี้สร้างขึ้นใหม่ หลังจากศาลาหลังเดิมพังลงเมื่อปี 2012"),
+  tip:T(["A quick stop: 10–15 minutes is enough for photos.","This is the busiest part of the lakefront, so it's nicer in the morning."],["แวะสั้น ๆ ใช้เวลาถ่ายรูป 10–15 นาทีก็พอ","ช่วงนี้เป็นริมทะเลสาบที่คนเยอะที่สุด มาช่วงเช้าจะดีกว่า"])},
+ brokenbridge:{
+  hist:T("The bridge isn't actually broken. In winter, snow melts first on the sunny side of the arch, so from a distance the bridge seems to break in the middle. This view, \"Lingering Snow on Broken Bridge\", is one of the Ten Views of West Lake. It's also where, in the Legend of the White Snake, the snake spirit Bai Suzhen first meets the young scholar Xu Xian.",
+         "สะพานนี้ไม่ได้ขาดจริง ๆ ช่วงหน้าหนาว หิมะบนสะพานฝั่งที่โดนแดดจะละลายก่อน มองจากไกล ๆ เลยเหมือนสะพานขาดตรงกลาง ภาพนี้มีชื่อว่า \"หิมะค้างบนสะพานขาด\" เป็นหนึ่งในสิบทิวทัศน์ของทะเลสาบซีหู ที่นี่ยังเป็นสถานที่ในตำนานนางพญางูขาว ที่ไป๋ซู่เจินพบกับบัณฑิตหนุ่มสวี่เซียนเป็นครั้งแรก"),
+  tip:T(["From here the Bai Causeway runs 1 km across the lake to Gushan."],["จากตรงนี้ ทางเดินไป๋ตี้ทอดยาวข้ามทะเลสาบไปถึงกูซาน ระยะทาง 1 กม."]),
+  fact:T("Locals like to say: \"Broken Bridge isn't broken, Solitary Hill isn't solitary, and Long Bridge isn't long.\"","คนหางโจวชอบพูดกันว่า \"สะพานขาดไม่ขาด เขาโดดเดี่ยวไม่โดดเดี่ยว สะพานยาวไม่ยาว\"")},
+ gushan:{
+  hist:T("The Bai Causeway is named after the poet Bai Juyi, who governed Hangzhou in the 820s and loved this lake. At its far end is Gushan, \"Solitary Hill\", the only natural island in West Lake, with gardens, pavilions and the Xiling Seal Engravers' Society.",
+         "ทางเดินไป๋ตี้ตั้งชื่อตามกวีไป๋จวีอี้ ผู้เคยเป็นเจ้าเมืองหางโจวช่วงทศวรรษ 820 และหลงรักทะเลสาบแห่งนี้ ปลายทางเดินคือกูซาน แปลว่า \"เขาโดดเดี่ยว\" เป็นเกาะธรรมชาติแห่งเดียวในทะเลสาบซีหู มีสวน ศาลา และสมาคมแกะสลักตราประทับซีหลิง"),
+  tip:T(["The path is flat, with benches along the way.","From Gushan, take a DiDi to Lingyin Temple."],["ทางเดินเรียบ มีม้านั่งพักเป็นระยะ","จากกูซาน เรียก DiDi ไปวัดหลิงอิ่นได้เลย"])},
+ lingyin:{
+  hist:T("Lingyin Temple was founded in 328 AD by Huili, a monk from India, who felt these wooded hills were a place where spirits hide; the name means \"Temple of the Soul's Retreat\". It is still a working Zen monastery. Across the stream is Feilai Feng, a limestone hill carved with hundreds of Buddhist figures from the 10th to 14th centuries.",
+         "วัดหลิงอิ่นก่อตั้งเมื่อปี ค.ศ. 328 โดยพระฮุ่ยหลี่ พระภิกษุจากอินเดีย ท่านเห็นว่าเขาป่าแห่งนี้เป็นที่ที่ดวงวิญญาณมาหลบซ่อน ชื่อวัดจึงแปลว่า \"วัดแห่งวิญญาณสันโดษ\" ทุกวันนี้ยังเป็นวัดนิกายเซนที่มีพระจำพรรษาอยู่ ฝั่งตรงข้ามลำธารคือเฟยไหลเฟิง เขาหินปูนที่มีพระพุทธรูปแกะสลักหลายร้อยองค์ จากช่วงศตวรรษที่ 10–14"),
+  see:T(["The laughing Buddha carved into the Feilai Feng cliff","The great gilded Buddha in the main hall"],["พระสังกัจจายน์หัวเราะที่แกะสลักบนหน้าผาเฟยไหลเฟิง","พระพุทธรูปองค์ใหญ่ปิดทองในวิหารหลัก"]),
+  tip:T(["Reserve the afternoon slot on the \"Hangzhou Lingyin Feilai Peak\" mini-program in Alipay or WeChat. Slots for 19 Dec open on 12 Dec at 8:00 China time (7:00 in Bangkok).","Bring the original passports used for the booking.","Open 7:30–17:30; entry closes at 17:00.","The temple halls have a small ticket, paid at the temple gate."],["จองรอบบ่ายในมินิโปรแกรม \"Hangzhou Lingyin Feilai Peak\" ผ่าน Alipay หรือ WeChat รอบวันที่ 19 ธ.ค. เปิดให้จองวันที่ 12 ธ.ค. เวลา 8:00 น. ตามเวลาจีน (7:00 น. เวลาไทย)","พกพาสปอร์ตตัวจริงที่ใช้จองไปด้วย","เปิด 7:30–17:30 น. เข้าได้ถึง 17:00 น.","ตัววัดเก็บค่าเข้าเล็กน้อย จ่ายที่ประตูวัด"]),
+  fact:T("Feilai Feng means \"the peak that flew here\": legend says Huili thought it was a mountain from India that had flown all the way to China.","เฟยไหลเฟิง แปลว่า \"ยอดเขาที่บินมา\" ตำนานเล่าว่าพระฮุ่ยหลี่เห็นแล้วคิดว่าเป็นภูเขาจากอินเดียที่บินมาถึงจีน")},
+ leifeng:{
+  hist:T("The first Leifeng Pagoda was built in the 970s by the king of Wuyue. It stood for almost a thousand years until it collapsed in 1924. The pagoda you see today was rebuilt in 2002 over the old foundations. In the Legend of the White Snake, the monk Fahai imprisons the White Snake beneath this pagoda.",
+         "เจดีย์เหลยเฟิงองค์แรกสร้างในช่วงทศวรรษ 970 โดยกษัตริย์แคว้นอู๋เยว่ ตั้งอยู่เกือบพันปี ก่อนจะพังลงในปี 1924 องค์ที่เห็นทุกวันนี้สร้างใหม่ในปี 2002 บนฐานเดิม ในตำนานนางพญางูขาว หลวงจีนฝาไห่ได้กักขังนางพญางูขาวไว้ใต้เจดีย์องค์นี้"),
+  see:T(["Views over the whole lake from the top","Ruins of the original pagoda's base, inside"],["วิวทะเลสาบทั้งหมดจากด้านบน","ซากฐานเจดีย์องค์เดิมที่อยู่ด้านใน"]),
+  tip:T(["A lift goes most of the way up; the last part is stairs.","Last entry 17:00. Running late? Skip going up and head to Changqiao Park."],["มีลิฟต์ขึ้นไปเกือบถึงบน ช่วงสุดท้ายต้องเดินขึ้นบันได","เข้าได้ถึง 17:00 น. ถ้าไม่ทันเวลา ข้ามการขึ้นเจดีย์แล้วไปสวน Changqiao เลย"])},
+ changqiao:{
+  hist:T("Changqiao means \"Long Bridge\", though the bridge is famously short. It's linked to the Butterfly Lovers, China's Romeo and Juliet: Liang Shanbo and Zhu Yingtai are said to have walked back and forth here, not wanting to say goodbye.",
+         "ฉางเฉียว แปลว่า \"สะพานยาว\" แต่ตัวสะพานกลับสั้นมาก ที่นี่เกี่ยวข้องกับตำนานคู่รักผีเสื้อ หรือโรมิโอกับจูเลียตของจีน เล่ากันว่าเหลียงซานป๋อกับจู้อิงไถเดินไปมาบนสะพานนี้ เพราะไม่อยากจากกัน"),
+  tip:T(["The best spot is Xiying Pavilion at the end of the long bridge. It's crowded at sunset, so arrive a little early.","It's an open park with no gate and no closing time."],["มุมที่ดีที่สุดคือศาลาซีอิ้งที่ปลายสะพาน ช่วงพระอาทิตย์ตกคนจะเยอะ มาก่อนเวลาสักหน่อย","เป็นสวนเปิด ไม่มีประตู ไม่มีเวลาปิด"]),
+  fact:T("Locals say this is the best place to see \"Leifeng Pagoda in the Evening Glow\", one of the Ten Views of West Lake.","คนท้องถิ่นบอกว่าที่นี่เป็นจุดชม \"เจดีย์เหลยเฟิงยามอาทิตย์อัสดง\" ที่ดีที่สุด ซึ่งเป็นหนึ่งในสิบทิวทัศน์ของทะเลสาบซีหู")},
  pvg:{
   hist:T("Pudong International Airport opened in 1999 and is one of the busiest airports in the world.","สนามบินนานาชาติผู่ตงเปิดเมื่อปี 1999 และเป็นหนึ่งในสนามบินที่คนใช้บริการมากที่สุดในโลก"),
   tip:T(["DiDi to People's Square takes 45–60 min; Metro Line 2 takes 60–75 min."],["นั่ง DiDi ไป People's Square ใช้เวลา 45–60 นาที ส่วนรถไฟใต้ดินสาย 2 ใช้เวลา 60–75 นาที"])}
@@ -1147,6 +1220,7 @@ const MP={hotel:[165,140,"People's Square","middle",0,-11],nanjing:[190,139,"","
  ffc:[124,206,"French Concession","middle",0,17],wukang:[104,186,"Wukang Mansion","end",-8,4],anfu:[124,166,"Anfu Road","end",-8,-2],xtd:[165,178,"Xintiandi","middle",0,17],yuyuan:[208,178,"Yuyuan","start",8,4],
  jingan:[122,148,"Jing'an Temple","end",-8,12],trees:[136,104,"Tian An 1000 Trees","end",-8,3],millfun:[212,78,"1933 Millfun","middle",0,-9],
  rockbund:[217,131,"Rock Bund","start",8,9],waibaidu:[223,112,"Waibaidu Bridge","end",-8,-5],hongkou:[228,90,"Hongkou Creek","middle",0,-9],northbund:[244,108,"North Bund","start",8,6],disney:[332,214,"Disneyland","end",-8,4],pvg:[340,254,"Airport","end",-8,4],westlake:[22,262,"Hangzhou","start",8,4]};
+const HMP={jixian:[247,176,"Jixian Pavilion","start",8,4],brokenbridge:[236,122,"Broken Bridge","start",8,-3],gushan:[172,116,"Gushan","middle",0,-11],lingyin:[70,138,"Lingyin Temple","middle",0,-11],leifeng:[196,238,"Leifeng Pagoda","end",-8,4],changqiao:[230,233,"Changqiao Park","start",8,12]};
 const STORY=[
  {k:"bund",col:"#C0632B",route:["pvg","hotel","nanjing","bund"],
   t:T("Hello, Shanghai","ถึงเซี่ยงไฮ้"),
@@ -1160,23 +1234,24 @@ const STORY=[
  {k:"jingan",col:"#B5862E",route:["hotel","jingan","trees","millfun","ljz"],
   t:T("Gold roofs & city lights","เซี่ยงไฮ้เก่าและใหม่"),
   s:T("A temple with real gold roofs, a building covered in trees, a 1933 building of spiral ramps and bridges, and dinner inside China's tallest tower.","ไหว้พระที่วัดจิ้งอัน ชมตึก 1000 Trees เดินถ่ายรูปที่ 1933 Old Millfun แล้วทานมื้อเย็นที่ Shanghai Tower")},
- {k:"westlake",col:"#2F7F86",route:["hotel","westlake"],
+ {k:"westlake",col:"#2F7F86",hz:1,route:["jixian","brokenbridge","gushan","lingyin","leifeng","changqiao"],
   t:T("Heaven on earth","เที่ยวหางโจว"),
-  s:T("One hour by bullet train to Hangzhou's West Lake, loved by poets for a thousand years. Full plan coming soon.","นั่งรถไฟความเร็วสูงประมาณ 1 ชั่วโมง ไปเที่ยวทะเลสาบซีหูที่หางโจว (แผนฉบับเต็มจะตามมา)")},
+  s:T("One hour by bullet train to West Lake: a walk across the water, an ancient temple in the hills, and a pagoda at sunset.","นั่งรถไฟความเร็วสูง 1 ชั่วโมงไปหางโจว เดินเล่นทะเลสาบซีหู ไหว้พระที่วัดหลิงอิ่น แล้วชมเจดีย์เหลยเฟิงตอนพระอาทิตย์ตก")},
  {k:"northbund",col:"#8A5A9E",route:["hotel","rockbund","waibaidu","hongkou","northbund","hotel","pvg"],
   t:T("One last walk by the river","เดินเล่นริมแม่น้ำ"),
   s:T("Red-brick lanes and old bridges, a quiet canal, coffee facing the skyline, then home by 22:25.","เดินเล่นย่าน Rock Bund ถึง North Bund แวะจิบกาแฟริมแม่น้ำ ก่อนบินกลับถึงกรุงเทพฯ 22:25 น.")}
 ];
 function storyMap(){
-  const dots=Object.entries(MP).map(([k,[x,y,n,a,dx,dy]])=>`<g class="mdot" data-k="${k}"><circle cx="${x}" cy="${y}" r="3.5"/>${n?`<text x="${x+dx}" y="${y+dy}" text-anchor="${a}">${esc(n)}</text>`:""}</g>`).join("");
+  const dotsOf=M=>Object.entries(M).map(([k,[x,y,n,a,dx,dy]])=>`<g class="mdot" data-k="${k}"><circle cx="${x}" cy="${y}" r="3.5"/>${n?`<text x="${x+dx}" y="${y+dy}" text-anchor="${a}">${esc(n)}</text>`:""}</g>`).join(""),dots=dotsOf(MP),hdots=dotsOf(HMP);
   return `<svg viewBox="0 48 360 230" preserveAspectRatio="xMidYMid meet" class="smap" role="img" aria-label="Map of Shanghai">
-   <path class="water" d="M196,700 L198,280 C200,236 206,196 216,160 C222,138 226,118 246,104 C272,86 304,76 360,52 L900,-180 L900,-150 L360,72 C310,92 282,100 260,114 C240,128 236,144 230,164 C220,200 214,240 212,280 L212,700 Z"/>
+   <g class="lyr sh"><path class="water" d="M196,700 L198,280 C200,236 206,196 216,160 C222,138 226,118 246,104 C272,86 304,76 360,52 L900,-180 L900,-150 L360,72 C310,92 282,100 260,114 C240,128 236,144 230,164 C220,200 214,240 212,280 L212,700 Z"/>
    <path class="creek" d="M-500,94 L40,96 C80,102 110,90 150,98 C180,104 200,104 228,112"/>
    <text class="wlabel" x="226" y="262" transform="rotate(-82 226 262)">Huangpu River</text>
-   <text class="wlabel" x="44" y="88">Suzhou Creek</text>
+   <text class="wlabel" x="44" y="88">Suzhou Creek</text></g>
+   <g class="lyr hzl"><path class="water" d="M150,110 C175,98 215,100 238,118 C252,132 250,170 246,196 C242,218 222,230 196,230 C168,230 146,220 138,198 C130,176 132,128 150,110 Z"/><path class="cway" d="M236,123 Q206,126 182,117"/><ellipse class="hzland" cx="170" cy="115" rx="15" ry="7"/><text class="wlabel" x="196" y="182" text-anchor="middle">West Lake</text><text class="hzlbl" x="330" y="66" text-anchor="end">Hangzhou East →</text></g>
    <mask id="rmask" maskUnits="userSpaceOnUse" x="-2000" y="-2000" width="5000" height="5000"><path id="rmaskp" d="" fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/></mask>
    <path class="route" id="sroute" d="" mask="url(#rmask)"/>
-   ${dots}
+   <g class="lyr sh">${dots}</g><g class="lyr hzl">${hdots}</g>
   </svg>`;
 }
 let ovIdx=0;
@@ -1205,7 +1280,7 @@ function setChapter(i){
   const svg=main.querySelector(".smap");if(!svg)return;
   svg.style.setProperty("--c",c.col);
   svg.querySelectorAll(".mdot").forEach(g=>g.classList.toggle("on",c.route.includes(g.dataset.k)));
-  const rd=c.route.map((k,j)=>(j?"L":"M")+MP[k][0]+","+MP[k][1]).join(" ");svg.querySelector("#sroute").setAttribute("d",rd);const mp=svg.querySelector("#rmaskp");if(mp){mp.setAttribute("d",rd);if(drawnIdx!==i)drawRoute();else{mp.style.transition="none";mp.style.strokeDasharray="";mp.style.strokeDashoffset=""}drawnIdx=i}
+  const M=c.hz?HMP:MP;svg.classList.toggle("hz",!!c.hz);const rd=c.route.map((k,j)=>(j?"L":"M")+M[k][0]+","+M[k][1]).join(" ");svg.querySelector("#sroute").setAttribute("d",rd);const mp=svg.querySelector("#rmaskp");if(mp){mp.setAttribute("d",rd);if(drawnIdx!==i)drawRoute();else{mp.style.transition="none";mp.style.strokeDasharray="";mp.style.strokeDashoffset=""}drawnIdx=i}
   main.querySelectorAll(".ovdots button").forEach((b,j)=>b.setAttribute("aria-current",j===i));
   const pv=main.querySelector('[data-ov="-1"]'),nx=main.querySelector('[data-ov="1"]');if(pv)pv.disabled=i===0;if(nx)nx.disabled=i===STORY.length-1;
 }
